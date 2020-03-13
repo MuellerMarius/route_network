@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+$border-color: #eee;
+
 body {
   background-color: #f7f7f7;
   font-family: "Lato", sans-serif;
@@ -9,17 +11,13 @@ body {
 main {
   width: 100%;
   height: 100%;
-  background-color: #fafafa;
+  background-color: hsl(0, 0%, 98%);
   border-radius: 8px;
-  border: 1px solid #eee;
-  -webkit-box-shadow: 0px 0px 15px 0px #d9d9d9;
-          box-shadow: 0px 0px 15px 0px #d9d9d9;
-  display: -ms-grid;
+  border: 1px solid $border-color;
+  box-shadow: 0px 0px 15px 0px hsl(0, 0%, 85%);
   display: grid;
-  -ms-grid-columns: minmax(200px, 25%) auto;
-      grid-template-columns: minmax(200px, 25%) auto;
-  -ms-grid-rows: 100%;
-      grid-template-rows: 100%;
+  grid-template-columns: minmax(200px, 25%) auto;
+  grid-template-rows: 100%;
 }
 
 button {
@@ -37,12 +35,11 @@ button {
   cursor: pointer;
   border-width: 0;
   border-radius: 4px;
-  -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
 button:hover {
-  background-color: #4da3ff;
+  background-color: hsl(211, 100%, 65%);
 }
 
 #root {
@@ -51,13 +48,12 @@ button:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .controls {
   padding: 15px;
-  border-right: 1px solid #eee;
+  border-right: 1px solid $border-color;
 }
 
 .controls h1 {
@@ -68,7 +64,7 @@ button:hover {
 .controls hr {
   width: 80%;
   margin: 20px auto 20px auto;
-  border: 1px solid #eee;
+  border: 1px solid $border-color;
 }
 
 .chkgrp {
@@ -81,4 +77,3 @@ button:hover {
 .chkgrp-item {
   margin: 10px 0 10px 0;
 }
-/*# sourceMappingURL=index.css.map */
