@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
+import { ComposableMap, Geographies, Geography, Line } from "react-simple-maps";
 
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
@@ -17,7 +17,7 @@ const projWorld = {
 };
 
 export default function MapDisplay() {
-  const { onlyEurope } = useContext(GlobalContext);
+  const { onlyEurope, routes } = useContext(GlobalContext);
 
   return (
     <div className="main-disp">
@@ -38,6 +38,14 @@ export default function MapDisplay() {
             ))
           }
         </Geographies>
+        {routes.map(route => (
+          <Line
+            from={route.fromCoord}
+            to={route.toCoord}
+            stroke="#000"
+            strokeWidth={1}
+          />
+        ))}
       </ComposableMap>
     </div>
   );

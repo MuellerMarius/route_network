@@ -7,13 +7,14 @@ import { GlobalContext } from "../context/GlobalState";
 //  - dark / light mode toggle
 
 export default function MapControls() {
-  const [euroChkd, toggleChecked] = useState(false);
-  const { changeProjection } = useContext(GlobalContext);
+  const { changeProjection, routes, onlyEurope } = useContext(GlobalContext);
+  const categories = [...new Set(routes.map(item => item.cat))];
+  const [euroChkd, toggleChecked] = useState(onlyEurope);
 
   const handleClick = e => {
-    const onlyEurope = e.target.checked;
-    toggleChecked(onlyEurope);
-    changeProjection(onlyEurope);
+    const showEU = e.target.checked;
+    toggleChecked(showEU);
+    changeProjection(showEU);
   };
 
   const createCheckbox = lbl => {
@@ -52,9 +53,9 @@ export default function MapControls() {
         <hr />
         <h2>Data</h2>
         <ul className="chkgrp">
-          <li className="chkgrp-item">{createCheckbox("EMJ")}</li>
-          <li className="chkgrp-item">{createCheckbox("A320")}</li>
-          <li className="chkgrp-item">{createCheckbox("PAX")}</li>
+          {categories.map(cat => (
+            <li className="chkgrp-item">{createCheckbox(cat)}</li>
+          ))}
         </ul>
       </form>
     </div>
