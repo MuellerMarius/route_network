@@ -54,7 +54,9 @@ export default function MapControls() {
         <h2>Data</h2>
         <ul className="chkgrp">
           {categories.map(cat => (
-            <li className="chkgrp-item">{createCheckbox(cat)}</li>
+            <li key="cat" className="chkgrp-item">
+              {createCheckbox(cat)}
+            </li>
           ))}
         </ul>
       </form>

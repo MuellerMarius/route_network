@@ -19,6 +19,14 @@ const projWorld = {
 export default function MapDisplay() {
   const { onlyEurope, routes } = useContext(GlobalContext);
 
+  // Filter all individual airports
+  const markers = [
+    ...new Set([
+      ...new Set(routes.map(route => route.from)),
+      ...new Set(routes.map(route => route.to))
+    ])
+  ];
+
   return (
     <div className="main-disp">
       <ComposableMap
@@ -40,8 +48,9 @@ export default function MapDisplay() {
         </Geographies>
         {routes.map(route => (
           <Line
-            from={route.fromCoord}
-            to={route.toCoord}
+            key={route.id}
+            from={[route.fromCoordLong, route.fromCoordLat]}
+            to={[route.toCoordLong, route.toCoordLat]}
             stroke="#000"
             strokeWidth={1}
           />

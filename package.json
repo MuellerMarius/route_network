@@ -10,6 +10,7 @@
     "material-table": "^1.57.2",
     "pretty-checkbox": "^3.0.3",
     "react": "^16.13.0",
+    "react-csv-reader": "^2.2.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",

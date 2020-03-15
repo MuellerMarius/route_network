@@ -33,17 +33,18 @@ nav {
   margin: 0;
 }
 
-button {
+button,
+.csv-reader-input > label {
   display: block;
   margin: 10px auto 15px auto;
-  min-width: 75%;
+  width: 75%;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #fff;
   background-color: $button-color;
   text-align: center;
-  padding: 6px 12px;
+  padding: 9px 12px;
   outline: none;
   cursor: pointer;
   border-width: 0;
@@ -51,8 +52,14 @@ button {
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 }
 
-button:hover {
+button:hover,
+.csv-reader-input > label:hover {
   background-color: hsl(211, 100%, 65%);
+}
+
+.csv-input:focus {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
 }
 
 #root {
@@ -118,4 +125,13 @@ button:hover {
 
 .chkgrp-item {
   margin: 10px 0 10px 0;
+}
+
+.csv-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }

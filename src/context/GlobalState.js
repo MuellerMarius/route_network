@@ -7,26 +7,12 @@ const initialState = {
     {
       id: 0,
       from: "EDDF",
-      fromCoord: [8.570556, 50.033333],
+      fromCoordLat: 50.033333,
+      fromCoordLong: 8.57055,
       to: "EDDM",
-      toCoord: [11.7861, 48.353802],
+      toCoordLat: 48.353802,
+      toCoordLong: 11.7861,
       cat: "PAX"
-    },
-    {
-      id: 0,
-      from: "EDDF",
-      fromCoord: [8.570556, 50.033333],
-      to: "EPKT",
-      toCoord: [19.08, 50.4743],
-      cat: "EMJ190"
-    },
-    {
-      id: 0,
-      from: "EBBR",
-      fromCoord: [4.48443984985, 50.901401519800004],
-      to: "EGLL",
-      toCoord: [-0.461941, 51.4706],
-      cat: "A320"
     }
   ]
 };
@@ -43,12 +29,20 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function loadData(data) {
+    dispatch({
+      type: "LOAD_DATA",
+      payload: data
+    });
+  }
+
   return (
     <GlobalContext.Provider
       value={{
         onlyEurope: state.onlyEurope,
         routes: state.routes,
-        changeProjection
+        changeProjection,
+        loadData
       }}
     >
       {children}

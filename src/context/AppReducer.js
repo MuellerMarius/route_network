@@ -5,6 +5,11 @@ export default (state, action) => {
         ...state,
         onlyEurope: action.payload
       };
+    case "LOAD_DATA":
+      return {
+        ...state,
+        routes: action.payload
+      };
     default:
       return state;
   }
