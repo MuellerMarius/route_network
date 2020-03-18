@@ -17,26 +17,26 @@ const projWorld = {
 };
 
 export default function MapDisplay() {
-  const { onlyEurope, routes } = useContext(GlobalContext);
+  const { onlyEurope, themeLight, routes } = useContext(GlobalContext);
 
-  // Filter all individual airports
-  const markers = [
-    ...new Set([
-      ...new Set(routes.map(route => route.from)),
-      ...new Set(routes.map(route => route.to))
-    ])
-  ];
+  // TODO: Display marker for each airport
+  // const markers = [
+  //   ...new Set([
+  //     ...new Set(routes.map(route => route.from)),
+  //     ...new Set(routes.map(route => route.to))
+  //   ])
+  // ];
 
   return (
-    <div className="main-disp">
+    <div className={"main-disp" + (themeLight ? "" : " dark-bg")}>
       <ComposableMap
         width={1000}
         projection="geoMercator"
         projectionConfig={onlyEurope ? projEurope : projWorld}
       >
         <Geographies
-          fill="#D6D6DA"
-          stroke="#FFFFFF"
+          fill={themeLight ? "#D6D6DA" : "#1A1A1A"}
+          stroke={themeLight ? "#FFFFFF" : "#333333"}
           strokeWidth={0.5}
           geography={geoUrl}
         >
@@ -51,7 +51,8 @@ export default function MapDisplay() {
             key={route.id}
             from={[route.fromCoordLong, route.fromCoordLat]}
             to={[route.toCoordLong, route.toCoordLat]}
-            stroke="#000"
+            // TODO: Stroke color according to category
+            stroke={themeLight ? "#000000" : "#1A96C8"}
             strokeWidth={1}
           />
         ))}

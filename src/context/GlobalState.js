@@ -3,6 +3,7 @@ import AppReducer from "./AppReducer";
 
 const initialState = {
   onlyEurope: false,
+  themeLight: true,
   routes: [
     {
       id: 0,
@@ -29,10 +30,38 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
+  function changeTheme(themeLight) {
+    dispatch({
+      type: "CHANGE_THEME",
+      payload: themeLight
+    });
+  }
+
   function loadData(data) {
     dispatch({
       type: "LOAD_DATA",
       payload: data
+    });
+  }
+
+  function addRoute(route) {
+    dispatch({
+      type: "ADD_ROUTE",
+      payload: route
+    });
+  }
+
+  function deleteRoute(id) {
+    dispatch({
+      type: "DELETE_ROUTE",
+      payload: id
+    });
+  }
+
+  function editRoute(route) {
+    dispatch({
+      type: "EDIT_ROUTE",
+      payload: route
     });
   }
 
@@ -41,8 +70,13 @@ export const GlobalProvider = ({ children }) => {
       value={{
         onlyEurope: state.onlyEurope,
         routes: state.routes,
+        themeLight: state.themeLight,
         changeProjection,
-        loadData
+        changeTheme,
+        loadData,
+        addRoute,
+        deleteRoute,
+        editRoute
       }}
     >
       {children}
