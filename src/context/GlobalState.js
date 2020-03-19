@@ -1,5 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
+import * as Constants from "../constants";
 
 const initialState = {
   onlyEurope: false,
@@ -25,42 +26,42 @@ export const GlobalProvider = ({ children }) => {
 
   function changeProjection(onlyEurope) {
     dispatch({
-      type: "CHANGE_PROJECTION",
+      type: Constants.CHANGE_PROJECTION,
       payload: onlyEurope
     });
   }
 
   function changeTheme(themeLight) {
     dispatch({
-      type: "CHANGE_THEME",
+      type: Constants.CHANGE_THEME,
       payload: themeLight
     });
   }
 
-  function loadData(data) {
+  function loadRoutes(routes) {
     dispatch({
-      type: "LOAD_DATA",
-      payload: data
+      type: Constants.LOAD_ROUTES,
+      payload: routes
     });
   }
 
   function addRoute(route) {
     dispatch({
-      type: "ADD_ROUTE",
+      type: Constants.ADD_ROUTE,
       payload: route
     });
   }
 
   function deleteRoute(id) {
     dispatch({
-      type: "DELETE_ROUTE",
+      type: Constants.DEL_ROUTE,
       payload: id
     });
   }
 
   function editRoute(route) {
     dispatch({
-      type: "EDIT_ROUTE",
+      type: Constants.EDIT_ROUTE,
       payload: route
     });
   }
@@ -73,7 +74,7 @@ export const GlobalProvider = ({ children }) => {
         themeLight: state.themeLight,
         changeProjection,
         changeTheme,
-        loadData,
+        loadRoutes,
         addRoute,
         deleteRoute,
         editRoute

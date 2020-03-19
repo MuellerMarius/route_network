@@ -36,7 +36,12 @@ export default function DataEditor() {
                   newData.cat = "Other";
                 }
                 // TODO: fetch coordinates and assign ID
+                // let a = airports.find(ap => ap.ident === "CYCK");
+                // console.log(a);
+                // newData.fromCoordLat = lat;
                 addRoute(newData);
+              } else {
+                // TODO: display error message
               }
               resolve();
             }, 1000);

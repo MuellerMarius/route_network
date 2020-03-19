@@ -38,15 +38,8 @@ const csvHeader = [
   }
 ];
 
-// TODO: airport database import
-
-// function loadDatabase(data) {
-//   let obj = data.find(o => o.ident === "EDDW");
-//   console.log(obj);
-// }
-
 export default function CSVControls() {
-  const { loadData, routes } = useContext(GlobalContext);
+  const { routes, loadRoutes } = useContext(GlobalContext);
 
   return (
     <div className="controls">
@@ -55,7 +48,7 @@ export default function CSVControls() {
       <CSVReader
         label="Import data (*.csv)"
         parserOptions={parseOptions}
-        onFileLoaded={(data, fileName) => loadData(data)}
+        onFileLoaded={(data, fileName) => loadRoutes(data)}
       />
 
       <CsvDownloader

@@ -1,37 +1,38 @@
+import * as Constants from "../constants";
+
 export default (state, action) => {
   switch (action.type) {
-    case "CHANGE_PROJECTION":
+    case Constants.CHANGE_PROJECTION:
       return {
         ...state,
         onlyEurope: action.payload
       };
-    case "CHANGE_THEME":
+    case Constants.CHANGE_THEME:
       return {
         ...state,
         themeLight: action.payload
       };
-    case "LOAD_DATA":
-      console.log("import");
+    case Constants.LOAD_ROUTES:
       return {
         ...state,
         routes: action.payload
       };
-    case "ADD_ROUTE":
+    case Constants.ADD_ROUTE:
       return {
         ...state,
         routes: [...state.routes, action.payload]
       };
-    case "DELETE_ROUTE":
+    case Constants.DEL_ROUTE:
       return {
         ...state,
         routes: state.routes.filter(route => route.id !== action.payload)
       };
-    case "EDIT_ROUTE":
+    case Constants.EDIT_ROUTE:
       const index = state.routes.findIndex(
         route => route.id === action.payload.id
       );
       if (index === -1) {
-        console.log("Object to mutate not found");
+        // TODO: Error handling
         return state;
       } else {
         return {
@@ -43,7 +44,6 @@ export default (state, action) => {
           ]
         };
       }
-
     default:
       return state;
   }

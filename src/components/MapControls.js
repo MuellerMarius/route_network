@@ -9,10 +9,13 @@ export default function MapControls() {
     onlyEurope,
     themeLight
   } = useContext(GlobalContext);
-  const categories = [...new Set(routes.map(item => item.cat))];
+
   const [euroChkd, toggleProjectionChecked] = useState(onlyEurope);
   const [themeLgtChkd, toggleThemeChecked] = useState(themeLight);
 
+  const categories = [...new Set(routes.map(item => item.cat))];
+
+  // TODO: Refactor
   const handleClick = e => {
     switch (e.target.name) {
       case "onlyEurope":

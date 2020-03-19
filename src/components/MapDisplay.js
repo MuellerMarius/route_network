@@ -1,44 +1,65 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import { ComposableMap, Geographies, Geography, Line } from "react-simple-maps";
-
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
-
-const projEurope = {
-  rotate: [-20.0, -52.0, 0],
-  scale: 700
-};
-
-const projWorld = {
-  center: [0, 30],
-  scale: 155,
-  rotate: [0.0, -0.1, 0]
-};
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Line,
+  Marker
+} from "react-simple-maps";
+import * as Constants from "../constants";
 
 export default function MapDisplay() {
   const { onlyEurope, themeLight, routes } = useContext(GlobalContext);
+  const [markers, setMarkers] = useState([]);
 
-  // TODO: Display marker for each airport
-  // const markers = [
-  //   ...new Set([
-  //     ...new Set(routes.map(route => route.from)),
-  //     ...new Set(routes.map(route => route.to))
-  //   ])
-  // ];
+  useEffect(() => {
+    const markerNames = [
+      ...new Set([
+        ...new Set(routes.map(route => route.from)),
+        ...new Set(routes.map(route => route.to))
+      ])
+    ];
+
+    markerNames.forEach(name => {
+      let coordinates = routes.find(route => route.from === name);
+      if (coordinates) {
+        setMarkers(markers => [
+          ...markers,
+          {
+            name,
+            lat: coordinates.fromCoordLat,
+            long: coordinates.fromCoordLong
+          }
+        ]);
+      } else {
+        coordinates = routes.find(route => route.to === name);
+        setMarkers(markers => [
+          ...markers,
+          {
+            name,
+            lat: coordinates.toCoordLat,
+            long: coordinates.toCoordLong
+          }
+        ]);
+      }
+    });
+  }, [routes]);
 
   return (
     <div className={"main-disp" + (themeLight ? "" : " dark-bg")}>
       <ComposableMap
         width={1000}
         projection="geoMercator"
-        projectionConfig={onlyEurope ? projEurope : projWorld}
+        projectionConfig={
+          onlyEurope ? Constants.projEurope : Constants.projWorld
+        }
       >
         <Geographies
           fill={themeLight ? "#D6D6DA" : "#1A1A1A"}
           stroke={themeLight ? "#FFFFFF" : "#333333"}
           strokeWidth={0.5}
-          geography={geoUrl}
+          geography={Constants.geoUrl}
         >
           {({ geographies }) =>
             geographies.map(geo => (
@@ -56,6 +77,14 @@ export default function MapDisplay() {
             strokeWidth={1}
           />
         ))}
+        {markers.map(marker => {
+          let coordinates = [marker.long, marker.lat];
+          return (
+            <Marker key={marker.name} coordinates={coordinates}>
+              <circle r={2} fill="#F53" />
+            </Marker>
+          );
+        })}
       </ComposableMap>
     </div>
   );

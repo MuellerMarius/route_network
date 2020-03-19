@@ -16,7 +16,7 @@ main {
   width: 100%;
   background-color: $container-bg-color;
   border-radius: 8px;
-  border: 1px solid $border-color;
+  border: 1px solid #ccc;
   box-shadow: 0px 0px 15px 0px hsl(0, 0%, 85%);
   display: grid;
   grid-template-columns: minmax(210px, 25%) auto;
@@ -24,11 +24,11 @@ main {
 }
 
 nav {
+  border-bottom: 1px solid #eee;
   border-radius: 8px 8px 0 0;
   background-color: #d4d4d4;
   grid-column-start: 1;
   grid-column-end: 3;
-  border-bottom: 0;
   margin: 0;
 }
 
