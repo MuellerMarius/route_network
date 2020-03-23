@@ -2,16 +2,6 @@ import * as Constants from "../constants";
 
 export default (state, action) => {
   switch (action.type) {
-    case Constants.CHANGE_PROJECTION:
-      return {
-        ...state,
-        onlyEurope: action.payload
-      };
-    case Constants.CHANGE_THEME:
-      return {
-        ...state,
-        themeLight: action.payload
-      };
     case Constants.LOAD_ROUTES:
       return {
         ...state,

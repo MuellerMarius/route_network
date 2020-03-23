@@ -3,8 +3,6 @@ import AppReducer from "./AppReducer";
 import * as Constants from "../constants";
 
 const initialState = {
-  onlyEurope: false,
-  themeLight: true,
   routes: [
     {
       id: 0,
@@ -23,20 +21,6 @@ export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
-
-  function changeProjection(onlyEurope) {
-    dispatch({
-      type: Constants.CHANGE_PROJECTION,
-      payload: onlyEurope
-    });
-  }
-
-  function changeTheme(themeLight) {
-    dispatch({
-      type: Constants.CHANGE_THEME,
-      payload: themeLight
-    });
-  }
 
   function loadRoutes(routes) {
     dispatch({
@@ -69,11 +53,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        onlyEurope: state.onlyEurope,
         routes: state.routes,
-        themeLight: state.themeLight,
-        changeProjection,
-        changeTheme,
         loadRoutes,
         addRoute,
         deleteRoute,

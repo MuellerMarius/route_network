@@ -1,6 +1,4 @@
 // Reducer
-export const CHANGE_PROJECTION = "CHANGE_PROJECTION";
-export const CHANGE_THEME = "CHANGE_THEME";
 export const LOAD_ROUTES = "LOAD_ROUTES";
 export const ADD_ROUTE = "ADD_ROUTE";
 export const DEL_ROUTE = "DEL_ROUTE";
@@ -20,3 +18,31 @@ export const projWorld = {
   scale: 155,
   rotate: [0.0, -0.1, 0]
 };
+
+// CSV
+export const csvHeader = [
+  {
+    id: "id"
+  },
+  {
+    id: "from"
+  },
+  {
+    id: "fromCoordLat"
+  },
+  {
+    id: "fromCoordLong"
+  },
+  {
+    id: "to"
+  },
+  {
+    id: "toCoordLat"
+  },
+  {
+    id: "toCoordLong"
+  },
+  {
+    id: "cat"
+  }
+];

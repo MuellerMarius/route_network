@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import CSVReader from "react-csv-reader";
 import CsvDownloader from "react-csv-downloader";
+import * as Constants from "../constants";
 
 // Options for CSV data import parsing
 const parseOptions = {
@@ -10,33 +11,6 @@ const parseOptions = {
   skipEmptyLines: true,
   delimiter: ","
 };
-
-const csvHeader = [
-  {
-    id: "id"
-  },
-  {
-    id: "from"
-  },
-  {
-    id: "fromCoordLat"
-  },
-  {
-    id: "fromCoordLong"
-  },
-  {
-    id: "to"
-  },
-  {
-    id: "toCoordLat"
-  },
-  {
-    id: "toCoordLong"
-  },
-  {
-    id: "cat"
-  }
-];
 
 export default function CSVControls() {
   const { routes, loadRoutes } = useContext(GlobalContext);
@@ -55,7 +29,7 @@ export default function CSVControls() {
         className="tes"
         filename="data"
         separator=","
-        columns={csvHeader}
+        columns={Constants.csvHeader}
         datas={routes}
         text="Export data (*.csv)"
       />
