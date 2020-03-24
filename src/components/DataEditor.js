@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import MaterialTable from "material-table";
 import { GlobalContext } from "../context/GlobalState";
+import * as Constants from "../constants";
 
 export default function DataEditor() {
   const { routes, addRoute, editRoute, deleteRoute } = useContext(
@@ -10,21 +11,9 @@ export default function DataEditor() {
   return (
     <MaterialTable
       title="Routes"
-      columns={[
-        { title: "Departure Airport", field: "from" },
-        { title: "Destination Airport", field: "to" },
-        { title: "Category", field: "cat" }
-      ]}
+      columns={Constants.tableColumns}
       data={routes}
-      options={{
-        pageSize: 8,
-        pageSizeOptions: [8],
-        draggable: false,
-        headerStyle: {
-          backgroundColor: "#f9f9f9",
-          fontWeight: 700
-        }
-      }}
+      options={Constants.tableOptions}
       editable={{
         isEditable: rowData => true,
         isDeletable: rowData => true,

@@ -4,7 +4,6 @@ import CSVReader from "react-csv-reader";
 import CsvDownloader from "react-csv-downloader";
 import * as Constants from "../constants";
 
-// Options for CSV data import parsing
 const parseOptions = {
   header: true,
   dynamicTyping: true,

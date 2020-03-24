@@ -1,35 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Line, Marker } from "react-simple-maps";
+import * as Constants from "../constants";
 
 export default function Flight(props) {
+  const coordinates = [
+    [props.route.fromCoordLong, props.route.fromCoordLat],
+    [props.route.toCoordLong, props.route.toCoordLat]
+  ];
+
   return (
     <React.Fragment>
       <Line
         key={props.route.id}
-        from={[props.route.fromCoordLong, props.route.fromCoordLat]}
-        to={[props.route.toCoordLong, props.route.toCoordLat]}
-        // TODO: Stroke color according to category
-        stroke={props.themeLight ? "#000000" : "#1A96C8"}
+        from={coordinates[0]}
+        to={coordinates[1]}
+        stroke={
+          props.lightTheme
+            ? Constants.flightColorLight[props.category.index]
+            : Constants.flightColorDark[props.category.index]
+        }
         strokeWidth={1}
       />
-      <Marker
-        coordinates={[props.route.fromCoordLong, props.route.fromCoordLat]}
-      >
-        <circle r={2} fill="#F53" />
-      </Marker>
-      <Marker coordinates={[props.route.toCoordLong, props.route.toCoordLat]}>
-        <circle r={2} fill="#F53" />
-      </Marker>
+      {coordinates.map((coord, index) => (
+        <Marker coordinates={coord} key={index}>
+          <circle
+            r={2}
+            fill={
+              props.lightTheme
+                ? Constants.markerColorLight
+                : Constants.markerColorDark
+            }
+          />
+        </Marker>
+      ))}
     </React.Fragment>
   );
 }
 
 Flight.propTypes = {
   route: PropTypes.object.isRequired,
-  themeLight: PropTypes.bool
-};
-
-Flight.defaultProps = {
-  themeLight: false
+  category: PropTypes.object.isRequired,
+  lightTheme: PropTypes.bool.isRequired
 };
