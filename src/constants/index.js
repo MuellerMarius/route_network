@@ -1,5 +1,5 @@
 // Colors
-export const flightColorLight = ["#000000", "#1A96C8", "#ff0000", "#ff0000"];
+export const flightColorLight = ["#1A96C8", "#4b9137", "#343434", "#ff0000"];
 export const markerColorLight = "#888888";
 export const geoColorLight = "#D6D6DA";
 export const geoStrokeColorLight = "#FFFFFF";
