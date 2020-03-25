@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useCallback } from "react";
 import MapReducer from "./MapReducer";
 import * as Constants from "../constants";
 
@@ -13,21 +13,21 @@ export const MapViewContext = createContext(initialState);
 export const MapViewProvider = ({ children }) => {
   const [state, dispatch] = useReducer(MapReducer, initialState);
 
-  function toggleTheme(lightTheme) {
+  const toggleTheme = lightTheme => {
     dispatch({
       type: Constants.TOGGLE_THEME,
       payload: lightTheme
     });
-  }
+  };
 
-  function toggleView(focusViewOnEurope) {
+  const toggleView = focusViewOnEurope => {
     dispatch({
       type: Constants.TOGGLE_VIEW,
       payload: focusViewOnEurope
     });
-  }
+  };
 
-  function initCategories(routes) {
+  const initCategories = useCallback(routes => {
     let categorySet = [...new Set(routes.map(item => item.cat))];
 
     dispatch({
@@ -38,14 +38,14 @@ export const MapViewProvider = ({ children }) => {
         index
       }))
     });
-  }
+  }, []);
 
-  function toggleCatDisplay(name, checked) {
+  const toggleCatDisplay = (name, checked) => {
     dispatch({
       type: Constants.TOGGLE_CAT_DISPLAY,
       payload: { name, checked }
     });
-  }
+  };
 
   return (
     <MapViewContext.Provider

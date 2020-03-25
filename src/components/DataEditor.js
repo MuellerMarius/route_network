@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import MaterialTable from "material-table";
+import uuid from "react-uuid";
 import { GlobalContext } from "../context/GlobalState";
 import * as Constants from "../constants";
 
@@ -24,13 +25,24 @@ export default function DataEditor() {
                 if (!newData.cat) {
                   newData.cat = "Other";
                 }
-                // TODO: fetch coordinates and assign ID
-                // let a = airports.find(ap => ap.ident === "CYCK");
-                // console.log(a);
-                // newData.fromCoordLat = lat;
+                newData.id = uuid();
+                fetch(Constants.airportAPI + newData.from)
+                  .then(response => response.json())
+                  .then(data => {
+                    newData.fromCoordLat = data.latitude_deg;
+                    newData.fromCoordLong = data.longitude_deg;
+                  });
+                fetch(Constants.airportAPI + newData.to)
+                  .then(response => response.json())
+                  .then(data => {
+                    newData.toCoordLat = data.latitude_deg;
+                    newData.toCoordLong = data.longitude_deg;
+                  });
                 addRoute(newData);
               } else {
-                // TODO: display error message
+                console.log(
+                  "Unable to insert new data because destination or departure airport is missing."
+                );
               }
               resolve();
             }, 1000);
@@ -38,6 +50,22 @@ export default function DataEditor() {
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
+              if (oldData.from !== newData.from) {
+                fetch(Constants.airportAPI + newData.from)
+                  .then(response => response.json())
+                  .then(data => {
+                    newData.fromCoordLat = data.latitude_deg;
+                    newData.fromCoordLong = data.longitude_deg;
+                  });
+              }
+              if (oldData.to !== newData.to) {
+                fetch(Constants.airportAPI + newData.to)
+                  .then(response => response.json())
+                  .then(data => {
+                    newData.toCoordLat = data.latitude_deg;
+                    newData.toCoordLong = data.longitude_deg;
+                  });
+              }
               editRoute(newData);
               resolve();
             }, 1000);

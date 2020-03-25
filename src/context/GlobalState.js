@@ -3,18 +3,7 @@ import AppReducer from "./AppReducer";
 import * as Constants from "../constants";
 
 const initialState = {
-  routes: [
-    {
-      id: 0,
-      from: "EDDF",
-      fromCoordLat: 50.033333,
-      fromCoordLong: 8.57055,
-      to: "EDDM",
-      toCoordLat: 48.353802,
-      toCoordLong: 11.7861,
-      cat: "PAX"
-    }
-  ]
+  routes: []
 };
 
 export const GlobalContext = createContext(initialState);

@@ -18,7 +18,7 @@ export default function MapControls() {
 
   useEffect(() => {
     initCategories(routes);
-  }, [routes]);
+  }, [routes, initCategories]);
 
   const onChange = name => checked => {
     toggleCatDisplay(name, checked);

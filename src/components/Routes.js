@@ -14,16 +14,14 @@ export default function Routes() {
     <React.Fragment>
       {routes
         .filter(route => activeCatNames.includes(route.cat))
-        .map(route => {
-          return (
-            <Flight
-              key={route.id}
-              route={route}
-              category={categories.find(cat => cat.name === route.cat)}
-              lightTheme={lightTheme}
-            />
-          );
-        })}
+        .map(route => (
+          <Flight
+            key={route.id}
+            route={route}
+            category={categories.find(cat => cat.name === route.cat)}
+            lightTheme={lightTheme}
+          />
+        ))}
       }
     </React.Fragment>
   );

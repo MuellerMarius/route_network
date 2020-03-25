@@ -20,12 +20,12 @@ export default function Flight(props) {
             ? Constants.flightColorLight[props.category.index]
             : Constants.flightColorDark[props.category.index]
         }
-        strokeWidth={1}
+        strokeWidth={0.5}
       />
       {coordinates.map((coord, index) => (
         <Marker coordinates={coord} key={index}>
           <circle
-            r={2}
+            r={1}
             fill={
               props.lightTheme
                 ? Constants.markerColorLight
