@@ -1,13 +1,16 @@
-@import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 $background-color: #f7f7f7;
 $container-bg-color: #fefefe;
 $border-color: hsl(0, 0%, 97%);
 $button-color: #1d89ff;
 $hover-color: hsl(211, 100%, 65%);
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
 
 body {
   background-color: $background-color;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -21,6 +24,7 @@ main {
   display: grid;
   grid-template-columns: minmax(210px, 25%) auto;
   grid-template-rows: 50px auto;
+  overflow: auto;
 }
 
 nav {
@@ -32,43 +36,6 @@ nav {
   margin: 0;
 }
 
-.controls button,
-.csv-reader-input > label {
-  display: block;
-  margin: 10px auto 15px auto;
-  width: 90%;
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #fff;
-  background-color: $button-color;
-  text-align: center;
-  padding: 9px 0px;
-  outline: none;
-  cursor: pointer;
-  border-width: 0;
-  border-radius: 4px;
-  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
-}
-
-button:hover,
-.csv-reader-input > label:hover {
-  background-color: hsl(211, 100%, 65%);
-}
-
-.csv-input:focus {
-  outline: 1px dotted #000;
-  outline: -webkit-focus-ring-color auto 5px;
-}
-
-#root {
-  width: 85%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .nav-item {
   color: #000;
   text-align: center;
@@ -77,53 +44,125 @@ button:hover,
   padding: 15px;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+
+  @media screen and (max-width: $sm-width) {
+    min-width: 100px;
+  }
+
+  &:first-child {
+    border-radius: 8px 0 0 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: $button-color;
+  }
+
+  &--active {
+    background-color: $container-bg-color;
+  }
 }
 
-.nav-item:first-child {
-  border-radius: 8px 0 0 0;
+#root {
+  width: 90%;
+  margin: 0 auto 0 auto;
+
+  @media screen and (min-width: $lg-width) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media screen and (max-width: $lg-width) {
+    width: 95%;
+  }
 }
 
-.nav-item.active {
-  background-color: $container-bg-color;
+.map-area {
+  @media screen and (max-width: $md-width) {
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+  }
+
+  &--dark-bg {
+    background-color: #1e2934;
+  }
+
+  svg {
+    display: block;
+  }
 }
 
-.nav-item:hover {
-  cursor: pointer;
-  color: #fff;
-  background-color: $button-color;
+.MuiPaper-root {
+  @media screen and (max-width: $md-width) {
+    grid-column: 1 / span 2;
+  }
 }
 
-.controls {
+.settings {
   padding: 15px;
   border-right: 1px solid $border-color;
-}
 
-.controls h1 {
-  margin-top: 0;
-  font-size: 1.5rem;
-}
+  @media screen and (max-width: $md-width) {
+    padding: 7px;
+    grid-column: 1 / span 2;
+    background-color: $container-bg-color;
+  }
 
-.controls h2 {
-  font-weight: 300;
-  font-size: 1.1rem;
-  margin: 20px 0 15px 15px;
-}
+  &__wrapper {
+    @media screen and (max-width: $md-width) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: baseline;
+      font-size: 0.9rem;
+    }
+  }
 
-.controls hr {
-  width: 80%;
-  margin: 20px auto 20px auto;
-  border: 1px solid $border-color;
-}
+  &__section {
+    @media screen and (max-width: $md-width) {
+      grid-column: span 1;
+    }
+  }
 
-.chkgrp {
-  width: 75%;
-  margin: auto;
-  padding: 0;
-  list-style-type: none;
-}
+  &__h1 {
+    margin-top: 0;
+    font-size: 1.5rem;
 
-.chkgrp-item {
-  margin: 10px 0 10px 0;
+    @media screen and (max-width: $md-width) {
+      font-size: 1.2rem;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__h2 {
+    font-weight: 300;
+    font-size: 1.1rem;
+    margin: 20px 0 15px 15px;
+    @media screen and (max-width: $md-width) {
+      margin: 10px 0 5px 10px;
+      font-size: 1rem;
+    }
+  }
+
+  &__seperator {
+    width: 80%;
+    margin: 20px auto 20px auto;
+    border: 1px solid $border-color;
+  }
+
+  &__chkgrp {
+    width: 75%;
+    margin: auto;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__chkgrp-item {
+    margin: 10px 0 10px 0;
+  }
 }
 
 .csv-input {
@@ -135,14 +174,46 @@ button:hover,
   z-index: -1;
 }
 
-.dark-bg {
-  background-color: #1e2934;
-}
-
 .rsm-geography {
   outline: none;
 }
 
-.main-disp svg {
+.settings button,
+.csv-reader-input > label {
   display: block;
+  margin: 10px auto 15px auto;
+  width: 90%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: $button-color;
+  text-align: center;
+  padding: 9px 0px;
+  outline: none;
+  cursor: pointer;
+  border-width: 0;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+
+  &:hover {
+    background-color: hsl(211, 100%, 65%);
+  }
+
+  &.--color-green {
+    background-color: hsl(87, 46%, 50%);
+
+    &:hover {
+      background-color: hsl(87, 64%, 55%);
+    }
+  }
+
+  @media screen and (max-width: $md-width) {
+    width: 300px;
+  }
+}
+
+.csv-input:focus {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
 }

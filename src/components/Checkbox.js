@@ -1,9 +1,9 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function Checkbox(props) {
   return (
-    <li key={props.name} className="chkgrp-item">
+    <li key={props.name} className="settings__chkgrp-item">
       <div className="pretty p-switch p-fill">
         <input
           type="checkbox"
@@ -24,5 +24,5 @@ Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
   category: PropTypes.bool,
   checked: PropTypes.bool,
-  label: PropTypes.string
+  label: PropTypes.string,
 };

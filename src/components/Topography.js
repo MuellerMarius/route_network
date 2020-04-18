@@ -1,23 +1,19 @@
-import React, { useContext } from "react";
-import { Geographies, Geography } from "react-simple-maps";
-import { MapViewContext } from "../context/MapViewState";
-import * as Constants from "../constants";
+import React, { useContext } from 'react';
+import { Geographies, Geography } from 'react-simple-maps';
+import { MapViewContext } from '../context/MapViewState';
+import * as Cst from '../constants';
 
 export default function Topography() {
   const { lightTheme } = useContext(MapViewContext);
   return (
     <Geographies
-      fill={lightTheme ? Constants.geoColorLight : Constants.geoColorDark}
-      stroke={
-        lightTheme
-          ? Constants.geoStrokeColorLight
-          : Constants.geoStrokeColorDark
-      }
+      fill={lightTheme ? Cst.geoColorLight : Cst.geoColorDark}
+      stroke={lightTheme ? Cst.geoStrokeColorLight : Cst.geoStrokeColorDark}
       strokeWidth={0.5}
-      geography={Constants.geoUrl}
+      geography={Cst.geoUrl}
     >
       {({ geographies }) =>
-        geographies.map(geo => <Geography key={geo.rsmKey} geography={geo} />)
+        geographies.map((geo) => <Geography key={geo.rsmKey} geography={geo} />)
       }
     </Geographies>
   );

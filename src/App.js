@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import MainContainer from "./components/MainContainer";
-import { GlobalProvider } from "./context/GlobalState";
+import MainContainer from './components/MainContainer';
+import { GlobalProvider } from './context/GlobalState';
 
 function App() {
   return (

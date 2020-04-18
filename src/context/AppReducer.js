@@ -1,28 +1,28 @@
-import * as Constants from "../constants";
+import * as Cst from '../constants';
 
 export default (state, action) => {
   switch (action.type) {
-    case Constants.LOAD_ROUTES:
+    case Cst.LOAD_ROUTES:
       return {
         ...state,
-        routes: action.payload
+        routes: action.payload,
       };
-    case Constants.ADD_ROUTE:
+    case Cst.ADD_ROUTE:
       return {
         ...state,
-        routes: [...state.routes, action.payload]
+        routes: [...state.routes, action.payload],
       };
-    case Constants.DEL_ROUTE:
+    case Cst.DEL_ROUTE:
       return {
         ...state,
-        routes: state.routes.filter(route => route.id !== action.payload)
+        routes: state.routes.filter((route) => route.id !== action.payload),
       };
-    case Constants.EDIT_ROUTE:
+    case Cst.EDIT_ROUTE:
       return {
         ...state,
-        routes: state.routes.map(route =>
+        routes: state.routes.map((route) =>
           route.id === action.payload.id ? action.payload : route
-        )
+        ),
       };
     default:
       return state;

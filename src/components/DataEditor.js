@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
-import MaterialTable from "material-table";
-import uuid from "react-uuid";
-import { GlobalContext } from "../context/GlobalState";
-import * as Constants from "../constants";
+import React, { useContext } from 'react';
+import MaterialTable from 'material-table';
+import uuid from 'react-uuid';
+import { GlobalContext } from '../context/GlobalState';
+import * as Cst from '../constants';
 
 export default function DataEditor() {
   const { routes, addRoute, editRoute, deleteRoute } = useContext(
@@ -11,37 +11,41 @@ export default function DataEditor() {
 
   return (
     <MaterialTable
-      title="Routes"
-      columns={Constants.tableColumns}
+      title=""
+      columns={
+        window.innerWidth > Cst.screenMdWidth
+          ? Cst.tableColumnsLong
+          : Cst.tableColumnsShort
+      }
       data={routes}
-      options={Constants.tableOptions}
+      options={Cst.tableOptions}
       editable={{
-        isEditable: rowData => true,
-        isDeletable: rowData => true,
-        onRowAdd: newData =>
+        isEditable: (rowData) => true,
+        isDeletable: (rowData) => true,
+        onRowAdd: (newData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
               if (newData.to && newData.from) {
                 if (!newData.cat) {
-                  newData.cat = "Other";
+                  newData.cat = 'Other';
                 }
                 newData.id = uuid();
-                fetch(Constants.airportAPI + newData.from)
-                  .then(response => response.json())
-                  .then(data => {
+                fetch(Cst.airportAPI + newData.from)
+                  .then((response) => response.json())
+                  .then((data) => {
                     newData.fromCoordLat = data.latitude_deg;
                     newData.fromCoordLong = data.longitude_deg;
                   });
-                fetch(Constants.airportAPI + newData.to)
-                  .then(response => response.json())
-                  .then(data => {
+                fetch(Cst.airportAPI + newData.to)
+                  .then((response) => response.json())
+                  .then((data) => {
                     newData.toCoordLat = data.latitude_deg;
                     newData.toCoordLong = data.longitude_deg;
                   });
                 addRoute(newData);
               } else {
                 console.log(
-                  "Unable to insert new data because destination or departure airport is missing."
+                  'Unable to insert new data because destination or departure airport is missing.'
                 );
               }
               resolve();
@@ -51,17 +55,17 @@ export default function DataEditor() {
           new Promise((resolve, reject) => {
             setTimeout(() => {
               if (oldData.from !== newData.from) {
-                fetch(Constants.airportAPI + newData.from)
-                  .then(response => response.json())
-                  .then(data => {
+                fetch(Cst.airportAPI + newData.from)
+                  .then((response) => response.json())
+                  .then((data) => {
                     newData.fromCoordLat = data.latitude_deg;
                     newData.fromCoordLong = data.longitude_deg;
                   });
               }
               if (oldData.to !== newData.to) {
-                fetch(Constants.airportAPI + newData.to)
-                  .then(response => response.json())
-                  .then(data => {
+                fetch(Cst.airportAPI + newData.to)
+                  .then((response) => response.json())
+                  .then((data) => {
                     newData.toCoordLat = data.latitude_deg;
                     newData.toCoordLong = data.longitude_deg;
                   });
@@ -70,13 +74,13 @@ export default function DataEditor() {
               resolve();
             }, 1000);
           }),
-        onRowDelete: oldData =>
+        onRowDelete: (oldData) =>
           new Promise((resolve, reject) => {
             setTimeout(() => {
               deleteRoute(oldData.id);
               resolve();
             }, 1000);
-          })
+          }),
       }}
     />
   );

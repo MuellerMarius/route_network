@@ -1,30 +1,30 @@
-import * as Constants from "../constants";
+import * as Cst from '../constants';
 
 export default (state, action) => {
   switch (action.type) {
-    case Constants.TOGGLE_THEME:
+    case Cst.TOGGLE_THEME:
       return {
         ...state,
-        lightTheme: action.payload
+        lightTheme: action.payload,
       };
-    case Constants.TOGGLE_VIEW:
+    case Cst.TOGGLE_VIEW:
       return {
         ...state,
-        focusViewOnEurope: action.payload
+        focusViewOnEurope: action.payload,
       };
-    case Constants.INIT_CATEGORIES:
+    case Cst.INIT_CATEGORIES:
       return {
         ...state,
-        categories: action.payload
+        categories: action.payload,
       };
-    case Constants.TOGGLE_CAT_DISPLAY:
+    case Cst.TOGGLE_CAT_DISPLAY:
       return {
         ...state,
-        categories: state.categories.map(category =>
+        categories: state.categories.map((category) =>
           category.name === action.payload.name
             ? { ...category, active: action.payload.checked }
             : category
-        )
+        ),
       };
     default:
       return state;
