@@ -25,7 +25,7 @@ export default function MapControls() {
   };
 
   return (
-    <div className="settings">
+    <div className={'settings' + (lightTheme ? '' : ' settings--dark')}>
       <h1 className="settings__h1">Options</h1>
       <div className="settings__wrapper">
         <div className="settings_section">

@@ -6,8 +6,8 @@ export const geoStrokeColorLight = '#FFFFFF';
 
 export const flightColorDark = ['#1A96C8', '#4b9137', '#BCBCBC', '#ff0000'];
 export const markerColorDark = '#AAAAAA';
-export const geoColorDark = '#1A1A1A';
-export const geoStrokeColorDark = '#333333';
+export const geoColorDark = '121212'; //'#1A1A1A';
+export const geoStrokeColorDark = '#444444';
 
 // Map Display
 export const geoUrl =

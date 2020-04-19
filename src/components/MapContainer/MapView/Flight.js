@@ -22,7 +22,7 @@ export default function Flight(props) {
         }
         strokeWidth={
           window.innerWidth > Cst.screenXlWidth
-            ? 0.5
+            ? 0.85
             : window.innerWidth > Cst.screenLgWidth
             ? 1.5
             : 2.5

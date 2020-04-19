@@ -42,7 +42,19 @@ main {
   }
 }
 
+.MuiIconButton-root {
+  @media screen and (max-width: $md-width) {
+    padding: 3px !important;
+  }
+}
+.MuiTableCell-root {
+  @media screen and (max-width: $md-width) {
+    padding: 16px 5px 16px 5px !important;
+  }
+}
+
 .settings {
+  $self: &;
   padding: 15px;
   border-right: 1px solid $border-color;
 
@@ -107,6 +119,17 @@ main {
 
   &__chkgrp-item {
     margin: 10px 0 10px 0;
+  }
+
+  &--dark {
+    background-color: $container-bg-color-dark;
+    color: $container-bg-color;
+    border-right: 0;
+
+    #{ $self }__seperator {
+      border: 0;
+      border-top: 1px solid #bbb;
+    }
   }
 }
 
