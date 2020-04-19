@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react';
 import AppReducer from './AppReducer';
-import * as Cst from '../constants';
+import * as actionType from './actions';
 
 const initialState = {
   routes: [],
@@ -13,28 +13,28 @@ export const GlobalProvider = ({ children }) => {
 
   function loadRoutes(routes) {
     dispatch({
-      type: Cst.LOAD_ROUTES,
+      type: actionType.LOAD_ROUTES,
       payload: routes,
     });
   }
 
   function addRoute(route) {
     dispatch({
-      type: Cst.ADD_ROUTE,
+      type: actionType.ADD_ROUTE,
       payload: route,
     });
   }
 
   function deleteRoute(id) {
     dispatch({
-      type: Cst.DEL_ROUTE,
+      type: actionType.DEL_ROUTE,
       payload: id,
     });
   }
 
   function editRoute(route) {
     dispatch({
-      type: Cst.EDIT_ROUTE,
+      type: actionType.EDIT_ROUTE,
       payload: route,
     });
   }

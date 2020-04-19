@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import MaterialTable from 'material-table';
 import uuid from 'react-uuid';
-import { GlobalContext } from '../context/GlobalState';
-import * as Cst from '../constants';
+import { GlobalContext } from '../../context/GlobalState';
+import * as Cst from '../../constants';
 
 export default function DataEditor() {
   const { routes, addRoute, editRoute, deleteRoute } = useContext(

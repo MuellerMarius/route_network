@@ -1,23 +1,23 @@
-import * as Cst from '../constants';
+import * as actionType from './actions';
 
 export default (state, action) => {
   switch (action.type) {
-    case Cst.LOAD_ROUTES:
+    case actionType.LOAD_ROUTES:
       return {
         ...state,
         routes: action.payload,
       };
-    case Cst.ADD_ROUTE:
+    case actionType.ADD_ROUTE:
       return {
         ...state,
         routes: [...state.routes, action.payload],
       };
-    case Cst.DEL_ROUTE:
+    case actionType.DEL_ROUTE:
       return {
         ...state,
         routes: state.routes.filter((route) => route.id !== action.payload),
       };
-    case Cst.EDIT_ROUTE:
+    case actionType.EDIT_ROUTE:
       return {
         ...state,
         routes: state.routes.map((route) =>

@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useCallback } from 'react';
 import MapReducer from './MapReducer';
-import * as Cst from '../constants';
+import * as actionType from './actions';
 
 const initialState = {
   lightTheme: true,
@@ -15,14 +15,14 @@ export const MapViewProvider = ({ children }) => {
 
   const toggleTheme = (lightTheme) => {
     dispatch({
-      type: Cst.TOGGLE_THEME,
+      type: actionType.TOGGLE_THEME,
       payload: lightTheme,
     });
   };
 
   const toggleView = (focusViewOnEurope) => {
     dispatch({
-      type: Cst.TOGGLE_VIEW,
+      type: actionType.TOGGLE_VIEW,
       payload: focusViewOnEurope,
     });
   };
@@ -31,7 +31,7 @@ export const MapViewProvider = ({ children }) => {
     let categorySet = [...new Set(routes.map((item) => item.cat))];
 
     dispatch({
-      type: Cst.INIT_CATEGORIES,
+      type: actionType.INIT_CATEGORIES,
       payload: categorySet.map((entry, index) => ({
         name: entry,
         active: true,
@@ -42,7 +42,7 @@ export const MapViewProvider = ({ children }) => {
 
   const toggleCatDisplay = (name, checked) => {
     dispatch({
-      type: Cst.TOGGLE_CAT_DISPLAY,
+      type: actionType.TOGGLE_CAT_DISPLAY,
       payload: { name, checked },
     });
   };

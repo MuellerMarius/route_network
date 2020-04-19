@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './style.scss';
 
 export default function Menu() {
   return (
@@ -10,7 +11,7 @@ export default function Menu() {
         activeClassName="nav-item--active"
         className="nav-item"
       >
-        Data Input
+        Data Edit
       </NavLink>
 
       <NavLink

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
-import { MapViewContext } from '../context/MapViewState';
-import { GlobalContext } from '../context/GlobalState';
+import { MapViewContext } from '../../context/MapViewState';
+import { GlobalContext } from '../../context/GlobalState';
 import Checkbox from './Checkbox';
 
 export default function MapControls() {
@@ -48,7 +48,7 @@ export default function MapControls() {
           </ul>
         </div>
 
-        {/* <hr className="settings__seperator" /> */}
+        <hr className="settings__seperator" />
         <div className="settings_section">
           <h2 className="settings__h2">Data</h2>
           <ul className="settings__chkgrp">

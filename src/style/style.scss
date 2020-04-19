@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-$background-color: #f7f7f7;
-$container-bg-color: #fefefe;
-$border-color: hsl(0, 0%, 97%);
-$button-color: #1d89ff;
-$hover-color: hsl(211, 100%, 65%);
-$sm-width: 576px;
-$md-width: 768px;
-$lg-width: 992px;
+@import 'vars';
 
 body {
   background-color: $background-color;
@@ -27,43 +20,6 @@ main {
   overflow: auto;
 }
 
-nav {
-  border-bottom: 1px solid #eee;
-  border-radius: 8px 8px 0 0;
-  background-color: #d4d4d4;
-  grid-column-start: 1;
-  grid-column-end: 3;
-  margin: 0;
-}
-
-.nav-item {
-  color: #000;
-  text-align: center;
-  min-width: 160px;
-  float: left;
-  padding: 15px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
-
-  @media screen and (max-width: $sm-width) {
-    min-width: 100px;
-  }
-
-  &:first-child {
-    border-radius: 8px 0 0 0;
-  }
-
-  &:hover {
-    cursor: pointer;
-    color: #fff;
-    background-color: $button-color;
-  }
-
-  &--active {
-    background-color: $container-bg-color;
-  }
-}
-
 #root {
   width: 90%;
   margin: 0 auto 0 auto;
@@ -77,21 +33,6 @@ nav {
 
   @media screen and (max-width: $lg-width) {
     width: 95%;
-  }
-}
-
-.map-area {
-  @media screen and (max-width: $md-width) {
-    grid-column: 1 / span 2;
-    grid-row: 2 / span 1;
-  }
-
-  &--dark-bg {
-    background-color: #1e2934;
-  }
-
-  svg {
-    display: block;
   }
 }
 
@@ -151,6 +92,10 @@ nav {
     width: 80%;
     margin: 20px auto 20px auto;
     border: 1px solid $border-color;
+
+    @media screen and (max-width: $md-width) {
+      display: none;
+    }
   }
 
   &__chkgrp {
@@ -172,10 +117,6 @@ nav {
   overflow: hidden;
   position: absolute;
   z-index: -1;
-}
-
-.rsm-geography {
-  outline: none;
 }
 
 .settings button,
@@ -200,11 +141,15 @@ nav {
     background-color: hsl(211, 100%, 65%);
   }
 
-  &.--color-green {
-    background-color: hsl(87, 46%, 50%);
+  &.--inverse {
+    color: #000;
+    border: 2px solid #1d89ff;
+    background-color: #fff;
 
     &:hover {
-      background-color: hsl(87, 64%, 55%);
+      border-color: hsl(211, 100%, 65%);
+      background-color: hsl(211, 100%, 65%);
+      color: #fff;
     }
   }
 

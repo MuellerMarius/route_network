@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Line, Marker } from 'react-simple-maps';
-import * as Cst from '../constants';
+import * as Cst from '../../../constants';
 
 export default function Flight(props) {
   const coordinates = [

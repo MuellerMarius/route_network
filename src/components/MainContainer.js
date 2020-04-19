@@ -1,10 +1,12 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import MapContainer from './MapContainer';
-import CSVControls from './CSVControls';
-import Menu from './Menu';
-import DataEditor from './DataEditor';
+import { MapViewProvider } from '../context/MapViewState';
+import MapView from './MapContainer/MapView';
+import MapControls from './MapContainer/MapControls';
+import DataControls from './DataEditContainer/DataControls';
+import Menu from './Menu/';
+import DataEditor from './DataEditContainer/DataEditor';
 
 export default function MainContainer() {
   return (
@@ -13,10 +15,13 @@ export default function MainContainer() {
         <Menu />
         <Switch>
           <Route path="/map">
-            <MapContainer />
+            <MapViewProvider>
+              <MapControls />
+              <MapView />
+            </MapViewProvider>
           </Route>
           <Route path="/">
-            <CSVControls />
+            <DataControls />
             <DataEditor />
           </Route>
         </Switch>

@@ -1,23 +1,23 @@
-import * as Cst from '../constants';
+import * as actionType from './actions';
 
 export default (state, action) => {
   switch (action.type) {
-    case Cst.TOGGLE_THEME:
+    case actionType.TOGGLE_THEME:
       return {
         ...state,
         lightTheme: action.payload,
       };
-    case Cst.TOGGLE_VIEW:
+    case actionType.TOGGLE_VIEW:
       return {
         ...state,
         focusViewOnEurope: action.payload,
       };
-    case Cst.INIT_CATEGORIES:
+    case actionType.INIT_CATEGORIES:
       return {
         ...state,
         categories: action.payload,
       };
-    case Cst.TOGGLE_CAT_DISPLAY:
+    case actionType.TOGGLE_CAT_DISPLAY:
       return {
         ...state,
         categories: state.categories.map((category) =>

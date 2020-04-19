@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { GlobalContext } from '../context/GlobalState';
 import CSVReader from 'react-csv-reader';
 import CsvDownloader from 'react-csv-downloader';
-import * as Cst from '../constants';
+
+import { GlobalContext } from '../../context/GlobalState';
+import * as Cst from '../../constants';
 
 const parseOptions = {
   header: true,
@@ -11,7 +12,7 @@ const parseOptions = {
   delimiter: ',',
 };
 
-export default function CSVControls() {
+export default function DataControls() {
   const { routes, loadRoutes } = useContext(GlobalContext);
 
   return (
@@ -19,7 +20,7 @@ export default function CSVControls() {
       <h1 className="settings__h1">Flight routes</h1>
 
       <button
-        className="--color-green"
+        className="--inverse"
         onClick={() => loadRoutes(Cst.sampleRoutes)}
       >
         Load sample data

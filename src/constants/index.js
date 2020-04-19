@@ -9,16 +9,6 @@ export const markerColorDark = '#AAAAAA';
 export const geoColorDark = '#1A1A1A';
 export const geoStrokeColorDark = '#333333';
 
-// Reducer
-export const LOAD_ROUTES = 'LOAD_ROUTES';
-export const ADD_ROUTE = 'ADD_ROUTE';
-export const DEL_ROUTE = 'DEL_ROUTE';
-export const EDIT_ROUTE = 'EDIT_ROUTE';
-export const TOGGLE_THEME = 'TOGGLE_THEME';
-export const TOGGLE_VIEW = 'TOGGLE_VIEW';
-export const INIT_CATEGORIES = 'INIT_CATEGORIES';
-export const TOGGLE_CAT_DISPLAY = 'TOGGLE_CAT_DISPLAY';
-
 // Map Display
 export const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
