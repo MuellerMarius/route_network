@@ -14,8 +14,8 @@ export const geoUrl =
   'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
 
 export const projEurope = {
-  rotate: [-15.0, -50.0, 0],
-  scale: 840,
+  center: [17, 49],
+  scale: 550,
 };
 
 export const projWorld = {

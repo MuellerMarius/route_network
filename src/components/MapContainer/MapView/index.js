@@ -14,7 +14,7 @@ export default function MapView() {
     <div className={'map-area' + (lightTheme ? '' : ' map-area--dark-bg')}>
       <ComposableMap
         width={1000}
-        projection={focusViewOnEurope ? 'geoAzimuthalEqualArea' : 'geoMercator'}
+        projection={'geoMercator'}
         projectionConfig={focusViewOnEurope ? Cst.projEurope : Cst.projWorld}
       >
         <Topography />
