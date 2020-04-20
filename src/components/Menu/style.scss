@@ -36,3 +36,20 @@ nav {
     background-color: $container-bg-color;
   }
 }
+
+.nav-icon {
+  &__image {
+    height: 30px;
+    width: 30px;
+    opacity: 0.75;
+  }
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: 15px;
+    line-height: 10px;
+  }
+}

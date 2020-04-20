@@ -150,4 +150,14 @@ export const sampleRoutes = [
     toCoordLong: 9.51763,
     cat: 'EMJ190',
   },
+  {
+    id: 10,
+    from: 'EDDF',
+    fromCoordLat: 50.033333,
+    fromCoordLong: 8.570556,
+    to: 'UUDD',
+    toCoordLat: 55.40879822,
+    toCoordLong: 37.90629959,
+    cat: 'EMJ190',
+  },
 ];

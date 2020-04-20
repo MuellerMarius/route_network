@@ -36,23 +36,6 @@ main {
   }
 }
 
-.MuiPaper-root {
-  @media screen and (max-width: $md-width) {
-    grid-column: 1 / span 2;
-  }
-}
-
-.MuiIconButton-root {
-  @media screen and (max-width: $md-width) {
-    padding: 3px !important;
-  }
-}
-.MuiTableCell-root {
-  @media screen and (max-width: $md-width) {
-    padding: 16px 5px 16px 5px !important;
-  }
-}
-
 .settings {
   $self: &;
   padding: 15px;
@@ -184,4 +167,22 @@ main {
 .csv-input:focus {
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
+}
+
+.MuiPaper-root {
+  @media screen and (max-width: $md-width) {
+    grid-column: 1 / span 2;
+  }
+}
+
+.MuiIconButton-root {
+  @media screen and (max-width: $md-width) {
+    padding: 3px !important;
+  }
+}
+
+.MuiTableCell-root {
+  @media screen and (max-width: $md-width) {
+    padding: 16px 5px 16px 5px !important;
+  }
 }
