@@ -2,6 +2,11 @@ import * as actionType from './actions';
 
 export default (state, action) => {
   switch (action.type) {
+    case actionType.HANDLE_RESIZE:
+      return {
+        ...state,
+        dimensions: action.payload,
+      };
     case actionType.LOAD_ROUTES:
       return {
         ...state,

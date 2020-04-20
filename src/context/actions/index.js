@@ -1,3 +1,4 @@
+export const HANDLE_RESIZE = 'HANDLE_RESIZE';
 export const LOAD_ROUTES = 'LOAD_ROUTES';
 export const ADD_ROUTE = 'ADD_ROUTE';
 export const DEL_ROUTE = 'DEL_ROUTE';

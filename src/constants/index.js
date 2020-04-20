@@ -1,18 +1,39 @@
 // Colors
-export const flightColorLight = ['#1A96C8', '#4b9137', '#343434', '#ff0000'];
+export const flightColorLight = [
+  '#f21d92D9',
+  '#3dacd9D9',
+  '#5e5e5eD9',
+  '#4b9137D9',
+  '#ff0000D9',
+];
 export const markerColorLight = '#888888';
 export const geoColorLight = '#D6D6DA';
-export const geoStrokeColorLight = '#FFFFFF';
+export const geoStrokeColorLight = '#f4f4f4';
 
-export const flightColorDark = ['#1A96C8', '#4b9137', '#BCBCBC', '#ff0000'];
+export const flightColorDark = [
+  '#A91566D9',
+  '#1A96C8D9',
+  '#BCBCBCD9',
+  '#4b9137D9',
+  '#ff0000D9',
+];
 export const markerColorDark = '#AAAAAA';
-export const geoColorDark = '121212'; //'#1A1A1A';
+export const geoColorDark = '121212';
 export const geoStrokeColorDark = '#444444';
+export const strokeWidthXl = 1;
+export const strokeWidthLg = 1;
+export const strokeWidthSm = 1.5;
+export const circleWidthXl = 2;
+export const circleWidthLg = 2;
+export const circleWidthSm = 3;
 
-// Map Display
-export const geoUrl =
-  'https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json';
+// Map Display - TopoJSON by https://github.com/topojson/world-atlas
+export const geoUrlSm =
+  'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json';
+export const geoUrlLg =
+  'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
 
+export const projection = 'geoMercator';
 export const projEurope = {
   center: [17, 49],
   scale: 550,

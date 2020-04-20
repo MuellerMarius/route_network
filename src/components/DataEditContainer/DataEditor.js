@@ -1,39 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import MaterialTable from 'material-table';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
 
-function debounce(func, ms) {
-  let timer;
-  return (_) => {
-    clearTimeout(timer);
-    timer = setTimeout((_) => {
-      timer = null;
-      func.apply(this, arguments);
-    }, ms);
-  };
-}
-
 export default function DataEditor() {
-  const [windowDimensions, setDimensions] = useState({
-    height: window.innerHeight,
-    width: window.innerWidth,
-  });
-  const { routes, addRoute, editRoute, deleteRoute } = useContext(
-    GlobalContext
-  );
-
-  useEffect(() => {
-    const handleResize = debounce(function onresize() {
-      setDimensions({ height: window.innerHeight, width: window.innerWidth });
-    }, 500);
-    window.addEventListener('resize', handleResize);
-
-    return function cleanup() {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
+  const {
+    windowDimensions,
+    routes,
+    addRoute,
+    editRoute,
+    deleteRoute,
+  } = useContext(GlobalContext);
 
   return (
     <MaterialTable

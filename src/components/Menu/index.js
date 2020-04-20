@@ -22,7 +22,7 @@ export default function Menu() {
       >
         Map Display
       </NavLink>
-      <div class="nav-icon__wrapper">
+      <div className="nav-icon__wrapper">
         <a
           href="https://github.com/MuellerMarius/route_network"
           title="GitHub Repository"

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Line, Marker } from 'react-simple-maps';
+import { GlobalContext } from '../../../context/GlobalState';
 import * as Cst from '../../../constants';
 
 export default function Flight(props) {
+  const { windowDimensions } = useContext(GlobalContext);
   const coordinates = [
     [props.route.fromCoordLong, props.route.fromCoordLat],
     [props.route.toCoordLong, props.route.toCoordLat],
@@ -21,22 +23,22 @@ export default function Flight(props) {
             : Cst.flightColorDark[props.category.index]
         }
         strokeWidth={
-          window.innerWidth > Cst.screenXlWidth
-            ? 0.85
-            : window.innerWidth > Cst.screenLgWidth
-            ? 1.5
-            : 2.5
+          windowDimensions.width > Cst.screenXlWidth
+            ? Cst.strokeWidthXl
+            : windowDimensions.width > Cst.screenLgWidth
+            ? Cst.strokeWidthLg
+            : Cst.strokeWidthSm
         }
       />
       {coordinates.map((coord, index) => (
         <Marker coordinates={coord} key={index}>
           <circle
             r={
-              window.innerWidth > Cst.screenXlWidth
-                ? 1
-                : window.innerWidth > Cst.screenLgWidth
-                ? 2
-                : 3
+              windowDimensions.width > Cst.screenXlWidth
+                ? Cst.strokeWidthXl
+                : windowDimensions.width > Cst.screenLgWidth
+                ? Cst.strokeWidthLg
+                : Cst.strokeWidthSm
             }
             fill={props.lightTheme ? Cst.markerColorLight : Cst.markerColorDark}
           />
