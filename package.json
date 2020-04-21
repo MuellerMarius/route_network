@@ -9,7 +9,7 @@
     "server": "npm start --prefix api",
     "server:lambda": "netlify-lambda serve api",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "concurrently \"netlify-lambda build api\" \"npm run build --prefix client\"",
+    "build": "netlify-lambda build api && cd client && npm run build",
     "build:api": "netlify-lambda build api",
     "build:client": "npm build --prefix client"
   },
