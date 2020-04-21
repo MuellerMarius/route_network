@@ -1,24 +1,24 @@
 // Colors
 export const flightColorLight = [
-  '#f21d92D9',
-  '#3dacd9D9',
-  '#5e5e5eD9',
-  '#4b9137D9',
-  '#ff0000D9',
+  'rgba(242, 29, 146, 0.85)',
+  'rgba(61, 172, 217, 0.85)',
+  'rgba(94, 94, 94, 0.85)',
+  'rgba(75, 145, 55, 0.85)',
+  'rgba(200, 0, 0, 0.85)',
 ];
 export const markerColorLight = '#888888';
 export const geoColorLight = '#D6D6DA';
 export const geoStrokeColorLight = '#f4f4f4';
 
 export const flightColorDark = [
-  '#A91566D9',
-  '#1A96C8D9',
-  '#BCBCBCD9',
-  '#4b9137D9',
-  '#ff0000D9',
+  'rgba(169, 21, 102, 0.85)',
+  'rgba(26, 150, 200, 0.85)',
+  'rgba(188, 188, 188, 0.85)',
+  'rgba(75, 145, 55, 0.85)',
+  'rgba(200, 0, 0, 0.85)',
 ];
 export const markerColorDark = '#AAAAAA';
-export const geoColorDark = '121212';
+export const geoColorDark = '#121212';
 export const geoStrokeColorDark = '#444444';
 export const strokeWidthXl = 1;
 export const strokeWidthLg = 1;
