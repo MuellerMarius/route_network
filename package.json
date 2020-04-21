@@ -9,12 +9,18 @@
     "server": "npm start --prefix api",
     "server:lambda": "netlify-lambda serve api",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "netlify-lambda build api && cd client && npm run build",
+    "build": "netlify-lambda build api && npm run build --prefix client",
     "build:api": "netlify-lambda build api",
     "build:client": "npm build --prefix client"
   },
   "author": "Marius Mueller",
   "license": "ISC",
+  "dependencies": {
+    "csv-parser": "^2.3.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "serverless-http": "^2.3.2"
+  },
   "devDependencies": {
     "concurrently": "^5.1.0",
     "netlify-lambda": "^1.6.3"
