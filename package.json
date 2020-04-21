@@ -1,46 +1,19 @@
 {
   "name": "route_network",
-  "homepage": ".",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.9.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "material-table": "^1.57.2",
-    "pretty-checkbox": "^3.0.3",
-    "react": "^16.13.0",
-    "react-csv-reader": "^2.2.0",
-    "react-dom": "^16.13.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
-    "react-simple-maps": "^1.0.0-beta.0",
-    "react-uuid": "^1.0.2"
-  },
+  "version": "1.0.0",
+  "description": "Plots great circles between airports on a world map.",
+  "main": "client/index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "npm run build --prefix client",
+    "server": "npm start --prefix api",
+    "server:lambda": "netlify-lambda serve api",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "author": "Marius Mueller",
+  "license": "ISC",
   "devDependencies": {
-    "node-sass": "^4.13.1",
-    "react-csv-downloader": "^1.5.0"
+    "concurrently": "^5.1.0",
+    "netlify-lambda": "^1.6.3"
   }
 }

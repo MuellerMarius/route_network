@@ -7,11 +7,12 @@ import MapControls from './MapContainer/MapControls';
 import DataControls from './DataEditContainer/DataControls';
 import Menu from './Menu/';
 import DataEditor from './DataEditContainer/DataEditor';
+import * as Cst from '../constants';
 
 export default function MainContainer() {
   return (
     <main>
-      <Router basename={'/public/flights'}>
+      <Router basename={Cst.basename}>
         <Menu />
         <Switch>
           <Route path="/map">

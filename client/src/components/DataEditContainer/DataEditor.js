@@ -34,6 +34,8 @@ export default function DataEditor() {
                   newData.cat = 'Other';
                 }
                 newData.id = uuid();
+                console.log('fetchng');
+                console.log(Cst.airportAPI + newData.from);
                 fetch(Cst.airportAPI + newData.from)
                   .then((response) => response.json())
                   .then((data) => {
