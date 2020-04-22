@@ -2,19 +2,18 @@
   "name": "route_network",
   "version": "1.0.0",
   "description": "Plots great circles between airports on a world map.",
-  "main": "client/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm run build --prefix client",
-    "server": "npm start --prefix api",
-    "server:lambda": "netlify-lambda serve api",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "netlify-lambda build api && npm run build --prefix client",
-    "build:api": "netlify-lambda build api",
-    "build:client": "npm build --prefix client"
-  },
   "author": "Marius Mueller",
   "license": "ISC",
+  "scripts": {
+    "start": "run-p start:**",
+    "start:lambda": "netlify-lambda serve api",
+    "start:client": "cd client && npm run start",
+    "build": "run-p build:**",
+    "build:lambda": "netlify-lambda build api",
+    "build:client": "cd client && npm run build",
+    "deploy:draft": "netlify deploy --dir=client/build --functions=functions",
+    "deploy:prod": "netlify deploy --dir=client/build --functions=functions --prod"
+  },
   "dependencies": {
     "csv-parser": "^2.3.2",
     "dotenv": "^8.2.0",
@@ -22,7 +21,7 @@
     "serverless-http": "^2.3.2"
   },
   "devDependencies": {
-    "concurrently": "^5.1.0",
-    "netlify-lambda": "^1.6.3"
+    "netlify-lambda": "^1.6.3",
+    "npm-run-all": "^4.1.5"
   }
 }

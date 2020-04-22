@@ -1,6 +1,5 @@
 {
   "name": "route_network-client",
-  "homepage": ".",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
