@@ -8,7 +8,7 @@
     "start": "run-p start:**",
     "start:lambda": "netlify-lambda serve api",
     "start:client": "cd client && npm run start",
-    "build": "run-p build:**",
+    "build": "run-s build:**",
     "build:lambda": "netlify-lambda build api",
     "build:client": "cd client && npm install & npm run build",
     "deploy:draft": "netlify deploy --dir=client/build --functions=functions",
