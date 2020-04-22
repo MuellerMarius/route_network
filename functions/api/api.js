@@ -21,6 +21,6 @@ exports.handler = (event, context, callback) => {
   const airportCode = event.queryStringParameters.icao;
   return {
     statusCode: 200,
-    body: data.find((el) => el.ident === req.params.id),
+    body: data.find((el) => el.ident === airportCode),
   };
 };
