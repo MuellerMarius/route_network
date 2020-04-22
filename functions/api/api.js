@@ -17,7 +17,7 @@ fs.createReadStream(path.join(process.env.LAMBDA_TASK_ROOT, 'db.csv'))
     console.log('Database loaded');
   });
 
-exports.handler = (event, context, callback) => {
+exports.handler = async (event, context, callback) => {
   const airportCode = event.queryStringParameters.icao;
   console.log(`querying ${airportCode}`);
   const answer = data.find((el) => el.ident === airportCode);
