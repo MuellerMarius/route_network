@@ -19,8 +19,12 @@ fs.createReadStream(path.join(process.env.LAMBDA_TASK_ROOT, 'db.csv'))
 
 exports.handler = (event, context, callback) => {
   const airportCode = event.queryStringParameters.icao;
+  console.log(`querying ${airportCode}`);
+  const answer = data.find((el) => el.ident === airportCode);
+  console.log('answer');
+  console.log(answer);
   return {
     statusCode: 200,
-    body: data.find((el) => el.ident === airportCode),
+    body: JSON.stringify(answer),
   };
 };
