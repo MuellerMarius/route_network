@@ -1,4 +1,5 @@
 [build]
+  command = "netlify-lambda build api && cd client && npm install && npm run build"
   Functions = "functions"
   Publish = "client/build"
 [[redirects]]

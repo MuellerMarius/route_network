@@ -3,9 +3,7 @@ const csv = require('csv-parser');
 const path = require('path');
 
 let data = [];
-fs.createReadStream(
-  path.resolve(process.env.LAMBDA_TASK_ROOT, 'database/db.csv')
-) //'api/database/db.csv')
+fs.createReadStream(path.join(process.env.LAMBDA_TASK_ROOT, 'db.csv')) //'api/database/db.csv')
   .pipe(
     csv({
       separator: ';',
@@ -20,6 +18,5 @@ fs.createReadStream(
   });
 
 exports.getAirportData = (req, res, next) => {
-  return res.status(200).json({ test: 'successful' });
-  //data.find((el) => el.ident === req.params.id));
+  return res.status(200).json(data.find((el) => el.ident === req.params.id));
 };
