@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../../context/GlobalState';
-import { MapViewContext } from '../../../context/MapViewState';
 import Flight from './Flight';
 
 export default function Routes() {
-  const { lightTheme, categories } = useContext(MapViewContext);
-  const { routes } = useContext(GlobalContext);
+  const { routes, lightTheme, categories } = useContext(GlobalContext);
   const activeCatNames = categories
     .filter((cat) => cat.active === true)
     .map((cat) => cat.name);

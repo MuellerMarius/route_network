@@ -1,7 +1,6 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import { MapViewProvider } from '../context/MapViewState';
 import MapView from './MapContainer/MapView';
 import MapControls from './MapContainer/MapControls';
 import DataControls from './DataEditContainer/DataControls';
@@ -16,10 +15,8 @@ export default function MainContainer() {
         <Menu />
         <Switch>
           <Route path="/map">
-            <MapViewProvider>
-              <MapControls />
-              <MapView />
-            </MapViewProvider>
+            <MapControls />
+            <MapView />
           </Route>
           <Route path="/">
             <DataControls />

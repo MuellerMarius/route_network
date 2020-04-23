@@ -1,24 +1,16 @@
-import React, { useContext, useEffect } from 'react';
-import { MapViewContext } from '../../context/MapViewState';
+import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import Checkbox from './Checkbox';
 
 export default function MapControls() {
-  const { routes } = useContext(GlobalContext);
-
   const {
     lightTheme,
     focusViewOnEurope,
-    initCategories,
     categories,
     toggleView,
     toggleTheme,
     toggleCatDisplay,
-  } = useContext(MapViewContext);
-
-  useEffect(() => {
-    initCategories(routes);
-  }, [routes, initCategories]);
+  } = useContext(GlobalContext);
 
   const onChange = (name) => (checked) => {
     toggleCatDisplay(name, checked);

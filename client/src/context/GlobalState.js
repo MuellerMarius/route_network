@@ -4,6 +4,9 @@ import * as actionType from './actions';
 
 const initialState = {
   dimensions: { width: window.innerWidth, height: window.innerHeight },
+  lightTheme: true,
+  focusViewOnEurope: false,
+  categories: [],
   routes: [],
 };
 
@@ -37,39 +40,86 @@ export const GlobalProvider = ({ children }) => {
     };
   });
 
-  function loadRoutes(routes) {
+  useEffect(() => {
+    updateCategories();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.routes]);
+
+  const toggleTheme = (lightTheme) => {
+    dispatch({
+      type: actionType.TOGGLE_THEME,
+      payload: lightTheme,
+    });
+  };
+
+  const toggleView = (focusViewOnEurope) => {
+    dispatch({
+      type: actionType.TOGGLE_VIEW,
+      payload: focusViewOnEurope,
+    });
+  };
+
+  const updateCategories = () => {
+    let categorySet = [...new Set(state.routes.map((item) => item.cat))];
+    dispatch({
+      type: actionType.INIT_CATEGORIES,
+      payload: categorySet.map((entry, index) => {
+        const oldCat = state.categories.find((cat) => cat.name === entry);
+        return {
+          name: entry,
+          active: oldCat ? oldCat.active : true,
+          index,
+        };
+      }),
+    });
+  };
+
+  const toggleCatDisplay = (name, checked) => {
+    dispatch({
+      type: actionType.TOGGLE_CAT_DISPLAY,
+      payload: { name, checked },
+    });
+  };
+
+  const loadRoutes = (routes) => {
     dispatch({
       type: actionType.LOAD_ROUTES,
       payload: routes,
     });
-  }
+  };
 
-  function addRoute(route) {
+  const addRoute = (route) => {
     dispatch({
       type: actionType.ADD_ROUTE,
       payload: route,
     });
-  }
+  };
 
-  function deleteRoute(id) {
+  const deleteRoute = (id) => {
     dispatch({
       type: actionType.DEL_ROUTE,
       payload: id,
     });
-  }
+  };
 
-  function editRoute(route) {
+  const editRoute = (route) => {
     dispatch({
       type: actionType.EDIT_ROUTE,
       payload: route,
     });
-  }
+  };
 
   return (
     <GlobalContext.Provider
       value={{
         windowDimensions: state.dimensions,
         routes: state.routes,
+        lightTheme: state.lightTheme,
+        focusViewOnEurope: state.focusViewOnEurope,
+        categories: state.categories,
+        toggleTheme,
+        toggleView,
+        toggleCatDisplay,
         loadRoutes,
         addRoute,
         deleteRoute,
