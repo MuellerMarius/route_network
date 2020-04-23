@@ -13,6 +13,13 @@ export default function DataEditor() {
     deleteRoute,
   } = useContext(GlobalContext);
 
+  function handleHttpErrors(response) {
+    if (!response.ok) {
+      throw Error(response.status);
+    }
+    return response;
+  }
+
   return (
     <MaterialTable
       title=""
@@ -28,64 +35,105 @@ export default function DataEditor() {
         isDeletable: (rowData) => true,
         onRowAdd: (newData) =>
           new Promise((resolve, reject) => {
-            setTimeout(() => {
-              if (newData.to && newData.from) {
-                if (!newData.cat) {
-                  newData.cat = 'Other';
-                }
-                newData.id = uuid();
-                console.log('fetchng');
-                console.log(Cst.airportAPI + newData.from);
-                fetch(Cst.airportAPI + newData.from)
-                  .then((response) => response.json())
-                  .then((data) => {
-                    newData.fromCoordLat = data.latitude_deg;
-                    newData.fromCoordLong = data.longitude_deg;
-                  });
-                fetch(Cst.airportAPI + newData.to)
-                  .then((response) => response.json())
-                  .then((data) => {
-                    newData.toCoordLat = data.latitude_deg;
-                    newData.toCoordLong = data.longitude_deg;
-                  });
-                addRoute(newData);
-              } else {
-                console.log(
-                  'Unable to insert new data because destination or departure airport is missing.'
-                );
+            newData.from = newData.from.toUpperCase();
+            newData.to = newData.to.toUpperCase();
+
+            if (newData.to && newData.from) {
+              newData.id = uuid();
+
+              if (!newData.cat) {
+                newData.cat = 'Other';
               }
-              resolve();
-            }, 1000);
+
+              Promise.all(
+                [
+                  Cst.airportAPI + newData.from,
+                  Cst.airportAPI + newData.to,
+                ].map((url) =>
+                  fetch(url)
+                    .then(handleHttpErrors)
+                    .then((res) => res.json())
+                )
+              )
+                .then((data) => {
+                  newData.fromCoordLat = data[0].latitude_deg;
+                  newData.fromCoordLong = data[0].longitude_deg;
+                  newData.toCoordLat = data[1].latitude_deg;
+                  newData.toCoordLong = data[1].longitude_deg;
+                  addRoute(newData);
+                  resolve();
+                })
+                .catch((err) => {
+                  reject();
+                  alert(
+                    'Unable to insert new data because destination or departure airport is unknown.'
+                  );
+                });
+            } else {
+              alert(
+                'Unable to insert new data because destination or departure airport is missing.'
+              );
+              reject();
+            }
           }),
         onRowUpdate: (newData, oldData) =>
           new Promise((resolve, reject) => {
-            setTimeout(() => {
-              if (oldData.from !== newData.from) {
-                fetch(Cst.airportAPI + newData.from)
-                  .then((response) => response.json())
-                  .then((data) => {
-                    newData.fromCoordLat = data.latitude_deg;
-                    newData.fromCoordLong = data.longitude_deg;
-                  });
-              }
-              if (oldData.to !== newData.to) {
-                fetch(Cst.airportAPI + newData.to)
-                  .then((response) => response.json())
-                  .then((data) => {
-                    newData.toCoordLat = data.latitude_deg;
-                    newData.toCoordLong = data.longitude_deg;
-                  });
-              }
+            newData.from = newData.from.toUpperCase();
+            newData.to = newData.to.toUpperCase();
+            let indexFrom = -1,
+              indexTo = -1;
+            let requests = [];
+
+            if (!newData.cat) {
+              newData.cat = 'Other';
+            }
+
+            if (oldData.from !== newData.from) {
+              requests.push(Cst.airportAPI + newData.from);
+              indexFrom = 0;
+            }
+            if (oldData.to !== newData.to) {
+              requests.push(Cst.airportAPI + newData.to);
+              indexTo = indexFrom + 1;
+            }
+
+            if (requests.length > 0) {
+              Promise.all(
+                requests.map((url) =>
+                  fetch(url)
+                    .then(handleHttpErrors)
+                    .then((res) => res.json())
+                )
+              )
+                .then((data) => {
+                  if (indexFrom >= 0) {
+                    newData.fromCoordLat = data[indexFrom].latitude_deg;
+                    newData.fromCoordLong = data[indexFrom].longitude_deg;
+                  }
+
+                  if (indexTo >= 0) {
+                    newData.toCoordLat = data[indexTo].latitude_deg;
+                    newData.toCoordLong = data[indexTo].longitude_deg;
+                  }
+
+                  editRoute(newData);
+                  resolve();
+                })
+                .catch((err) => {
+                  reject();
+                  alert(
+                    'Unable to insert new data because changed airport is unknown.'
+                  );
+                });
+            } else {
               editRoute(newData);
               resolve();
-            }, 1000);
+            }
           }),
         onRowDelete: (oldData) =>
           new Promise((resolve, reject) => {
-            setTimeout(() => {
-              deleteRoute(oldData.id);
-              resolve();
-            }, 1000);
+            deleteRoute(oldData.id);
+            resolve();
           }),
       }}
     />
