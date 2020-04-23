@@ -4,7 +4,9 @@ const path = require('path');
 
 exports.getAirportData = (req, res, next) => {
   let data = [];
-  fs.createReadStream(path.join(process.env.LAMBDA_TASK_ROOT, 'db.csv'))
+  fs.createReadStream(
+    path.join(process.env.LAMBDA_TASK_ROOT, 'database', 'db.csv')
+  )
     .pipe(
       csv({
         separator: ';',

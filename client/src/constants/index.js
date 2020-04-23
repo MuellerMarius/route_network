@@ -1,6 +1,6 @@
 //Routes
 export const basename = '';
-export const airportAPI = '/api?icao=';
+export const airportAPI = '/.netlify/functions/server/api/';
 
 // Colors
 export const flightColorLight = [
