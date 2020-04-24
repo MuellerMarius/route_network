@@ -41,9 +41,21 @@ export const GlobalProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    updateCategories();
+    // Update categories
+    let categorySet = [...new Set(state.routes.map((item) => item.cat))];
+    dispatch({
+      type: actionType.UPDATE_CATEGORIES,
+      payload: categorySet.map((entry, index) => {
+        const oldCat = state.categories.find((cat) => cat.name === entry);
+        return {
+          name: entry,
+          active: oldCat ? oldCat.active : true,
+          index,
+        };
+      }),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.routes]);
+  }, [state.routes, JSON.stringify(state.categories)]);
 
   const toggleTheme = (lightTheme) => {
     dispatch({
@@ -56,21 +68,6 @@ export const GlobalProvider = ({ children }) => {
     dispatch({
       type: actionType.TOGGLE_VIEW,
       payload: focusViewOnEurope,
-    });
-  };
-
-  const updateCategories = () => {
-    let categorySet = [...new Set(state.routes.map((item) => item.cat))];
-    dispatch({
-      type: actionType.INIT_CATEGORIES,
-      payload: categorySet.map((entry, index) => {
-        const oldCat = state.categories.find((cat) => cat.name === entry);
-        return {
-          name: entry,
-          active: oldCat ? oldCat.active : true,
-          index,
-        };
-      }),
     });
   };
 

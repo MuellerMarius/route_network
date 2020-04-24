@@ -39,7 +39,7 @@ export default (state, action) => {
         ...state,
         focusViewOnEurope: action.payload,
       };
-    case actionType.INIT_CATEGORIES:
+    case actionType.UPDATE_CATEGORIES:
       return {
         ...state,
         categories: action.payload,

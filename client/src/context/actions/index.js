@@ -5,5 +5,5 @@ export const DEL_ROUTE = 'DEL_ROUTE';
 export const EDIT_ROUTE = 'EDIT_ROUTE';
 export const TOGGLE_THEME = 'TOGGLE_THEME';
 export const TOGGLE_VIEW = 'TOGGLE_VIEW';
-export const INIT_CATEGORIES = 'INIT_CATEGORIES';
+export const UPDATE_CATEGORIES = 'INIT_CATEGORIES';
 export const TOGGLE_CAT_DISPLAY = 'TOGGLE_CAT_DISPLAY';
