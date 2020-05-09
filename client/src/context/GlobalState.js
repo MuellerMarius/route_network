@@ -12,9 +12,9 @@ const initialState = {
 
 function debounce(func, ms) {
   let timer;
-  return (_) => {
+  return () => {
     clearTimeout(timer);
-    timer = setTimeout((_) => {
+    timer = setTimeout(() => {
       timer = null;
       func.apply(this, arguments);
     }, ms);

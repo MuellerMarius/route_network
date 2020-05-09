@@ -4,8 +4,8 @@ export const airportAPI = '/.netlify/functions/server/api/';
 
 // Colors
 export const flightColorLight = [
+  'rgba(59, 148, 184, 0.85)',
   'rgba(242, 29, 146, 0.85)',
-  'rgba(61, 172, 217, 0.85)',
   'rgba(94, 94, 94, 0.85)',
   'rgba(75, 145, 55, 0.85)',
   'rgba(200, 0, 0, 0.85)',
