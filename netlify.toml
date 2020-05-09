@@ -1,0 +1,10 @@
+[dev]
+  functions = "functions"
+  publish = "client/build"
+[build]
+  functions = "functions"
+  publish = "client/build"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

@@ -1,0 +1,55 @@
+@import '../../style/vars';
+
+nav {
+  border-bottom: 1px solid #eee;
+  border-radius: 8px 8px 0 0;
+  background-color: #d4d4d4;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 0;
+}
+
+.nav-item {
+  color: #000;
+  text-align: center;
+  min-width: 160px;
+  float: left;
+  padding: 15px;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+
+  @media screen and (max-width: $sm-width) {
+    min-width: 100px;
+  }
+
+  &:first-child {
+    border-radius: 8px 0 0 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: $button-color;
+  }
+
+  &--active {
+    background-color: $container-bg-color;
+  }
+}
+
+.nav-icon {
+  &__image {
+    height: 30px;
+    width: 30px;
+    opacity: 0.75;
+  }
+
+  &__wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    float: right;
+    margin-right: 15px;
+    line-height: 10px;
+  }
+}
