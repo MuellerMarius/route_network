@@ -11,6 +11,7 @@ export default function Menu() {
         to="/"
         activeClassName="nav-item--active"
         className="nav-item"
+        data-cy="dataEditRoute"
       >
         Data Edit
       </NavLink>
@@ -19,6 +20,7 @@ export default function Menu() {
         to="/map"
         activeClassName="nav-item--active"
         className="nav-item"
+        data-cy="mapDisplayRoute"
       >
         Map Display
       </NavLink>
