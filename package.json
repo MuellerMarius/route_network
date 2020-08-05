@@ -12,7 +12,8 @@
     "build:lambda": "netlify build",
     "build:client": "cd client && npm install & npm run build",
     "deploy:draft": "netlify deploy --dir=client/build --functions=functions",
-    "deploy:prod": "netlify deploy --dir=client/build --functions=functions --prod"
+    "deploy:prod": "netlify deploy --dir=client/build --functions=functions --prod",
+    "postinstall": "cd client && npm install"
   },
   "dependencies": {
     "csv-parser": "^2.3.2",
