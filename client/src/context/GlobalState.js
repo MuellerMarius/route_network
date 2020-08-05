@@ -99,6 +99,12 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  const clearRoutes = () => {
+    dispatch({
+      type: actionType.CLEAR_ROUTES,
+    });
+  };
+
   const editRoute = (route) => {
     dispatch({
       type: actionType.EDIT_ROUTE,
@@ -120,6 +126,7 @@ export const GlobalProvider = ({ children }) => {
         loadRoutes,
         addRoute,
         deleteRoute,
+        clearRoutes,
         editRoute,
       }}
     >

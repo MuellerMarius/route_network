@@ -134,7 +134,7 @@ main {
   font-size: 1rem;
   font-weight: 500;
   color: #fff;
-  background-color: $button-color;
+  background-color: hsl(211, 100%, 65%);
   text-align: center;
   padding: 9px 0px;
   outline: none;
@@ -144,7 +144,7 @@ main {
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 
   &:hover {
-    background-color: hsl(211, 100%, 65%);
+    background-color: $button-color;
   }
 
   &.--inverse {
@@ -156,6 +156,14 @@ main {
       border-color: hsl(211, 100%, 65%);
       background-color: hsl(211, 100%, 65%);
       color: #fff;
+    }
+  }
+
+  &.--red {
+    background-color: rgba(179, 73, 59, 0.75);
+
+    &:hover {
+      background-color: #cf5444;
     }
   }
 

@@ -29,6 +29,12 @@ export default (state, action) => {
           route.id === action.payload.id ? action.payload : route
         ),
       };
+    case actionType.CLEAR_ROUTES:
+      return {
+        ...state,
+        categories: [],
+        routes: [],
+      };
     case actionType.TOGGLE_THEME:
       return {
         ...state,
