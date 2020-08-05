@@ -14,7 +14,7 @@ You can enter airport pairs on the **Data Edit** page by using the respective fo
 
 Clone down this repository. You will need `node` and `npm` installed globally on your machine.
 
-Installation:
+### Installation:
 
 To run [Netlify Functions](https://www.netlify.com/products/functions/) used by the backend locally on your machine you will need to have [netlify-cli](https://www.npmjs.com/package/netlify-cli) installed with the following command:
 
