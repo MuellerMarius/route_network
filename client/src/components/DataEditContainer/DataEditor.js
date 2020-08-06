@@ -4,14 +4,10 @@ import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
 
-export default function DataEditor() {
-  const {
-    windowDimensions,
-    routes,
-    addRoute,
-    editRoute,
-    deleteRoute,
-  } = useContext(GlobalContext);
+export default function DataEditor({ dimensions }) {
+  const { routes, addRoute, editRoute, deleteRoute } = useContext(
+    GlobalContext
+  );
 
   function handleHttpErrors(response) {
     if (!response.ok) {
@@ -24,7 +20,7 @@ export default function DataEditor() {
     <MaterialTable
       title=""
       columns={
-        windowDimensions.width > Cst.screenMdWidth
+        dimensions.width > Cst.screenMdWidth
           ? Cst.tableColumnsLong
           : Cst.tableColumnsShort
       }

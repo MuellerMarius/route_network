@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../../../context/GlobalState';
 import Flight from './Flight';
 
-export default function Routes() {
+export default function Routes({ dimensions }) {
   const { routes, lightTheme, categories } = useContext(GlobalContext);
   const activeCatNames = categories
     .filter((cat) => cat.active === true)
@@ -18,9 +18,9 @@ export default function Routes() {
             route={route}
             category={categories.find((cat) => cat.name === route.cat)}
             lightTheme={lightTheme}
+            dimensions={dimensions}
           />
         ))}
-      }
     </React.Fragment>
   );
 }

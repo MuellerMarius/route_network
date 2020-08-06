@@ -7,7 +7,7 @@ import * as Cst from '../../../constants';
 
 import './style.scss';
 
-export default function MapView() {
+export default function MapView({ dimensions }) {
   const { lightTheme, focusViewOnEurope } = useContext(GlobalContext);
 
   return (
@@ -17,8 +17,8 @@ export default function MapView() {
         projection={'geoMercator'}
         projectionConfig={focusViewOnEurope ? Cst.projEurope : Cst.projWorld}
       >
-        <Topography />
-        <Routes />
+        <Topography dimensions={dimensions} />
+        <Routes dimensions={dimensions} />
       </ComposableMap>
     </div>
   );
