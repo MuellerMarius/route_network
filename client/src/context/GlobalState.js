@@ -24,7 +24,8 @@ function debounce(func, ms) {
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const localState = JSON.parse(localStorage.getItem('appState'));
+  const [state, dispatch] = useReducer(AppReducer, localState || initialState);
 
   useEffect(() => {
     const handleResize = debounce(function onResize() {
@@ -39,6 +40,10 @@ export const GlobalProvider = ({ children }) => {
       window.removeEventListener('resize', handleResize);
     };
   });
+
+  useEffect(() => {
+    localStorage.setItem('appState', JSON.stringify(state));
+  }, [state]);
 
   useEffect(() => {
     // Update categories
