@@ -20,9 +20,18 @@ const logdir = (dir) => {
 exports.getAirportData = (req, res, next) => {
   let data = [];
 
-  logdir(path.join(process.env.LAMBDA_TASK_ROOT, 'src'));
+  logdir(path.join(process.env.LAMBDA_TASK_ROOT, 'src', 'functions'));
 
-  logdir(path.join(process.env.LAMBDA_TASK_ROOT));
+  logdir(path.join(process.env.LAMBDA_TASK_ROOT, 'src', 'functions', 'server'));
+  logdir(
+    path.join(
+      process.env.LAMBDA_TASK_ROOT,
+      'src',
+      'functions',
+      'server',
+      'database'
+    )
+  );
 
   return res.status(200).json('{"test": "gut"}');
 
