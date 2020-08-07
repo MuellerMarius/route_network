@@ -16,7 +16,10 @@ export default function DataControls() {
   const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
 
   const confirmClear = (func) => {
-    if (window.confirm('Are you sure, this will delete all existing routes?')) {
+    if (
+      routes.length === 0 ||
+      window.confirm('Are you sure, this will delete all existing routes?')
+    ) {
       func();
     }
   };
@@ -25,10 +28,7 @@ export default function DataControls() {
     <div className="settings">
       <h1 className="settings__h1">Flight routes</h1>
 
-      <button
-        className="--inverse"
-        onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}
-      >
+      <button onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}>
         Load sample data
       </button>
       <CSVReader
