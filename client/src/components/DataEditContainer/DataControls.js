@@ -13,7 +13,13 @@ const parseOptions = {
 };
 
 export default function DataControls() {
-  const { routes, loadRoutes } = useContext(GlobalContext);
+  const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
+
+  const confirmClear = (func) => {
+    if (window.confirm('Are you sure, this will delete all existing routes?')) {
+      func();
+    }
+  };
 
   return (
     <div className="settings">
@@ -21,7 +27,7 @@ export default function DataControls() {
 
       <button
         className="--inverse"
-        onClick={() => loadRoutes(Cst.sampleRoutes)}
+        onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}
       >
         Load sample data
       </button>
@@ -38,6 +44,10 @@ export default function DataControls() {
         datas={routes}
         text="Export data (*.csv)"
       />
+
+      <button className="--red" onClick={() => confirmClear(clearRoutes)}>
+        Clear data
+      </button>
     </div>
   );
 }

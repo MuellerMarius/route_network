@@ -3,8 +3,8 @@ import { Geographies, Geography } from 'react-simple-maps';
 import { GlobalContext } from '../../../context/GlobalState';
 import * as Cst from '../../../constants';
 
-export default function Topography() {
-  const { windowDimensions, lightTheme } = useContext(GlobalContext);
+export default function Topography({ dimensions }) {
+  const { lightTheme } = useContext(GlobalContext);
 
   return (
     <Geographies
@@ -12,7 +12,7 @@ export default function Topography() {
       stroke={lightTheme ? Cst.geoStrokeColorLight : Cst.geoStrokeColorDark}
       strokeWidth={0.5}
       geography={
-        windowDimensions.width < Cst.screenLgWidth ? Cst.geoUrlSm : Cst.geoUrlLg
+        dimensions.width < Cst.screenLgWidth ? Cst.geoUrlSm : Cst.geoUrlLg
       }
     >
       {({ geographies }) =>

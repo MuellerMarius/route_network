@@ -15,7 +15,8 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.4.0",
     "react-simple-maps": "^1.0.0-beta.0",
-    "react-uuid": "^1.0.2"
+    "react-uuid": "^1.0.2",
+    "react-csv-downloader": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,8 +40,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^4.13.1",
-    "react-csv-downloader": "^1.5.0"
+    "node-sass": "^4.13.1"
   },
   "proxy": "http://localhost:8888"
 }

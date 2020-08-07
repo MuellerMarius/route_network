@@ -3,42 +3,21 @@ import AppReducer from './AppReducer';
 import * as actionType from './actions';
 
 const initialState = {
-  dimensions: { width: window.innerWidth, height: window.innerHeight },
   lightTheme: true,
   focusViewOnEurope: false,
   categories: [],
   routes: [],
 };
 
-function debounce(func, ms) {
-  let timer;
-  return () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      timer = null;
-      func.apply(this, arguments);
-    }, ms);
-  };
-}
-
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const localState = JSON.parse(localStorage.getItem('appState'));
+  const [state, dispatch] = useReducer(AppReducer, localState || initialState);
 
   useEffect(() => {
-    const handleResize = debounce(function onResize() {
-      dispatch({
-        type: actionType.HANDLE_RESIZE,
-        payload: { height: window.innerHeight, width: window.innerWidth },
-      });
-    }, 500);
-    window.addEventListener('resize', handleResize);
-
-    return function cleanup() {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
+    localStorage.setItem('appState', JSON.stringify(state));
+  }, [state]);
 
   useEffect(() => {
     // Update categories
@@ -99,6 +78,12 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
+  const clearRoutes = () => {
+    dispatch({
+      type: actionType.CLEAR_ROUTES,
+    });
+  };
+
   const editRoute = (route) => {
     dispatch({
       type: actionType.EDIT_ROUTE,
@@ -109,7 +94,6 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        windowDimensions: state.dimensions,
         routes: state.routes,
         lightTheme: state.lightTheme,
         focusViewOnEurope: state.focusViewOnEurope,
@@ -120,6 +104,7 @@ export const GlobalProvider = ({ children }) => {
         loadRoutes,
         addRoute,
         deleteRoute,
+        clearRoutes,
         editRoute,
       }}
     >
