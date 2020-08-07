@@ -20,7 +20,7 @@ const logdir = (dir) => {
 exports.getAirportData = (req, res, next) => {
   let data = [];
 
-  logdir(path.join(process.env.LAMBDA_TASK_ROOT, 'database'));
+  logdir(path.join(process.env.LAMBDA_TASK_ROOT, 'src'));
 
   logdir(path.join(process.env.LAMBDA_TASK_ROOT));
 
