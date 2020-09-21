@@ -6,28 +6,35 @@ exports.getAirportData = (req, res, next) => {
   let data = [];
 
   // local path
-  const dbPathLocal = path.join(
+  const dbPathDevelopment = path.join(
     process.env.LAMBDA_TASK_ROOT,
     'database',
-    'db.csv'
+    'db.csv',
   );
 
   // netlify path
-  const dbPath = path.join(
+  const dbPathProduction = path.join(
     process.env.LAMBDA_TASK_ROOT,
     'src',
     'functions',
     'server',
     'database',
-    'db.csv'
+    'db.csv',
   );
+
+  console.log(process.env.CONTEXT);
+
+  const dbPath =
+    process.env.NODE_ENV === 'development'
+      ? dbPathDevelopment
+      : dbPathProduction;
 
   fs.createReadStream(dbPath)
     .pipe(
       csv({
         separator: ';',
         raw: false,
-      })
+      }),
     )
     .on('data', function (row) {
       data.push(row);
