@@ -4,16 +4,13 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.5",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
     "material-table": "^1.57.2",
     "pretty-checkbox": "^3.0.3",
-    "react": "^16.13.0",
+    "react": "^16.13.1",
     "react-csv-reader": "^2.2.0",
-    "react-dom": "^16.13.0",
-    "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0",
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.3",
     "react-simple-maps": "^1.0.0-beta.0",
     "react-uuid": "^1.0.2",
     "react-csv-downloader": "^2.0.2"
@@ -23,9 +20,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -40,6 +34,11 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^10.4.9",
+    "@testing-library/user-event": "^12.1.5",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "node-sass": "^4.13.1"
   },
   "proxy": "http://localhost:8888"
