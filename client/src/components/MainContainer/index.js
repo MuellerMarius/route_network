@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-import MapView from './MapContainer/MapView';
-import MapControls from './MapContainer/MapControls';
-import DataControls from './DataEditContainer/DataControls';
-import Menu from './Menu/';
-import DataEditor from './DataEditContainer/DataEditor';
-import * as Cst from '../constants';
+import MapView from '../MapContainer/MapView';
+import MapControls from '../MapContainer/MapControls';
+import DataControls from '../DataEditContainer/DataControls';
+import Menu from '../Menu';
+import DataEditor from '../DataEditContainer/DataEditor';
+import * as Cst from '../../constants';
+import './style.scss';
 
 function debounce(func, ms) {
   let timer;

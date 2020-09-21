@@ -3,10 +3,11 @@ import MaterialTable from 'material-table';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
+import './style.scss';
 
 export default function DataEditor({ dimensions }) {
   const { routes, addRoute, editRoute, deleteRoute } = useContext(
-    GlobalContext
+    GlobalContext,
   );
 
   function handleHttpErrors(response) {
@@ -48,8 +49,8 @@ export default function DataEditor({ dimensions }) {
                 ].map((url) =>
                   fetch(url)
                     .then(handleHttpErrors)
-                    .then((res) => res.json())
-                )
+                    .then((res) => res.json()),
+                ),
               )
                 .then((data) => {
                   newData.fromCoordLat = data[0].latitude_deg;
@@ -62,12 +63,12 @@ export default function DataEditor({ dimensions }) {
                 .catch((err) => {
                   reject();
                   alert(
-                    'Unable to insert new data because destination or departure airport is unknown.'
+                    'Unable to insert new data because destination or departure airport is unknown.',
                   );
                 });
             } else {
               alert(
-                'Unable to insert new data because destination or departure airport is missing.'
+                'Unable to insert new data because destination or departure airport is missing.',
               );
               reject();
             }
@@ -98,8 +99,8 @@ export default function DataEditor({ dimensions }) {
                 requests.map((url) =>
                   fetch(url)
                     .then(handleHttpErrors)
-                    .then((res) => res.json())
-                )
+                    .then((res) => res.json()),
+                ),
               )
                 .then((data) => {
                   if (indexFrom >= 0) {
@@ -118,7 +119,7 @@ export default function DataEditor({ dimensions }) {
                 .catch((err) => {
                   reject();
                   alert(
-                    'Unable to insert new data because changed airport is unknown.'
+                    'Unable to insert new data because changed airport is unknown.',
                   );
                 });
             } else {
