@@ -9,30 +9,30 @@ import DataEditor from '../DataEditContainer/DataEditor';
 import * as Cst from '../../constants';
 import './style.scss';
 
-function debounce(func, ms) {
+const debounce = (func, ms, ...args) => {
   let timer;
   return () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       timer = null;
-      func.apply(this, arguments);
+      func.apply(this, ...args);
     }, ms);
   };
-}
+};
 
-export default function MainContainer() {
+const MainContainer = () => {
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
 
   useEffect(() => {
-    const handleResize = debounce(function onResize() {
+    const handleResize = debounce(() => {
       setDimensions({ height: window.innerHeight, width: window.innerWidth });
     }, 500);
     window.addEventListener('resize', handleResize);
 
-    return function cleanup() {
+    return () => {
       window.removeEventListener('resize', handleResize);
     };
   });
@@ -54,4 +54,6 @@ export default function MainContainer() {
       </Router>
     </main>
   );
-}
+};
+
+export default MainContainer;

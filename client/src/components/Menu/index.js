@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import github_logo from './GitHub-Mark-64px.png';
+import githubLogo from './GitHub-Mark-64px.png';
 import './style.scss';
 
-export default function Menu() {
+const Menu = () => {
   return (
     <nav>
       <NavLink
@@ -29,9 +29,11 @@ export default function Menu() {
           href="https://github.com/MuellerMarius/route_network"
           title="GitHub Repository"
         >
-          <img src={github_logo} className="nav-icon__image" alt="GitHub" />
+          <img src={githubLogo} className="nav-icon__image" alt="GitHub" />
         </a>
       </div>
     </nav>
   );
-}
+};
+
+export default Menu;

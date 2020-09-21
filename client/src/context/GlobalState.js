@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import AppReducer from './AppReducer';
 import * as actionType from './actions';
 
@@ -21,7 +22,7 @@ export const GlobalProvider = ({ children }) => {
 
   useEffect(() => {
     // Update categories
-    let categorySet = [...new Set(state.routes.map((item) => item.cat))];
+    const categorySet = [...new Set(state.routes.map((item) => item.cat))];
     dispatch({
       type: actionType.UPDATE_CATEGORIES,
       payload: categorySet.map((entry, index) => {
@@ -111,4 +112,8 @@ export const GlobalProvider = ({ children }) => {
       {children}
     </GlobalContext.Provider>
   );
+};
+
+GlobalProvider.propTypes = {
+  children: PropTypes.element.isRequired,
 };

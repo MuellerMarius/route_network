@@ -3,51 +3,63 @@ import PropTypes from 'prop-types';
 import { Line, Marker } from 'react-simple-maps';
 import * as Cst from '../../../constants';
 
-export default function Flight(props) {
+const Flight = ({ route, category, dimensions, lightTheme }) => {
   const coordinates = [
-    [props.route.fromCoordLong, props.route.fromCoordLat],
-    [props.route.toCoordLong, props.route.toCoordLat],
+    [route.fromCoordLong, route.fromCoordLat],
+    [route.toCoordLong, route.toCoordLat],
   ];
 
   return (
-    <React.Fragment>
+    <>
       <Line
-        key={props.route.id}
+        key={route.id}
         from={coordinates[0]}
         to={coordinates[1]}
         stroke={
-          props.lightTheme
-            ? Cst.flightColorLight[props.category.index]
-            : Cst.flightColorDark[props.category.index]
+          lightTheme
+            ? Cst.flightColorLight[category.index]
+            : Cst.flightColorDark[category.index]
         }
         strokeWidth={
-          props.dimensions.width > Cst.screenXlWidth
+          dimensions.width > Cst.screenXlWidth
             ? Cst.strokeWidthXl
-            : props.dimensions.width > Cst.screenLgWidth
+            : dimensions.width > Cst.screenLgWidth
             ? Cst.strokeWidthLg
             : Cst.strokeWidthSm
         }
       />
-      {coordinates.map((coord, index) => (
-        <Marker coordinates={coord} key={index}>
+      {coordinates.map((coord) => (
+        <Marker coordinates={coord} key={`${route.id}${coord[0]}`}>
           <circle
             r={
-              props.dimensions.width > Cst.screenXlWidth
+              dimensions.width > Cst.screenXlWidth
                 ? Cst.strokeWidthXl
-                : props.dimensions.width > Cst.screenLgWidth
+                : dimensions.width > Cst.screenLgWidth
                 ? Cst.strokeWidthLg
                 : Cst.strokeWidthSm
             }
-            fill={props.lightTheme ? Cst.markerColorLight : Cst.markerColorDark}
+            fill={lightTheme ? Cst.markerColorLight : Cst.markerColorDark}
           />
         </Marker>
       ))}
-    </React.Fragment>
+    </>
   );
-}
+};
+
+export default Flight;
 
 Flight.propTypes = {
-  route: PropTypes.object.isRequired,
-  category: PropTypes.object.isRequired,
+  route: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    fromCoordLong: PropTypes.number.isRequired,
+    fromCoordLat: PropTypes.number.isRequired,
+    toCoordLong: PropTypes.number.isRequired,
+    toCoordLat: PropTypes.number.isRequired,
+  }).isRequired,
+  category: PropTypes.shape({ index: PropTypes.number.isRequired }).isRequired,
+  dimensions: PropTypes.shape({
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number,
+  }).isRequired,
   lightTheme: PropTypes.bool.isRequired,
 };

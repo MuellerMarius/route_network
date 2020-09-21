@@ -1,4 +1,4 @@
-//Routes
+// Routes
 export const basename = '';
 export const airportAPI = '/.netlify/functions/server/api/';
 

@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import CSVReader from 'react-csv-reader';
 import CsvDownloader from 'react-csv-downloader';
-
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
 
@@ -12,7 +11,7 @@ const parseOptions = {
   delimiter: ',',
 };
 
-export default function DataControls() {
+const DataControls = () => {
   const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
 
   const confirmClear = (func) => {
@@ -28,13 +27,16 @@ export default function DataControls() {
     <div className="settings">
       <h1 className="settings__h1">Flight routes</h1>
 
-      <button onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}>
+      <button
+        type="button"
+        onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}
+      >
         Load sample data
       </button>
       <CSVReader
         label="Import data (*.csv)"
         parserOptions={parseOptions}
-        onFileLoaded={(data, fileName) => loadRoutes(data)}
+        onFileLoaded={(data) => loadRoutes(data)}
       />
 
       <CsvDownloader
@@ -45,9 +47,15 @@ export default function DataControls() {
         text="Export data (*.csv)"
       />
 
-      <button className="--red" onClick={() => confirmClear(clearRoutes)}>
+      <button
+        type="button"
+        className="--red"
+        onClick={() => confirmClear(clearRoutes)}
+      >
         Clear data
       </button>
     </div>
   );
-}
+};
+
+export default DataControls;

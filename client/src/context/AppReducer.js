@@ -21,7 +21,7 @@ export default (state, action) => {
       return {
         ...state,
         routes: state.routes.map((route) =>
-          route.id === action.payload.id ? action.payload : route
+          route.id === action.payload.id ? action.payload : route,
         ),
       };
     case actionType.CLEAR_ROUTES:
@@ -51,7 +51,7 @@ export default (state, action) => {
         categories: state.categories.map((category) =>
           category.name === action.payload.name
             ? { ...category, active: action.payload.checked }
-            : category
+            : category,
         ),
       };
     default:

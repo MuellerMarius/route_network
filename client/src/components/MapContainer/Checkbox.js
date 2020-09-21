@@ -1,28 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Checkbox(props) {
+const Checkbox = ({ name, onChange, checked, label }) => {
   return (
-    <li key={props.name} className="settings__chkgrp-item">
+    <li key={name} className="settings__chkgrp-item">
       <div className="pretty p-switch p-fill">
         <input
           type="checkbox"
-          name={props.name}
-          checked={props.checked}
-          onChange={() => props.onChange(!props.checked)}
+          name={name}
+          checked={checked}
+          onChange={() => onChange(!checked)}
         />
         <div className="state p-primary">
-          <label>{props.label}</label>
+          <label>{label}</label>
         </div>
       </div>
     </li>
   );
-}
+};
+
+export default Checkbox;
 
 Checkbox.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  category: PropTypes.bool,
   checked: PropTypes.bool,
   label: PropTypes.string,
+};
+
+Checkbox.defaultProps = {
+  checked: false,
+  label: '',
 };

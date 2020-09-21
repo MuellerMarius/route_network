@@ -1,9 +1,10 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Geographies, Geography } from 'react-simple-maps';
 import { GlobalContext } from '../../../context/GlobalState';
 import * as Cst from '../../../constants';
 
-export default function Topography({ dimensions }) {
+const Topography = ({ dimensions }) => {
   const { lightTheme } = useContext(GlobalContext);
 
   return (
@@ -20,4 +21,13 @@ export default function Topography({ dimensions }) {
       }
     </Geographies>
   );
-}
+};
+
+export default Topography;
+
+Topography.propTypes = {
+  dimensions: PropTypes.shape({
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number,
+  }).isRequired,
+};
