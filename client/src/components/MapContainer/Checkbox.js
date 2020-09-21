@@ -1,23 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Checkbox = ({ name, onChange, checked, label }) => {
-  return (
-    <li key={name} className="settings__chkgrp-item">
-      <div className="pretty p-switch p-fill">
-        <input
-          type="checkbox"
-          name={name}
-          checked={checked}
-          onChange={() => onChange(!checked)}
-        />
-        <div className="state p-primary">
-          <label>{label}</label>
-        </div>
+const Checkbox = ({ name, onChange, checked, label }) => (
+  <li key={name} className="settings__chkgrp-item">
+    <div className="pretty p-switch p-fill">
+      <input
+        type="checkbox"
+        name={name}
+        checked={checked}
+        onChange={() => onChange(!checked)}
+      />
+      <div className="state p-primary">
+        <label>{label}</label>
       </div>
-    </li>
-  );
-};
+    </div>
+  </li>
+);
 
 export default Checkbox;
 

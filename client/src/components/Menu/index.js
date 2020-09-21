@@ -3,37 +3,35 @@ import { NavLink } from 'react-router-dom';
 import githubLogo from './GitHub-Mark-64px.png';
 import './style.scss';
 
-const Menu = () => {
-  return (
-    <nav>
-      <NavLink
-        exact
-        to="/"
-        activeClassName="nav-item--active"
-        className="nav-item"
-        data-cy="dataEditRoute"
-      >
-        Data Edit
-      </NavLink>
+const Menu = () => (
+  <nav>
+    <NavLink
+      exact
+      to="/"
+      activeClassName="nav-item--active"
+      className="nav-item"
+      data-cy="dataEditRoute"
+    >
+      Data Edit
+    </NavLink>
 
-      <NavLink
-        to="/map"
-        activeClassName="nav-item--active"
-        className="nav-item"
-        data-cy="mapDisplayRoute"
+    <NavLink
+      to="/map"
+      activeClassName="nav-item--active"
+      className="nav-item"
+      data-cy="mapDisplayRoute"
+    >
+      Map Display
+    </NavLink>
+    <div className="nav-icon__wrapper">
+      <a
+        href="https://github.com/MuellerMarius/route_network"
+        title="GitHub Repository"
       >
-        Map Display
-      </NavLink>
-      <div className="nav-icon__wrapper">
-        <a
-          href="https://github.com/MuellerMarius/route_network"
-          title="GitHub Repository"
-        >
-          <img src={githubLogo} className="nav-icon__image" alt="GitHub" />
-        </a>
-      </div>
-    </nav>
-  );
-};
+        <img src={githubLogo} className="nav-icon__image" alt="GitHub" />
+      </a>
+    </div>
+  </nav>
+);
 
 export default Menu;

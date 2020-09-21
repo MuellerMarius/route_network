@@ -76,30 +76,14 @@ export const tableOptions = {
 
 // CSV
 export const csvHeader = [
-  {
-    id: 'id',
-  },
-  {
-    id: 'from',
-  },
-  {
-    id: 'fromCoordLat',
-  },
-  {
-    id: 'fromCoordLong',
-  },
-  {
-    id: 'to',
-  },
-  {
-    id: 'toCoordLat',
-  },
-  {
-    id: 'toCoordLong',
-  },
-  {
-    id: 'cat',
-  },
+  { id: 'id' },
+  { id: 'from' },
+  { id: 'fromCoordLat' },
+  { id: 'fromCoordLong' },
+  { id: 'to' },
+  { id: 'toCoordLat' },
+  { id: 'toCoordLong' },
+  { id: 'cat' },
 ];
 
 // Sample routes

@@ -80,9 +80,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const clearRoutes = () => {
-    dispatch({
-      type: actionType.CLEAR_ROUTES,
-    });
+    dispatch({ type: actionType.CLEAR_ROUTES });
   };
 
   const editRoute = (route) => {
@@ -114,6 +112,4 @@ export const GlobalProvider = ({ children }) => {
   );
 };
 
-GlobalProvider.propTypes = {
-  children: PropTypes.element.isRequired,
-};
+GlobalProvider.propTypes = { children: PropTypes.element.isRequired };
