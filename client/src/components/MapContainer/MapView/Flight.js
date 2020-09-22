@@ -25,6 +25,7 @@ const Flight = ({ route, color, dimensions, lightTheme }) => {
         }
       />
       {coordinates.map((coord, index) => (
+        // eslint-disable-next-line react/no-array-index-key
         <Marker coordinates={coord} key={`${route.id}${index}`}>
           <circle
             r={

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import CSVReader from 'react-csv-reader';
-import CsvDownloader from 'react-csv-downloader';
+import CsvDownloader from 'react-csv-downloader'; // eslint-disable-line import/no-unresolved
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
 

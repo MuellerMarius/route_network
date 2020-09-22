@@ -32,4 +32,5 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   checked: false,
   label: '',
+  children: null,
 };
