@@ -38,7 +38,7 @@ export const geoUrlLg =
   'https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json';
 
 export const projection = 'geoMercator';
-export const projEurope = {
+export const projRegional = {
   center: [17, 49],
   scale: 550,
 };
@@ -65,7 +65,7 @@ export const tableColumnsShort = [
 ];
 
 export const tableOptions = {
-  pageSize: 8,
+  pageSize: 10,
   pageSizeOptions: [8],
   draggable: false,
   headerStyle: {

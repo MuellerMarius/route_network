@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { ComposableMap } from 'react-simple-maps';
+import { ComposableMap, ZoomableGroup } from 'react-simple-maps';
 import { GlobalContext } from '../../../context/GlobalState';
 import Topography from './Topography';
 import Routes from './Routes';
@@ -9,17 +9,20 @@ import * as Cst from '../../../constants';
 import './style.scss';
 
 const MapView = ({ dimensions }) => {
-  const { lightTheme, focusViewOnEurope } = useContext(GlobalContext);
+  const { lightTheme, regionalFocus } = useContext(GlobalContext);
+  const mapCenter = [10, 30]; // Values to center Europe
 
   return (
     <div className={`map-area ${lightTheme ? '' : 'map-area--dark-bg'}`}>
       <ComposableMap
         width={1000}
         projection="geoMercator"
-        projectionConfig={focusViewOnEurope ? Cst.projEurope : Cst.projWorld}
+        projectionConfig={regionalFocus ? Cst.projRegional : Cst.projWorld}
       >
-        <Topography dimensions={dimensions} />
-        <Routes dimensions={dimensions} />
+        <ZoomableGroup zoom={1} center={mapCenter}>
+          <Topography dimensions={dimensions} />
+          <Routes dimensions={dimensions} />
+        </ZoomableGroup>
       </ComposableMap>
     </div>
   );

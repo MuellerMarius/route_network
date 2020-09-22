@@ -28,8 +28,9 @@ const Flight = ({ route, category, dimensions, lightTheme }) => {
             : Cst.strokeWidthSm
         }
       />
-      {coordinates.map((coord) => (
-        <Marker coordinates={coord} key={`${route.id}${coord[0]}`}>
+      {coordinates.map((coord, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Marker coordinates={coord} key={`${route.id}${index}`}>
           <circle
             r={
               dimensions.width > Cst.screenXlWidth
@@ -50,7 +51,7 @@ export default Flight;
 
 Flight.propTypes = {
   route: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     fromCoordLong: PropTypes.number.isRequired,
     fromCoordLat: PropTypes.number.isRequired,
     toCoordLong: PropTypes.number.isRequired,

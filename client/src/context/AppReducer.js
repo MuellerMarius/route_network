@@ -38,7 +38,7 @@ export default (state, action) => {
     case actionType.TOGGLE_VIEW:
       return {
         ...state,
-        focusViewOnEurope: action.payload,
+        regionalFocus: action.payload,
       };
     case actionType.UPDATE_CATEGORIES:
       return {

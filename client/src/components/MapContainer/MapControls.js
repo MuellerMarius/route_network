@@ -5,7 +5,7 @@ import Checkbox from './Checkbox';
 const MapControls = () => {
   const {
     lightTheme,
-    focusViewOnEurope,
+    regionalFocus,
     categories,
     toggleView,
     toggleTheme,
@@ -24,9 +24,9 @@ const MapControls = () => {
           <h2 className="settings__h2">View</h2>
           <ul className="settings__chkgrp">
             <Checkbox
-              label="Focus on Europe"
-              name="onlyEurope"
-              checked={focusViewOnEurope}
+              label="Regional focus"
+              name="regionalFocus"
+              checked={regionalFocus}
               onChange={toggleView}
               projection
             />

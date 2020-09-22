@@ -5,7 +5,7 @@ import * as actionType from './actions';
 
 const initialState = {
   lightTheme: true,
-  focusViewOnEurope: false,
+  regionalFocus: false,
   categories: [],
   routes: [],
 };
@@ -44,10 +44,10 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  const toggleView = (focusViewOnEurope) => {
+  const toggleView = (regionalFocus) => {
     dispatch({
       type: actionType.TOGGLE_VIEW,
-      payload: focusViewOnEurope,
+      payload: regionalFocus,
     });
   };
 
@@ -95,7 +95,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         routes: state.routes,
         lightTheme: state.lightTheme,
-        focusViewOnEurope: state.focusViewOnEurope,
+        regionalFocus: state.regionalFocus,
         categories: state.categories,
         toggleTheme,
         toggleView,

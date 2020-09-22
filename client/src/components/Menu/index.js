@@ -1,37 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import { GlobalContext } from '../../context/GlobalState';
 import githubLogo from './GitHub-Mark-64px.png';
 import './style.scss';
 
-const Menu = () => (
-  <nav>
-    <NavLink
-      exact
-      to="/"
-      activeClassName="nav-item--active"
-      className="nav-item"
-      data-cy="dataEditRoute"
-    >
-      Data Edit
-    </NavLink>
-
-    <NavLink
-      to="/map"
-      activeClassName="nav-item--active"
-      className="nav-item"
-      data-cy="mapDisplayRoute"
-    >
-      Map Display
-    </NavLink>
-    <div className="nav-icon__wrapper">
-      <a
-        href="https://github.com/MuellerMarius/route_network"
-        title="GitHub Repository"
+const Menu = () => {
+  const { lightTheme } = useContext(GlobalContext);
+  return (
+    <nav>
+      <NavLink
+        exact
+        to="/"
+        activeClassName="nav-item--active"
+        className="nav-item"
+        data-cy="dataEditRoute"
       >
-        <img src={githubLogo} className="nav-icon__image" alt="GitHub" />
-      </a>
-    </div>
-  </nav>
-);
+        Data Edit
+      </NavLink>
+
+      <NavLink
+        to="/map"
+        activeClassName={`nav-item--active${!lightTheme ? '-dark' : ''}`}
+        className="nav-item"
+        data-cy="mapDisplayRoute"
+      >
+        Map Display
+      </NavLink>
+      <div className="nav-icon__wrapper">
+        <a
+          href="https://github.com/MuellerMarius/route_network"
+          title="GitHub Repository"
+        >
+          <img src={githubLogo} className="nav-icon__image" alt="GitHub" />
+        </a>
+      </div>
+    </nav>
+  );
+};
 
 export default Menu;

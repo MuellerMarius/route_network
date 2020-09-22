@@ -7,11 +7,12 @@ const Checkbox = ({ name, onChange, checked, label }) => (
       <input
         type="checkbox"
         name={name}
+        id={name}
         checked={checked}
         onChange={() => onChange(!checked)}
       />
       <div className="state p-primary">
-        <label>{label}</label>
+        <label htmlFor={name}>{label}</label>
       </div>
     </div>
   </li>
