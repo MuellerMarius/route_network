@@ -1,0 +1,32 @@
+@import '../../../style/vars';
+
+.circle {
+  display: inline-block;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  height: 0.75em;
+  width: 0.75em;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.popover {
+  position: absolute;
+  z-index: 2;
+
+  @media screen and (max-width: $sm-width) {
+    right: 4.9%;
+  }
+}
+
+.cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+}

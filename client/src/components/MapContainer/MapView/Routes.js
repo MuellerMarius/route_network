@@ -17,7 +17,7 @@ const Routes = ({ dimensions }) => {
           <Flight
             key={route.id}
             route={route}
-            category={categories.find((cat) => cat.name === route.cat)}
+            color={categories.find((cat) => cat.name === route.cat).color}
             lightTheme={lightTheme}
             dimensions={dimensions}
           />

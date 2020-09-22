@@ -3,7 +3,12 @@ export const basename = '';
 export const airportAPI = '/.netlify/functions/server/api/';
 
 // Colors
-export const flightColorLight = [
+export const defaultFlightColors = [
+  'rgba(169, 21, 102, 0.85)',
+  'rgba(26, 150, 200, 0.85)',
+  'rgba(188, 188, 188, 0.85)',
+  'rgba(75, 145, 55, 0.85)',
+  'rgba(200, 0, 0, 0.85)',
   'rgba(59, 148, 184, 0.85)',
   'rgba(242, 29, 146, 0.85)',
   'rgba(94, 94, 94, 0.85)',
@@ -11,16 +16,9 @@ export const flightColorLight = [
   'rgba(200, 0, 0, 0.85)',
 ];
 export const markerColorLight = '#888888';
-export const geoColorLight = '#D6D6DA';
+export const geoColorLight = '#DEDEDE';
 export const geoStrokeColorLight = '#f4f4f4';
 
-export const flightColorDark = [
-  'rgba(169, 21, 102, 0.85)',
-  'rgba(26, 150, 200, 0.85)',
-  'rgba(188, 188, 188, 0.85)',
-  'rgba(75, 145, 55, 0.85)',
-  'rgba(200, 0, 0, 0.85)',
-];
 export const markerColorDark = '#AAAAAA';
 export const geoColorDark = '#121212';
 export const geoStrokeColorDark = '#444444';

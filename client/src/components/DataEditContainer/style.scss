@@ -1,86 +1,5 @@
 @import '../../style/vars';
 
-.settings {
-  $self: &;
-  padding: 15px;
-  border-right: 1px solid $border-color;
-
-  @media screen and (max-width: $md-width) {
-    padding: 7px;
-    grid-column: 1 / span 2;
-    background-color: $container-bg-color;
-  }
-
-  &__wrapper {
-    @media screen and (max-width: $md-width) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: baseline;
-      font-size: 0.9rem;
-    }
-  }
-
-  &__section {
-    @media screen and (max-width: $md-width) {
-      grid-column: span 1;
-    }
-  }
-
-  &__h1 {
-    margin-top: 0;
-    font-size: 1.5rem;
-    margin-bottom: 30px;
-
-    @media screen and (max-width: $md-width) {
-      font-size: 1.2rem;
-      margin-top: 5px;
-      margin-bottom: 5px;
-    }
-  }
-
-  &__h2 {
-    font-weight: 300;
-    font-size: 1.1rem;
-    margin: 20px 0 15px 15px;
-    @media screen and (max-width: $md-width) {
-      margin: 10px 0 5px 10px;
-      font-size: 1rem;
-    }
-  }
-
-  &__seperator {
-    width: 80%;
-    margin: 20px auto 20px auto;
-    border: 1px solid $border-color;
-
-    @media screen and (max-width: $md-width) {
-      display: none;
-    }
-  }
-
-  &__chkgrp {
-    width: 75%;
-    margin: auto;
-    padding: 0;
-    list-style-type: none;
-  }
-
-  &__chkgrp-item {
-    margin: 10px 0 10px 0;
-  }
-
-  &--dark {
-    background-color: $container-bg-color-dark;
-    color: $container-bg-color;
-    border-right: 0;
-
-    #{ $self }__seperator {
-      border: 0;
-      border-top: 1px solid #bbb;
-    }
-  }
-}
-
 .csv-input {
   width: 0.1px;
   height: 0.1px;
@@ -90,7 +9,7 @@
   z-index: -1;
 }
 
-.settings button,
+.sidemenu button,
 .csv-reader-input > label {
   display: block;
   margin: 10px auto 15px auto;

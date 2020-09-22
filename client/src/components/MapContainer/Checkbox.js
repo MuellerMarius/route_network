@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Checkbox = ({ name, onChange, checked, label }) => (
+const Checkbox = ({ name, onChange, checked, label, children }) => (
   <li key={name} className="settings__chkgrp-item">
     <div className="pretty p-switch p-fill">
       <input
@@ -15,6 +15,7 @@ const Checkbox = ({ name, onChange, checked, label }) => (
         <label htmlFor={name}>{label}</label>
       </div>
     </div>
+    {children}
   </li>
 );
 
@@ -25,6 +26,7 @@ Checkbox.propTypes = {
   onChange: PropTypes.func.isRequired,
   checked: PropTypes.bool,
   label: PropTypes.string,
+  children: PropTypes.element,
 };
 
 Checkbox.defaultProps = {

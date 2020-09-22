@@ -1,6 +1,7 @@
 import React, { createContext, useReducer, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import AppReducer from './AppReducer';
+import * as Cst from '../constants';
 import * as actionType from './actions';
 
 const initialState = {
@@ -30,6 +31,7 @@ export const GlobalProvider = ({ children }) => {
         return {
           name: entry,
           active: oldCat ? oldCat.active : true,
+          color: oldCat ? oldCat.color : Cst.defaultFlightColors[index],
           index,
         };
       }),
@@ -55,6 +57,13 @@ export const GlobalProvider = ({ children }) => {
     dispatch({
       type: actionType.TOGGLE_CAT_DISPLAY,
       payload: { name, checked },
+    });
+  };
+
+  const changeCatColor = (name, color) => {
+    dispatch({
+      type: actionType.CHANGE_CAT_COLOR,
+      payload: { name, color },
     });
   };
 
@@ -100,6 +109,7 @@ export const GlobalProvider = ({ children }) => {
         toggleTheme,
         toggleView,
         toggleCatDisplay,
+        changeCatColor,
         loadRoutes,
         addRoute,
         deleteRoute,

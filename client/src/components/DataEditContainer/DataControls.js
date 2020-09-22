@@ -24,7 +24,7 @@ const DataControls = () => {
   };
 
   return (
-    <div className="settings">
+    <div className="sidemenu settings ">
       <h1 className="settings__h1">Flight routes</h1>
 
       <button
@@ -42,6 +42,7 @@ const DataControls = () => {
       <CsvDownloader
         filename="data"
         separator=","
+        className=".button"
         columns={Cst.csvHeader}
         datas={routes}
         text="Export data (*.csv)"
@@ -49,7 +50,7 @@ const DataControls = () => {
 
       <button
         type="button"
-        className="--red"
+        className="button --red"
         onClick={() => confirmClear(clearRoutes)}
       >
         Clear data

@@ -7,13 +7,14 @@
     "material-table": "^1.57.2",
     "pretty-checkbox": "^3.0.3",
     "react": "^16.13.1",
+    "react-color": "^2.18.1",
+    "react-csv-downloader": "^2.0.2",
     "react-csv-reader": "^2.2.0",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-simple-maps": "^1.0.0-beta.0",
-    "react-uuid": "^1.0.2",
-    "react-csv-downloader": "^2.0.2"
+    "react-uuid": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

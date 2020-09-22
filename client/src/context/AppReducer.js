@@ -54,6 +54,15 @@ export default (state, action) => {
             : category,
         ),
       };
+    case actionType.CHANGE_CAT_COLOR:
+      return {
+        ...state,
+        categories: state.categories.map((category) =>
+          category.name === action.payload.name
+            ? { ...category, color: action.payload.color }
+            : category,
+        ),
+      };
     default:
       return state;
   }

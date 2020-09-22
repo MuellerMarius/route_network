@@ -10,12 +10,13 @@ import './style.scss';
 
 const MapView = ({ dimensions }) => {
   const { lightTheme, regionalFocus } = useContext(GlobalContext);
-  const mapCenter = [10, 30]; // Values to center Europe
+  const mapCenter = regionalFocus ? [20, 50] : [10, 30]; // Values to center Europe
 
   return (
     <div className={`map-area ${lightTheme ? '' : 'map-area--dark-bg'}`}>
       <ComposableMap
         width={1000}
+        height={675}
         projection="geoMercator"
         projectionConfig={regionalFocus ? Cst.projRegional : Cst.projWorld}
       >

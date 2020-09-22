@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
+import ColorPicker from './ColorPicker';
 import Checkbox from './Checkbox';
 
 const MapControls = () => {
@@ -51,7 +52,9 @@ const MapControls = () => {
                 name={category.name}
                 checked={category.active}
                 onChange={onChange(category.name)}
-              />
+              >
+                <ColorPicker category={category} />
+              </Checkbox>
             ))}
           </ul>
         </div>
