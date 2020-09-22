@@ -1,9 +1,9 @@
 @import '../../style/vars';
 
 nav {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $dark-grey;
   border-radius: 8px 8px 0 0;
-  background-color: #d4d4d4;
+  background-color: $dark-grey;
   grid-column-start: 1;
   grid-column-end: 3;
   margin: 0;
@@ -16,7 +16,6 @@ nav {
   float: left;
   padding: 15px;
   text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 
   @media screen and (max-width: $sm-width) {
     min-width: 100px;
@@ -29,11 +28,16 @@ nav {
   &:hover {
     cursor: pointer;
     color: #fff;
-    background-color: $button-color;
+    background-color: #1d89ff;
   }
 
   &--active {
     background-color: $container-bg-color;
+  }
+
+  &--active-dark {
+    background-color: $container-bg-color-dark;
+    color: #fff;
   }
 }
 

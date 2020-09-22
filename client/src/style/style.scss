@@ -11,12 +11,11 @@ body {
 #root {
   width: 90%;
   margin: 0 auto 0 auto;
+  margin-top: 10px;
+  margin-bottom: 50px;
 
   @media screen and (min-width: $lg-width) {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    margin-top: 40px;
   }
 
   @media screen and (max-width: $lg-width) {

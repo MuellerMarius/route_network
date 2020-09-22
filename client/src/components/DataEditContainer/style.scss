@@ -98,34 +98,22 @@
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 500;
-  color: #fff;
-  background-color: hsl(211, 100%, 65%);
+  background-color: #fff;
   text-align: center;
   padding: 9px 0px;
   outline: none;
   cursor: pointer;
-  border-width: 0;
-  border-radius: 4px;
+  border: 1px solid $dark-grey;
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 
   &:hover {
-    background-color: $button-color;
-  }
-
-  &.--inverse {
-    color: #000;
-    border: 2px solid #1d89ff;
-    background-color: #fff;
-
-    &:hover {
-      border-color: hsl(211, 100%, 65%);
-      background-color: hsl(211, 100%, 65%);
-      color: #fff;
-    }
+    background-color: $dark-grey;
   }
 
   &.--red {
-    background-color: rgba(179, 73, 59, 0.75);
+    background-color: rgba(179, 73, 59, 0.65);
+    border: 0;
+    color: #fff;
 
     &:hover {
       background-color: #cf5444;
