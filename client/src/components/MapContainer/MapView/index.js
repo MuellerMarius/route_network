@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ComposableMap, ZoomableGroup } from 'react-simple-maps';
 import { GlobalContext } from '../../../context/GlobalState';
@@ -20,7 +20,7 @@ const MapView = ({ dimensions }) => {
         projection="geoMercator"
         projectionConfig={regionalFocus ? Cst.projRegional : Cst.projWorld}
       >
-        <ZoomableGroup zoom={1} center={mapCenter}>
+        <ZoomableGroup center={mapCenter} maxZoom={1.7}>
           <Topography dimensions={dimensions} />
           <Routes dimensions={dimensions} />
         </ZoomableGroup>
