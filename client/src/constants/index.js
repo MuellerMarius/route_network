@@ -1,6 +1,6 @@
 // Routes
 export const basename = '';
-export const airportAPI = '/.netlify/functions/server/api/';
+export const airportAPI = '/api/';
 
 // Colors
 export const defaultFlightColors = [
