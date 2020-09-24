@@ -6,11 +6,12 @@
   "license": "ISC",
   "scripts": {
     "postinstall": "cd client && npm install",
-    "start": "run-p start:**",
-    "start:client": "cd client && npm run start",
-    "start:server": "nodemon server/index.js",
+    "dev": "run-p start:**",
+    "dev:client": "cd client && npm run start",
+    "dev:server": "nodemon server/index.js",
     "build": "run-s build:**",
-    "build:client": "cd client && npm run build"
+    "build:client": "cd client && npm run build",
+    "start": "node server/index.js"
   },
   "dependencies": {
     "csv-parser": "^2.3.2",
