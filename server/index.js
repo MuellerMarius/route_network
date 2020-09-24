@@ -1,8 +1,10 @@
 const express = require('express');
+const path = require('path');
 const fs = require('fs');
 const csv = require('csv-parser');
 
 const app = express();
+const publicPath = path.join(__dirname, '..', 'client', 'build');
 const data = [];
 
 //
@@ -27,7 +29,7 @@ fs.createReadStream('server/database/db.csv')
 // Controller //////////////////////////////////////////////////////
 //
 
-const getAirportData = (req, res) => {
+const serveAirportData = (req, res) => {
   const requestedData = data.find((el) => el.ident === req.params.id);
   if (requestedData) {
     return res.status(200).json(requestedData);
@@ -36,11 +38,17 @@ const getAirportData = (req, res) => {
   }
 };
 
+const serveClient = (req, res) => {
+  res.sendFile(path.join(publicPath, 'index.html'));
+};
+
 //
 // Routes //////////////////////////////////////////////////////////
 //
 
-app.get('/api/:id', getAirportData);
+app.use(express.static(publicPath));
+app.get('/api/:id', serveAirportData);
+app.get('*', serveClient);
 
 //
 // Run /////////////////////////////////////////////////////////////
