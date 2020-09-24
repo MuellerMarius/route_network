@@ -1,8 +1,8 @@
 # route_network
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/838fc75a-a001-48eb-93c9-a12767e1e49c/deploy-status)](https://app.netlify.com/sites/inspiring-spence-c048ce/deploys)
+[![Heroku status](https://heroku-badges.herokuapp.com/?app=route-network)](https://route-network.herokuapp.com/)
 
-This app plots great circles between airports on a world map. A running version can be found [here](https://inspiring-spence-c048ce.netlify.app/).
+This app plots great circles between airports on a world map. A running version can be found [here](https://route-network.herokuapp.com/).
 
 ![Screenshot](/client/public/screen.PNG)
 
@@ -16,22 +16,26 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 
 ### Installation:
 
-To run [Netlify Functions](https://www.netlify.com/products/functions/) used by the backend locally on your machine you will need to have [netlify-cli](https://www.npmjs.com/package/netlify-cli) installed with the following command:
+The client side of this app (`client`-folder) is build using React as a framework and the server side (`server`-folder) mainly uses [Express](https://expressjs.com/).
 
-`npm install netlify-cli -g`
-
-If you already have [netlify-cli](https://www.npmjs.com/package/netlify-cli) installed, install the projects dependencies with
+The install script will automatically install the server and client dependencies. Install the projects dependencies from the root directory with
 
 `npm install`
 
-To start both the backend server as well as the client run:
+To run the application in developer-mode (automatic refresh/restart upon code changes) run
 
-`npm start`
+`npm run dev`
 
-To visit App in browser:
+To visit the client-side in your browser go to:
 
-`localhost:3000/`
+`localhost:3000`
+_Note: The server is running on port `8080`_
+
+Please note that this App is deployed using [Heroku](https://heroku.com/) and therefore the `npm run start` script is used only to startup the server in production mode. To be able to use this locally on your machine, you will have to run `npm run build` first, as the `build`-version of the client has to be generated first to be served by the server. You can then visit the App in your browser by going to `localhost:8080`
 
 The tests of this repository are written using [cypress](https://cypress.io) and can be found in the `cypress/integration`-folder. To run the test suite use
 
-`npx cypress open`
+`npm run test`
+
+This will start the application server and open the Cypress Test Runner.
+_Note: Before you run the tests make sure that you have build the applicaton using `npm run build`_
