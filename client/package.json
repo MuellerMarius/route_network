@@ -14,7 +14,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-simple-maps": "^2.1.2",
-    "react-uuid": "^1.0.2"
+    "react-uuid": "^1.0.2",
+    "node-sass": "^4.13.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,8 +41,7 @@
     "@testing-library/user-event": "^12.1.5",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-testing-library": "^3.8.0",
-    "node-sass": "^4.13.1"
+    "eslint-plugin-testing-library": "^3.8.0"
   },
   "proxy": "http://localhost:8080"
 }
