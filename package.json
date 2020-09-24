@@ -11,7 +11,9 @@
     "dev:server": "nodemon server/index.js",
     "build": "run-s build:**",
     "build:client": "cd client && npm run build",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "test": "run-p start test:cypress",
+    "test:cypress": "npx cypress open"
   },
   "dependencies": {
     "csv-parser": "^2.3.2",

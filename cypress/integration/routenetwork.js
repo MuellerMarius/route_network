@@ -3,7 +3,7 @@
 describe('Route Network', () => {
   it('Add, edit and delete a route', () => {
     cy.viewport(1800, 1000);
-    cy.visit('http://localhost:3000');
+    cy.visit('http://localhost:8080');
 
     cy.get('.MuiTableBody-root tr:first').should(
       'contain',
