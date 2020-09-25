@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { GlobalContext } from '../../context/GlobalState';
-import githubLogo from './GitHub-Mark-64px.png';
 import './style.scss';
 
 const Menu = () => {
@@ -31,7 +30,11 @@ const Menu = () => {
           href="https://github.com/MuellerMarius/route_network"
           title="GitHub Repository"
         >
-          <img src={githubLogo} className="nav-icon__image" alt="GitHub" />
+          <img
+            src="./GitHub-Mark-64px.png"
+            className="nav-icon__image"
+            alt="GitHub"
+          />
         </a>
       </div>
     </nav>

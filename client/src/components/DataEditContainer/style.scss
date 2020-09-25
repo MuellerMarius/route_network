@@ -11,18 +11,17 @@
 
 .sidemenu button,
 .csv-reader-input > label {
-  display: block;
-  margin: 10px auto 15px auto;
-  width: 90%;
+  display: inline-block;
+  width: 100%;
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: 1em;
   font-weight: 500;
-  background-color: #fff;
-  text-align: center;
-  padding: 9px 0px;
+  text-align: left;
+  background-color: $container-bg-color;
+  padding: 9px 0px 9px 18px;
   outline: none;
+  border: 0;
   cursor: pointer;
-  border: 1px solid $dark-grey;
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 
   &:hover {
@@ -37,10 +36,6 @@
     &:hover {
       background-color: #cf5444;
     }
-  }
-
-  @media screen and (max-width: $md-width) {
-    width: 300px;
   }
 }
 
