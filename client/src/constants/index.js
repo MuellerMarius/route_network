@@ -66,9 +66,10 @@ export const tableOptions = {
   pageSize: 10,
   pageSizeOptions: [8],
   draggable: false,
+  search: false,
   headerStyle: {
     backgroundColor: '#f9f9f9',
-    fontWeight: 700,
+    fontWeight: 600,
   },
 };
 

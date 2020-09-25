@@ -1,7 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import CSVReader from 'react-csv-reader';
 import CsvDownloader from 'react-csv-downloader'; // eslint-disable-line import/no-unresolved
 import { GlobalContext } from '../../context/GlobalState';
+import AirportLookup from './AirportLookup';
+import ModalScreen from '../ModalScreen';
 import * as Cst from '../../constants';
 
 const parseOptions = {
@@ -13,6 +15,7 @@ const parseOptions = {
 
 const DataControls = () => {
   const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
+  const [showAirportLookup, setShowAirportLookup] = useState(false);
 
   const confirmClear = (func) => {
     if (
@@ -26,6 +29,19 @@ const DataControls = () => {
   return (
     <div className="sidemenu settings ">
       <h1 className="settings__h1">Flight routes</h1>
+
+      <button type="button" onClick={() => setShowAirportLookup(true)}>
+        Lookup airport
+      </button>
+
+      <ModalScreen
+        isVisible={showAirportLookup}
+        onClose={() => setShowAirportLookup(false)}
+      >
+        <AirportLookup />
+      </ModalScreen>
+
+      <hr className="settings__seperator" />
 
       <button
         type="button"

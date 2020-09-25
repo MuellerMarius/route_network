@@ -1,0 +1,25 @@
+.ap-lookup {
+  &__search {
+    display: flex;
+    align-items: center;
+
+    &__input {
+      width: 80%;
+      padding: 0.5em;
+      border: 0;
+      font-size: 1em;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &__icon {
+      width: 1em;
+      height: 1em;
+      margin-right: 10px;
+      background: url('./search.svg') no-repeat center;
+      background-size: cover;
+    }
+  }
+}
