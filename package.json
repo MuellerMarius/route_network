@@ -6,7 +6,7 @@
   "license": "ISC",
   "scripts": {
     "postinstall": "cd client && npm install",
-    "dev": "run-p start:**",
+    "dev": "run-p dev:**",
     "dev:client": "cd client && npm run start",
     "dev:server": "nodemon server/index.js",
     "build": "run-s build:**",
