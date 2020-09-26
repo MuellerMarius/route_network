@@ -48,10 +48,14 @@ export default React.memo(Flight);
 Flight.propTypes = {
   route: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    fromCoordLong: PropTypes.number.isRequired,
-    fromCoordLat: PropTypes.number.isRequired,
-    toCoordLong: PropTypes.number.isRequired,
-    toCoordLat: PropTypes.number.isRequired,
+    fromCoordLong: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    fromCoordLat: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    toCoordLong: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
+    toCoordLat: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      .isRequired,
   }).isRequired,
   color: PropTypes.string.isRequired,
   dimensions: PropTypes.shape({
