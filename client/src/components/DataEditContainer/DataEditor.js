@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable, { MTableAction } from 'material-table';
-import { Paper } from '@material-ui/core';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
@@ -142,7 +141,6 @@ const DataEditor = ({ dimensions, addActionRef }) => {
         onRowDelete: (oldData) => deleteRow(oldData),
       }}
       components={{
-        Container: (props) => <Paper {...props} elevation={1} />,
         Action: (props) => {
           if (
             typeof props.action === typeof Function ||
