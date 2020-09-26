@@ -1,6 +1,6 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import MaterialTable, { MTableAction, MTableToolbar } from 'material-table';
+import MaterialTable, { MTableAction } from 'material-table';
 import { Paper } from '@material-ui/core';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
@@ -143,7 +143,6 @@ const DataEditor = ({ dimensions, addActionRef }) => {
       }}
       components={{
         Container: (props) => <Paper {...props} elevation={1} />,
-        Toolbar: (props) => <MTableToolbar {...props} />,
         Action: (props) => {
           if (
             typeof props.action === typeof Function ||
