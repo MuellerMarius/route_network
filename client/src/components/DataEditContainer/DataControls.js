@@ -13,7 +13,7 @@ const parseOptions = {
   delimiter: ',',
 };
 
-const DataControls = () => {
+const DataControls = ({ addActionRef }) => {
   const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
   const [showAirportLookup, setShowAirportLookup] = useState(false);
 
@@ -30,8 +30,14 @@ const DataControls = () => {
     <div className="sidemenu settings ">
       <h1 className="settings__h1">Flight routes</h1>
 
+      <button type="button" onClick={() => addActionRef.current.click()}>
+        <span className="material-icons sidemenu__icon">add</span>
+        Add new route
+      </button>
+
       <button type="button" onClick={() => setShowAirportLookup(true)}>
-        Lookup airport
+        <span className="material-icons sidemenu__icon">search</span> Lookup
+        airport
       </button>
 
       <ModalScreen
@@ -47,10 +53,17 @@ const DataControls = () => {
         type="button"
         onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}
       >
+        <span className="material-icons sidemenu__icon">flight_takeoff</span>{' '}
         Load sample data
       </button>
+
       <CSVReader
-        label="Import data (*.csv)"
+        label={
+          <>
+            <span className="material-icons sidemenu__icon">arrow_upward</span>{' '}
+            Import data (*.csv)
+          </>
+        }
         parserOptions={parseOptions}
         onFileLoaded={(data) => loadRoutes(data)}
       />
@@ -61,15 +74,19 @@ const DataControls = () => {
         className=".button"
         columns={Cst.csvHeader}
         datas={routes}
-        text="Export data (*.csv)"
-      />
+      >
+        <button type="button">
+          <span className="material-icons sidemenu__icon">arrow_downward</span>{' '}
+          Export data (*.csv)
+        </button>
+      </CsvDownloader>
 
       <button
         type="button"
         className="button --red"
         onClick={() => confirmClear(clearRoutes)}
       >
-        Clear data
+        <span className="material-icons sidemenu__icon">clear</span> Clear data
       </button>
     </div>
   );

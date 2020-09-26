@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
 import MapView from '../MapContainer/MapView';
@@ -21,6 +21,7 @@ const debounce = (func, ms, ...args) => {
 };
 
 const MainContainer = () => {
+  const addActionRef = useRef();
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -47,8 +48,8 @@ const MainContainer = () => {
             <MapView dimensions={dimensions} />
           </Route>
           <Route path="/">
-            <DataControls />
-            <DataEditor dimensions={dimensions} />
+            <DataControls addActionRef={addActionRef} />
+            <DataEditor dimensions={dimensions} addActionRef={addActionRef} />
           </Route>
         </Switch>
       </Router>

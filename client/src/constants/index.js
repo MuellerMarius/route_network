@@ -67,9 +67,16 @@ export const tableOptions = {
   pageSizeOptions: [8],
   draggable: false,
   search: false,
+  addRowPosition: 'first',
   headerStyle: {
     backgroundColor: '#f9f9f9',
     fontWeight: 600,
+  },
+  cellStyle: {
+    borderBottom: '1px solid #f2f2f2',
+  },
+  actionsCellStyle: {
+    borderBottom: '1px solid #f2f2f2',
   },
 };
 

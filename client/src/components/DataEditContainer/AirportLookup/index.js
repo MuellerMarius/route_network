@@ -13,7 +13,7 @@ const AirportLookup = () => {
   return (
     <>
       <div className="ap-lookup__search">
-        <div className="ap-lookup__search__icon" />
+        <span className="material-icons">search</span>
         <input
           autoFocus
           type="text"

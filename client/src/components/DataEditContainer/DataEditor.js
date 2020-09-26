@@ -1,14 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef } from 'react';
 import PropTypes from 'prop-types';
-import MaterialTable from 'material-table';
+import MaterialTable, { MTableAction, MTableToolbar } from 'material-table';
+import { Paper } from '@material-ui/core';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
 import './style.scss';
 
-const DataEditor = ({ dimensions }) => {
+const DataEditor = ({ dimensions, addActionRef }) => {
   const { routes, addRoute, editRoute, deleteRoute } = useContext(
-    GlobalContext,
+    GlobalContext
   );
 
   const handleHttpErrors = (response) => {
@@ -36,8 +37,8 @@ const DataEditor = ({ dimensions }) => {
             (url) =>
               fetch(url)
                 .then(handleHttpErrors)
-                .then((res) => res.json()),
-          ),
+                .then((res) => res.json())
+          )
         )
           .then((data) => {
             newEntry.fromCoordLat = data[0].latitude_deg;
@@ -50,12 +51,12 @@ const DataEditor = ({ dimensions }) => {
           .catch(() => {
             reject();
             alert(
-              'Unable to insert new data because destination or departure airport is unknown.',
+              'Unable to insert new data because destination or departure airport is unknown.'
             );
           });
       } else {
         alert(
-          'Unable to insert new data because destination or departure airport is missing.',
+          'Unable to insert new data because destination or departure airport is missing.'
         );
         reject();
       }
@@ -88,8 +89,8 @@ const DataEditor = ({ dimensions }) => {
           requests.map((url) =>
             fetch(url)
               .then(handleHttpErrors)
-              .then((res) => res.json()),
-          ),
+              .then((res) => res.json())
+          )
         )
           .then((data) => {
             if (indexFrom >= 0) {
@@ -108,7 +109,7 @@ const DataEditor = ({ dimensions }) => {
           .catch(() => {
             reject();
             alert(
-              'Unable to insert new data because changed airport is unknown.',
+              'Unable to insert new data because changed airport is unknown.'
             );
           });
       } else {
@@ -139,6 +140,20 @@ const DataEditor = ({ dimensions }) => {
         onRowAdd: (newData) => insertData(newData),
         onRowUpdate: (newData, oldData) => updateData(newData, oldData),
         onRowDelete: (oldData) => deleteRow(oldData),
+      }}
+      components={{
+        Container: (props) => <Paper {...props} elevation={1} />,
+        Toolbar: (props) => <MTableToolbar {...props} />,
+        Action: (props) => {
+          if (
+            typeof props.action === typeof Function ||
+            props.action.tooltip !== 'Add'
+          ) {
+            return <MTableAction {...props} />;
+          } else {
+            return <div ref={addActionRef} onClick={props.action.onClick} />;
+          }
+        },
       }}
     />
   );

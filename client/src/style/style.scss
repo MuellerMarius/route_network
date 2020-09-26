@@ -10,19 +10,21 @@ body {
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
 }
 
 #root {
-  width: 90%;
+  width: 100%;
   margin: 0 auto 0 auto;
-  margin-top: 10px;
-  margin-bottom: 50px;
+  margin-top: 0;
+  margin-bottom: 40px;
 
   @media screen and (min-width: $lg-width) {
     margin-top: 40px;
   }
 
-  @media screen and (max-width: $lg-width) {
-    width: 95%;
+  @media screen and (min-width: $sm-width) {
+    width: 90%;
+    margin-top: 20px;
   }
 }

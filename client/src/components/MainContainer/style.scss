@@ -3,15 +3,19 @@
 main {
   width: 100%;
   background-color: $container-bg-color;
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
   box-shadow: 0 0.45rem 2.2rem rgba(90, 97, 105, 0.1),
     0 1rem 1.4rem rgba(90, 97, 105, 0.1),
     0 0.25rem 0.5rem rgba(90, 97, 105, 0.12),
     0 0.125rem 0.1875rem rgba(90, 97, 105, 0.1);
   display: grid;
   grid-template-columns: minmax(210px, 25%) auto;
-  grid-template-rows: 50px auto;
+  grid-template-rows: 48px auto;
   overflow: auto;
+
+  @media screen and (min-width: $sm-width) {
+    border-radius: 10px;
+  }
 }
 
 .settings {
@@ -22,6 +26,7 @@ main {
     padding: 7px;
     grid-column: 1 / span 2;
     background-color: $container-bg-color;
+    margin-bottom: 15px;
   }
 
   &__wrapper {
@@ -46,7 +51,7 @@ main {
 
     @media screen and (max-width: $md-width) {
       font-size: 1.2rem;
-      margin: 10px 0 5px 10px;
+      margin: 10px 0 8px 10px;
     }
   }
 
