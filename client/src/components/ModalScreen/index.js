@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.scss';
 
-const ModalScreen = ({ title, isVisible, onClose, children }) => {
+const ModalScreen = ({ title, isVisible, onClose: closeModal, children }) => {
   if (!isVisible) {
     return null;
   }
   return (
     <>
-      <div className="modal__cover" onClick={onClose} />
+      <div className="modal__cover" onClick={closeModal} />
       <div className="modal">
         {title ? (
           <>
@@ -31,3 +31,5 @@ ModalScreen.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
     .isRequired,
 };
+
+ModalScreen.defaultProps = { title: null };

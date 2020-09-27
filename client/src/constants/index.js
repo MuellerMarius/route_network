@@ -1,6 +1,7 @@
 // Routes
 export const basename = '';
-export const airportAPI = '/api/';
+export const airportAPI = '/api/airport/';
+export const autoCompleteAPI = '/api/ac/';
 
 // Colors
 export const defaultFlightColors = [
@@ -48,6 +49,7 @@ export const projWorld = {
 };
 
 // Data Editor
+export const ESCAPE = 27; // Keycode ESCAPE-key
 export const screenMdWidth = 764;
 export const screenLgWidth = 992;
 export const screenXlWidth = 1200;
@@ -72,12 +74,8 @@ export const tableOptions = {
     backgroundColor: '#f9f9f9',
     fontWeight: 600,
   },
-  cellStyle: {
-    borderBottom: '1px solid #f2f2f2',
-  },
-  actionsCellStyle: {
-    borderBottom: '1px solid #f2f2f2',
-  },
+  cellStyle: { borderBottom: '1px solid #f2f2f2' },
+  actionsCellStyle: { borderBottom: '1px solid #f2f2f2' },
 };
 
 // CSV
@@ -102,7 +100,7 @@ export const sampleRoutes = [
     to: 'EDDS',
     toCoordLat: 48.68989944,
     toCoordLong: 9.221960068,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 1,
@@ -112,7 +110,7 @@ export const sampleRoutes = [
     to: 'EDDF',
     toCoordLat: 50.033333,
     toCoordLong: 8.570556,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 2,
@@ -122,7 +120,7 @@ export const sampleRoutes = [
     to: 'EDDW',
     toCoordLat: 53.04750061,
     toCoordLong: 8.786669731,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 3,
@@ -132,7 +130,7 @@ export const sampleRoutes = [
     to: 'EDDT',
     toCoordLat: 52.5597,
     toCoordLong: 13.2877,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 4,
@@ -142,7 +140,7 @@ export const sampleRoutes = [
     to: 'EDDK',
     toCoordLat: 50.86589813,
     toCoordLong: 7.142739773,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 5,
@@ -152,7 +150,7 @@ export const sampleRoutes = [
     to: 'EKBI',
     toCoordLat: 55.74029922,
     toCoordLong: 9.151780128,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 6,
@@ -162,7 +160,7 @@ export const sampleRoutes = [
     to: 'EDDL',
     toCoordLat: 51.289501,
     toCoordLong: 6.76678,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 7,
@@ -172,7 +170,7 @@ export const sampleRoutes = [
     to: 'ELLX',
     toCoordLat: 49.6233333,
     toCoordLong: 6.2044444,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 8,
@@ -182,7 +180,7 @@ export const sampleRoutes = [
     to: 'EDDN',
     toCoordLat: 49.498699,
     toCoordLong: 11.078056,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 9,
@@ -192,7 +190,7 @@ export const sampleRoutes = [
     to: 'EDDC',
     toCoordLat: 51.13280106,
     toCoordLong: 13.76720047,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 10,
@@ -202,7 +200,7 @@ export const sampleRoutes = [
     to: 'EDDP',
     toCoordLat: 51.423889,
     toCoordLong: 12.236389,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 11,
@@ -212,7 +210,7 @@ export const sampleRoutes = [
     to: 'EDXW',
     toCoordLat: 54.91320038,
     toCoordLong: 8.340470314,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 12,
@@ -222,7 +220,7 @@ export const sampleRoutes = [
     to: 'EDDV',
     toCoordLat: 52.46110153,
     toCoordLong: 9.685079575,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 13,
@@ -232,7 +230,7 @@ export const sampleRoutes = [
     to: 'LFML',
     toCoordLat: 43.43927192,
     toCoordLong: 5.221424103,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 14,
@@ -242,7 +240,7 @@ export const sampleRoutes = [
     to: 'EHAM',
     toCoordLat: 52.308601,
     toCoordLong: 4.76389,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 15,
@@ -252,7 +250,7 @@ export const sampleRoutes = [
     to: 'EGLC',
     toCoordLat: 51.505299,
     toCoordLong: 0.055278,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 16,
@@ -262,7 +260,7 @@ export const sampleRoutes = [
     to: 'LKPR',
     toCoordLat: 50.1008,
     toCoordLong: 14.26,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 17,
@@ -272,7 +270,7 @@ export const sampleRoutes = [
     to: 'EPKK',
     toCoordLat: 50.077702,
     toCoordLong: 19.7848,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 18,
@@ -282,7 +280,7 @@ export const sampleRoutes = [
     to: 'EPKT',
     toCoordLat: 50.4743,
     toCoordLong: 19.08,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 19,
@@ -292,7 +290,7 @@ export const sampleRoutes = [
     to: 'EPGD',
     toCoordLat: 54.37760162,
     toCoordLong: 18.46619987,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 20,
@@ -302,7 +300,7 @@ export const sampleRoutes = [
     to: 'UMMS',
     toCoordLat: 53.88249969,
     toCoordLong: 28.03070068,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 21,
@@ -312,7 +310,7 @@ export const sampleRoutes = [
     to: 'LATI',
     toCoordLat: 41.41469955,
     toCoordLong: 19.72060013,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 22,
@@ -322,7 +320,7 @@ export const sampleRoutes = [
     to: 'LOWL',
     toCoordLat: 48.2332,
     toCoordLong: 14.1875,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 23,
@@ -332,7 +330,7 @@ export const sampleRoutes = [
     to: 'LIPE',
     toCoordLat: 44.5354,
     toCoordLong: 11.2887,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 24,
@@ -342,7 +340,7 @@ export const sampleRoutes = [
     to: 'LIML',
     toCoordLat: 45.445099,
     toCoordLong: 9.27674,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 25,
@@ -352,7 +350,7 @@ export const sampleRoutes = [
     to: 'LIRQ',
     toCoordLat: 43.810001,
     toCoordLong: 11.2051,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 26,
@@ -362,7 +360,7 @@ export const sampleRoutes = [
     to: 'LRCL',
     toCoordLat: 46.78519821,
     toCoordLong: 23.68619919,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 27,
@@ -372,7 +370,7 @@ export const sampleRoutes = [
     to: 'LRTR',
     toCoordLat: 45.80989838,
     toCoordLong: 21.33790016,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 28,
@@ -382,7 +380,7 @@ export const sampleRoutes = [
     to: 'LSGG',
     toCoordLat: 46.23809814,
     toCoordLong: 6.108950138,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 29,
@@ -392,7 +390,7 @@ export const sampleRoutes = [
     to: 'LSZH',
     toCoordLat: 47.464699,
     toCoordLong: 8.54917,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 30,
@@ -402,7 +400,7 @@ export const sampleRoutes = [
     to: 'LIEO',
     toCoordLat: 40.898701,
     toCoordLong: 9.51763,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 31,
@@ -412,7 +410,7 @@ export const sampleRoutes = [
     to: 'LFBD',
     toCoordLat: 44.82830048,
     toCoordLong: -0.715556026,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 32,
@@ -422,7 +420,7 @@ export const sampleRoutes = [
     to: 'LFPG',
     toCoordLat: 49.012798,
     toCoordLong: 2.55,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 33,
@@ -432,7 +430,7 @@ export const sampleRoutes = [
     to: 'LFBD',
     toCoordLat: 44.82830048,
     toCoordLong: -0.715556026,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 34,
@@ -442,7 +440,7 @@ export const sampleRoutes = [
     to: 'LFBO',
     toCoordLat: 43.629101,
     toCoordLong: 1.36382,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 35,
@@ -452,7 +450,7 @@ export const sampleRoutes = [
     to: 'LFML',
     toCoordLat: 43.43927192,
     toCoordLong: 5.221424103,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 36,
@@ -462,7 +460,7 @@ export const sampleRoutes = [
     to: 'LFLL',
     toCoordLat: 45.725556,
     toCoordLong: 5.081111,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 37,
@@ -472,7 +470,7 @@ export const sampleRoutes = [
     to: 'LFMN',
     toCoordLat: 43.65840149,
     toCoordLong: 7.215869904,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 38,
@@ -482,7 +480,7 @@ export const sampleRoutes = [
     to: 'LIEO',
     toCoordLat: 40.898701,
     toCoordLong: 9.51763,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 39,
@@ -492,7 +490,7 @@ export const sampleRoutes = [
     to: 'LFKB',
     toCoordLat: 42.55270004,
     toCoordLong: 9.483730316,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 40,
@@ -502,7 +500,7 @@ export const sampleRoutes = [
     to: 'LEMG',
     toCoordLat: 36.67490005,
     toCoordLong: -4.499110222,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 41,
@@ -512,7 +510,7 @@ export const sampleRoutes = [
     to: 'LEMD',
     toCoordLat: 40.471926,
     toCoordLong: -3.56264,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 42,
@@ -522,7 +520,7 @@ export const sampleRoutes = [
     to: 'LEBB',
     toCoordLat: 43.30110168,
     toCoordLong: -2.910609961,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 43,
@@ -532,7 +530,7 @@ export const sampleRoutes = [
     to: 'LEBL',
     toCoordLat: 41.2971,
     toCoordLong: 2.07846,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 44,
@@ -542,7 +540,7 @@ export const sampleRoutes = [
     to: 'LEVC',
     toCoordLat: 39.4893,
     toCoordLong: -0.481625,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 45,
@@ -552,7 +550,7 @@ export const sampleRoutes = [
     to: 'LEAL',
     toCoordLat: 38.28219986,
     toCoordLong: -0.558156013,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 46,
@@ -562,7 +560,7 @@ export const sampleRoutes = [
     to: 'LEPA',
     toCoordLat: 39.55170059,
     toCoordLong: 2.738810062,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 47,
@@ -572,7 +570,7 @@ export const sampleRoutes = [
     to: 'LEIB',
     toCoordLat: 38.8728981,
     toCoordLong: 1.37311995,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 48,
@@ -582,7 +580,7 @@ export const sampleRoutes = [
     to: 'GCLP',
     toCoordLat: 27.93190002,
     toCoordLong: -15.38659954,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 49,
@@ -592,7 +590,7 @@ export const sampleRoutes = [
     to: 'GMAD',
     toCoordLat: 30.32500076,
     toCoordLong: -9.413069725,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 50,
@@ -602,7 +600,7 @@ export const sampleRoutes = [
     to: 'GMMX',
     toCoordLat: 31.60689926,
     toCoordLong: -8.036299706,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 51,
@@ -612,7 +610,7 @@ export const sampleRoutes = [
     to: 'GMTA',
     toCoordLat: 35.17710114,
     toCoordLong: -3.839519978,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 52,
@@ -622,7 +620,7 @@ export const sampleRoutes = [
     to: 'LPFR',
     toCoordLat: 37.01440048,
     toCoordLong: -7.965909958,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 53,
@@ -632,7 +630,7 @@ export const sampleRoutes = [
     to: 'LPPR',
     toCoordLat: 41.24810028,
     toCoordLong: -8.681389809,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 54,
@@ -642,7 +640,7 @@ export const sampleRoutes = [
     to: 'LPPT',
     toCoordLat: 38.7813,
     toCoordLong: -9.13592,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 55,
@@ -652,7 +650,7 @@ export const sampleRoutes = [
     to: 'LIMC',
     toCoordLat: 45.6306,
     toCoordLong: 8.72811,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 56,
@@ -662,7 +660,7 @@ export const sampleRoutes = [
     to: 'LIML',
     toCoordLat: 45.445099,
     toCoordLong: 9.27674,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 57,
@@ -672,7 +670,7 @@ export const sampleRoutes = [
     to: 'LIPZ',
     toCoordLat: 45.505299,
     toCoordLong: 12.3519,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 58,
@@ -682,7 +680,7 @@ export const sampleRoutes = [
     to: 'LIPE',
     toCoordLat: 44.5354,
     toCoordLong: 11.2887,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 59,
@@ -692,7 +690,7 @@ export const sampleRoutes = [
     to: 'LIRF',
     toCoordLat: 41.8002778,
     toCoordLong: 12.2388889,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 60,
@@ -702,7 +700,7 @@ export const sampleRoutes = [
     to: 'LIRN',
     toCoordLat: 40.886002,
     toCoordLong: 14.2908,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 61,
@@ -712,7 +710,7 @@ export const sampleRoutes = [
     to: 'EGLL',
     toCoordLat: 51.4706,
     toCoordLong: -0.461941,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 62,
@@ -722,7 +720,7 @@ export const sampleRoutes = [
     to: 'EGCC',
     toCoordLat: 53.35369873,
     toCoordLong: -2.274950027,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 63,
@@ -732,7 +730,7 @@ export const sampleRoutes = [
     to: 'EBLG',
     toCoordLat: 50.63740158,
     toCoordLong: 5.443220139,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 64,
@@ -742,7 +740,7 @@ export const sampleRoutes = [
     to: 'EKCH',
     toCoordLat: 55.61790085,
     toCoordLong: 12.65600014,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 65,
@@ -752,7 +750,7 @@ export const sampleRoutes = [
     to: 'ENGM',
     toCoordLat: 60.19390106,
     toCoordLong: 11.10039997,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 66,
@@ -762,7 +760,7 @@ export const sampleRoutes = [
     to: 'ESGG',
     toCoordLat: 57.66279984,
     toCoordLong: 12.27980042,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 67,
@@ -772,7 +770,7 @@ export const sampleRoutes = [
     to: 'EDDT',
     toCoordLat: 52.5597,
     toCoordLong: 13.2877,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 68,
@@ -782,7 +780,7 @@ export const sampleRoutes = [
     to: 'EDDH',
     toCoordLat: 53.63040161,
     toCoordLong: 9.988229752,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 69,
@@ -792,7 +790,7 @@ export const sampleRoutes = [
     to: 'LOWW',
     toCoordLat: 48.11029816,
     toCoordLong: 16.56970024,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 70,
@@ -802,7 +800,7 @@ export const sampleRoutes = [
     to: 'LSGG',
     toCoordLat: 46.23809814,
     toCoordLong: 6.108950138,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 71,
@@ -812,7 +810,7 @@ export const sampleRoutes = [
     to: 'EPWA',
     toCoordLat: 52.16569901,
     toCoordLong: 20.96710014,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 72,
@@ -822,7 +820,7 @@ export const sampleRoutes = [
     to: 'EYVI',
     toCoordLat: 54.634102,
     toCoordLong: 25.285801,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 73,
@@ -832,7 +830,7 @@ export const sampleRoutes = [
     to: 'UUDD',
     toCoordLat: 55.40879822,
     toCoordLong: 37.90629959,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 74,
@@ -842,7 +840,7 @@ export const sampleRoutes = [
     to: 'EETN',
     toCoordLat: 59.41329956,
     toCoordLong: 24.83279991,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 75,
@@ -852,7 +850,7 @@ export const sampleRoutes = [
     to: 'EPKK',
     toCoordLat: 50.077702,
     toCoordLong: 19.7848,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 76,
@@ -862,7 +860,7 @@ export const sampleRoutes = [
     to: 'LKPR',
     toCoordLat: 50.1008,
     toCoordLong: 14.26,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 77,
@@ -872,7 +870,7 @@ export const sampleRoutes = [
     to: 'LHBP',
     toCoordLat: 47.42976,
     toCoordLong: 19.261093,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 78,
@@ -882,7 +880,7 @@ export const sampleRoutes = [
     to: 'LATI',
     toCoordLat: 41.41469955,
     toCoordLong: 19.72060013,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 79,
@@ -892,7 +890,7 @@ export const sampleRoutes = [
     to: 'LGAV',
     toCoordLat: 37.93640137,
     toCoordLong: 23.94449997,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 80,
@@ -902,7 +900,7 @@ export const sampleRoutes = [
     to: 'LGKO',
     toCoordLat: 36.79330063,
     toCoordLong: 27.0916996,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 81,
@@ -912,7 +910,7 @@ export const sampleRoutes = [
     to: 'LGIR',
     toCoordLat: 35.33969879,
     toCoordLong: 25.18029976,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 82,
@@ -922,7 +920,7 @@ export const sampleRoutes = [
     to: 'LLBG',
     toCoordLat: 32.01139832,
     toCoordLong: 34.88669968,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 83,
@@ -932,7 +930,7 @@ export const sampleRoutes = [
     to: 'LEMD',
     toCoordLat: 40.471926,
     toCoordLong: -3.56264,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 84,
@@ -942,7 +940,7 @@ export const sampleRoutes = [
     to: 'LEGR',
     toCoordLat: 37.18870163,
     toCoordLong: -3.777359962,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 85,
@@ -952,7 +950,7 @@ export const sampleRoutes = [
     to: 'LEMG',
     toCoordLat: 36.67490005,
     toCoordLong: -4.499110222,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 86,
@@ -962,7 +960,7 @@ export const sampleRoutes = [
     to: 'LEMG',
     toCoordLat: 36.67490005,
     toCoordLong: -4.499110222,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 87,
@@ -972,7 +970,7 @@ export const sampleRoutes = [
     to: 'LEMG',
     toCoordLat: 36.67490005,
     toCoordLong: -4.499110222,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 88,
@@ -982,7 +980,7 @@ export const sampleRoutes = [
     to: 'LTBA',
     toCoordLat: 40.976898,
     toCoordLong: 28.8146,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 89,
@@ -992,7 +990,7 @@ export const sampleRoutes = [
     to: 'LIPZ',
     toCoordLat: 45.505299,
     toCoordLong: 12.3519,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 90,
@@ -1002,7 +1000,7 @@ export const sampleRoutes = [
     to: 'LIMC',
     toCoordLat: 45.6306,
     toCoordLong: 8.72811,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 91,
@@ -1012,7 +1010,7 @@ export const sampleRoutes = [
     to: 'EBBR',
     toCoordLat: 50.90140152,
     toCoordLong: 4.48443985,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 92,
@@ -1022,7 +1020,7 @@ export const sampleRoutes = [
     to: 'EDDF',
     toCoordLat: 50.033333,
     toCoordLong: 8.570556,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 93,
@@ -1032,7 +1030,7 @@ export const sampleRoutes = [
     to: 'LEMG',
     toCoordLat: 36.67490005,
     toCoordLong: -4.499110222,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 94,
@@ -1042,7 +1040,7 @@ export const sampleRoutes = [
     to: 'EGLC',
     toCoordLat: 51.505299,
     toCoordLong: 0.055278,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 95,
@@ -1052,7 +1050,7 @@ export const sampleRoutes = [
     to: 'LDZA',
     toCoordLat: 45.74290085,
     toCoordLong: 16.06879997,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 96,
@@ -1062,7 +1060,7 @@ export const sampleRoutes = [
     to: 'LKPR',
     toCoordLat: 50.1008,
     toCoordLong: 14.26,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 97,
@@ -1072,7 +1070,7 @@ export const sampleRoutes = [
     to: 'LHBP',
     toCoordLat: 47.42976,
     toCoordLong: 19.261093,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 98,
@@ -1082,7 +1080,7 @@ export const sampleRoutes = [
     to: 'LOWW',
     toCoordLat: 48.11029816,
     toCoordLong: 16.56970024,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 99,
@@ -1092,7 +1090,7 @@ export const sampleRoutes = [
     to: 'LEBL',
     toCoordLat: 41.2971,
     toCoordLong: 2.07846,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 100,
@@ -1102,7 +1100,7 @@ export const sampleRoutes = [
     to: 'LPPT',
     toCoordLat: 38.7813,
     toCoordLong: -9.13592,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 101,
@@ -1112,7 +1110,7 @@ export const sampleRoutes = [
     to: 'EDDW',
     toCoordLat: 53.04750061,
     toCoordLong: 8.786669731,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 102,
@@ -1122,7 +1120,7 @@ export const sampleRoutes = [
     to: 'EDDH',
     toCoordLat: 53.63040161,
     toCoordLong: 9.988229752,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 103,
@@ -1132,7 +1130,7 @@ export const sampleRoutes = [
     to: 'EDDV',
     toCoordLat: 52.46110153,
     toCoordLong: 9.685079575,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 104,
@@ -1142,7 +1140,7 @@ export const sampleRoutes = [
     to: 'EDDS',
     toCoordLat: 48.68989944,
     toCoordLong: 9.221960068,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 105,
@@ -1152,7 +1150,7 @@ export const sampleRoutes = [
     to: 'EDDT',
     toCoordLat: 52.5597,
     toCoordLong: 13.2877,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 106,
@@ -1162,7 +1160,7 @@ export const sampleRoutes = [
     to: 'LBSF',
     toCoordLat: 42.69669342,
     toCoordLong: 23.41143608,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 107,
@@ -1172,7 +1170,7 @@ export const sampleRoutes = [
     to: 'OMDB',
     toCoordLat: 25.25279999,
     toCoordLong: 55.36439896,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 108,
@@ -1182,7 +1180,7 @@ export const sampleRoutes = [
     to: 'OTHH',
     toCoordLat: 25.273056,
     toCoordLong: 51.608056,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 109,
@@ -1192,7 +1190,7 @@ export const sampleRoutes = [
     to: 'VRMM',
     toCoordLat: 4.191830158,
     toCoordLong: 73.52909851,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 110,
@@ -1202,7 +1200,7 @@ export const sampleRoutes = [
     to: 'VTSP',
     toCoordLat: 8.1132,
     toCoordLong: 98.316902,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 111,
@@ -1212,7 +1210,7 @@ export const sampleRoutes = [
     to: 'VTBS',
     toCoordLat: 13.68109989,
     toCoordLong: 100.7470016,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 112,
@@ -1222,7 +1220,7 @@ export const sampleRoutes = [
     to: 'VVTS',
     toCoordLat: 10.81879997,
     toCoordLong: 106.6520004,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 113,
@@ -1232,7 +1230,7 @@ export const sampleRoutes = [
     to: 'VVTS',
     toCoordLat: 10.81879997,
     toCoordLong: 106.6520004,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 114,
@@ -1242,7 +1240,7 @@ export const sampleRoutes = [
     to: 'VVPQ',
     toCoordLat: 10.1698,
     toCoordLong: 103.9931,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 115,
@@ -1252,7 +1250,7 @@ export const sampleRoutes = [
     to: 'VVDN',
     toCoordLat: 16.04389954,
     toCoordLong: 108.1989975,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 116,
@@ -1262,7 +1260,7 @@ export const sampleRoutes = [
     to: 'VVNB',
     toCoordLat: 21.22120094,
     toCoordLong: 105.8069992,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 117,
@@ -1272,7 +1270,7 @@ export const sampleRoutes = [
     to: 'VVNB',
     toCoordLat: 21.22120094,
     toCoordLong: 105.8069992,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 118,
@@ -1282,7 +1280,7 @@ export const sampleRoutes = [
     to: 'RKSI',
     toCoordLat: 37.46910095,
     toCoordLong: 126.4509964,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 119,
@@ -1292,7 +1290,7 @@ export const sampleRoutes = [
     to: 'WSSS',
     toCoordLat: 1.35019,
     toCoordLong: 103.994003,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 120,
@@ -1302,7 +1300,7 @@ export const sampleRoutes = [
     to: 'WMKK',
     toCoordLat: 2.745579958,
     toCoordLong: 101.7099991,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 121,
@@ -1312,7 +1310,7 @@ export const sampleRoutes = [
     to: 'WIII',
     toCoordLat: -6.12556982,
     toCoordLong: 106.6559982,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 122,
@@ -1322,7 +1320,7 @@ export const sampleRoutes = [
     to: 'WADD',
     toCoordLat: -8.748169899,
     toCoordLong: 115.1669998,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 123,
@@ -1332,7 +1330,7 @@ export const sampleRoutes = [
     to: 'LTBA',
     toCoordLat: 40.976898,
     toCoordLong: 28.8146,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 124,
@@ -1342,7 +1340,7 @@ export const sampleRoutes = [
     to: 'FACT',
     toCoordLat: -33.96480179,
     toCoordLong: 18.60169983,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 125,
@@ -1352,7 +1350,7 @@ export const sampleRoutes = [
     to: 'FAOR',
     toCoordLat: -26.1392,
     toCoordLong: 28.246,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 126,
@@ -1362,7 +1360,7 @@ export const sampleRoutes = [
     to: 'LTBA',
     toCoordLat: 40.976898,
     toCoordLong: 28.8146,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 127,
@@ -1372,7 +1370,7 @@ export const sampleRoutes = [
     to: 'KJFK',
     toCoordLat: 40.63980103,
     toCoordLong: -73.77890015,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 128,
@@ -1382,7 +1380,7 @@ export const sampleRoutes = [
     to: 'KBOS',
     toCoordLat: 42.36429977,
     toCoordLong: -71.00520325,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 129,
@@ -1392,7 +1390,7 @@ export const sampleRoutes = [
     to: 'KIAD',
     toCoordLat: 38.94449997,
     toCoordLong: -77.45580292,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 130,
@@ -1402,7 +1400,7 @@ export const sampleRoutes = [
     to: 'KPHX',
     toCoordLat: 33.43429947,
     toCoordLong: -112.012001,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 131,
@@ -1412,7 +1410,7 @@ export const sampleRoutes = [
     to: 'KPHL',
     toCoordLat: 39.87189865,
     toCoordLong: -75.2410965,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 132,
@@ -1422,7 +1420,7 @@ export const sampleRoutes = [
     to: 'KMIA',
     toCoordLat: 25.79319954,
     toCoordLong: -80.29060364,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 133,
@@ -1432,7 +1430,7 @@ export const sampleRoutes = [
     to: 'KDEN',
     toCoordLat: 39.86169815,
     toCoordLong: -104.6729965,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 134,
@@ -1442,7 +1440,7 @@ export const sampleRoutes = [
     to: 'KSFO',
     toCoordLat: 37.61899948,
     toCoordLong: -122.375,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 135,
@@ -1452,7 +1450,7 @@ export const sampleRoutes = [
     to: 'EDDF',
     toCoordLat: 50.033333,
     toCoordLong: 8.570556,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 136,
@@ -1462,7 +1460,7 @@ export const sampleRoutes = [
     to: 'MMMX',
     toCoordLat: 19.4363,
     toCoordLong: -99.072098,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 137,
@@ -1472,7 +1470,7 @@ export const sampleRoutes = [
     to: 'MMUN',
     toCoordLat: 21.03650093,
     toCoordLong: -86.87709808,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 138,
@@ -1482,7 +1480,7 @@ export const sampleRoutes = [
     to: 'SBGL',
     toCoordLat: -22.80999947,
     toCoordLong: -43.25055695,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 139,
@@ -1492,7 +1490,7 @@ export const sampleRoutes = [
     to: 'EDDF',
     toCoordLat: 50.033333,
     toCoordLong: 8.570556,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 140,
@@ -1502,7 +1500,7 @@ export const sampleRoutes = [
     to: 'SBFI',
     toCoordLat: -25.60027885,
     toCoordLong: -54.48500061,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 141,
@@ -1512,7 +1510,7 @@ export const sampleRoutes = [
     to: 'SBSV',
     toCoordLat: -12.9086113,
     toCoordLong: -38.32249832,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 142,
@@ -1522,7 +1520,7 @@ export const sampleRoutes = [
     to: 'SBGR',
     toCoordLat: -23.43555641,
     toCoordLong: -46.47305679,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 143,
@@ -1532,7 +1530,7 @@ export const sampleRoutes = [
     to: 'UUEE',
     toCoordLat: 55.972599,
     toCoordLong: 37.4146,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 144,
@@ -1542,7 +1540,7 @@ export const sampleRoutes = [
     to: 'UNTT',
     toCoordLat: 56.38029861,
     toCoordLong: 85.20829773,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 145,
@@ -1552,7 +1550,7 @@ export const sampleRoutes = [
     to: 'UNTT',
     toCoordLat: 56.38029861,
     toCoordLong: 85.20829773,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 146,
@@ -1562,7 +1560,7 @@ export const sampleRoutes = [
     to: 'LMML',
     toCoordLat: 35.857498,
     toCoordLong: 14.4775,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 147,
@@ -1572,7 +1570,7 @@ export const sampleRoutes = [
     to: 'KMIA',
     toCoordLat: 25.79319954,
     toCoordLong: -80.29060364,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 148,
@@ -1582,7 +1580,7 @@ export const sampleRoutes = [
     to: 'RJGG',
     toCoordLat: 34.85839844,
     toCoordLong: 136.8049927,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 149,
@@ -1592,7 +1590,7 @@ export const sampleRoutes = [
     to: 'RKSI',
     toCoordLat: 37.46910095,
     toCoordLong: 126.4509964,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 150,
@@ -1602,7 +1600,7 @@ export const sampleRoutes = [
     to: 'EDDM',
     toCoordLat: 48.353802,
     toCoordLong: 11.7861,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 151,
@@ -1612,7 +1610,7 @@ export const sampleRoutes = [
     to: 'EPWA',
     toCoordLat: 52.16569901,
     toCoordLong: 20.96710014,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 152,
@@ -1622,7 +1620,7 @@ export const sampleRoutes = [
     to: 'LIEE',
     toCoordLat: 39.251499,
     toCoordLong: 9.05428,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 153,
@@ -1632,7 +1630,7 @@ export const sampleRoutes = [
     to: 'EPPO',
     toCoordLat: 52.42100143,
     toCoordLong: 16.82629967,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 154,
@@ -1642,7 +1640,7 @@ export const sampleRoutes = [
     to: 'VTSM',
     toCoordLat: 9.547789574,
     toCoordLong: 100.0619965,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 155,
@@ -1652,7 +1650,7 @@ export const sampleRoutes = [
     to: 'OTHH',
     toCoordLat: 25.273056,
     toCoordLong: 51.608056,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 156,
@@ -1662,7 +1660,7 @@ export const sampleRoutes = [
     to: 'EINN',
     toCoordLat: 52.702,
     toCoordLong: -8.92482,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 157,
@@ -1672,7 +1670,7 @@ export const sampleRoutes = [
     to: 'EDLP',
     toCoordLat: 51.61410141,
     toCoordLong: 8.616319656,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 158,
@@ -1682,7 +1680,7 @@ export const sampleRoutes = [
     to: 'LICJ',
     toCoordLat: 38.175999,
     toCoordLong: 13.091,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 159,
@@ -1692,7 +1690,7 @@ export const sampleRoutes = [
     to: 'EGCC',
     toCoordLat: 53.35369873,
     toCoordLong: -2.274950027,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 160,
@@ -1702,7 +1700,7 @@ export const sampleRoutes = [
     to: 'LUKK',
     toCoordLat: 46.92770004,
     toCoordLong: 28.93099976,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 161,
@@ -1712,7 +1710,7 @@ export const sampleRoutes = [
     to: 'EGSS',
     toCoordLat: 51.88499832,
     toCoordLong: 0.234999999,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 162,
@@ -1722,7 +1720,7 @@ export const sampleRoutes = [
     to: 'LBBG',
     toCoordLat: 42.56959915,
     toCoordLong: 27.51519966,
-    cat: 'A320',
+    cat: 'Airbus',
   },
   {
     id: 163,
@@ -1732,7 +1730,7 @@ export const sampleRoutes = [
     to: 'UUDD',
     toCoordLat: 55.40879822,
     toCoordLong: 37.90629959,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 164,
@@ -1742,7 +1740,7 @@ export const sampleRoutes = [
     to: 'EHAM',
     toCoordLat: 52.308601,
     toCoordLong: 4.76389,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 165,
@@ -1752,7 +1750,7 @@ export const sampleRoutes = [
     to: 'EBBR',
     toCoordLat: 50.90140152,
     toCoordLong: 4.48443985,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 166,
@@ -1762,7 +1760,7 @@ export const sampleRoutes = [
     to: 'EDDH',
     toCoordLat: 53.63040161,
     toCoordLong: 9.988229752,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 167,
@@ -1772,7 +1770,7 @@ export const sampleRoutes = [
     to: 'LIMC',
     toCoordLat: 45.6306,
     toCoordLong: 8.72811,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: 168,
@@ -1782,7 +1780,7 @@ export const sampleRoutes = [
     to: 'VTBS',
     toCoordLat: 13.68109989,
     toCoordLong: 100.7470016,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: '1a77dc4-fc44-8b1c-14df-5aec6774dd88',
@@ -1792,7 +1790,7 @@ export const sampleRoutes = [
     to: 'LPPR',
     toCoordLat: 41.24810028,
     toCoordLong: -8.681389809,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: '41fd37-43a3-cbb-41a0-efbd4a032658',
@@ -1802,7 +1800,7 @@ export const sampleRoutes = [
     to: 'LLBG',
     toCoordLat: 32.01139832,
     toCoordLong: 34.88669968,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: 'eea70d0-dfdc-3fe-28e4-b5c1deaf17',
@@ -1812,7 +1810,7 @@ export const sampleRoutes = [
     to: 'EDDH',
     toCoordLat: 53.63040161,
     toCoordLong: 9.988229752,
-    cat: 'PAX',
+    cat: 'Boeing',
   },
   {
     id: '77c6668-13d-eee-86ff-87eedf3dd50',
@@ -1822,7 +1820,7 @@ export const sampleRoutes = [
     to: 'LHBP',
     toCoordLat: 47.42976,
     toCoordLong: 19.261093,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: '34ece87-df28-06c-f256-c758b033282a',
@@ -1832,7 +1830,7 @@ export const sampleRoutes = [
     to: 'LFLL',
     toCoordLat: 45.725556,
     toCoordLong: 5.081111,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
   {
     id: '102f73f-8e5c-2de5-bec1-2d684b2ca421',
@@ -1842,6 +1840,6 @@ export const sampleRoutes = [
     to: 'LFSB',
     toCoordLat: 47.59,
     toCoordLong: 7.5291667,
-    cat: 'EMJ190',
+    cat: 'Embraer',
   },
 ];

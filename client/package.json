@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.9.5",
     "material-table": "^1.57.2",
+    "node-sass": "^4.13.1",
     "pretty-checkbox": "^3.0.3",
     "react": "^16.13.1",
     "react-color": "^2.18.1",
@@ -14,8 +15,8 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
     "react-simple-maps": "^2.1.2",
-    "react-uuid": "^1.0.2",
-    "node-sass": "^4.13.1"
+    "react-tooltip": "^4.2.10",
+    "react-uuid": "^1.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

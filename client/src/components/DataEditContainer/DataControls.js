@@ -45,7 +45,7 @@ const DataControls = ({ addActionRef }) => {
         isVisible={showAirportLookup}
         onClose={() => setShowAirportLookup(false)}
       >
-        <AirportLookup />
+        <AirportLookup closeModal={() => setShowAirportLookup(false)} />
       </ModalScreen>
 
       <hr className="settings__seperator" />

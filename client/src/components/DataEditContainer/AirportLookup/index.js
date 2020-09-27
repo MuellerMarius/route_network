@@ -1,14 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import ResultEntry from './ResultEntry';
+import * as Cst from '../../../constants';
 import './style.scss';
 
-const AirportLookup = () => {
-  // const [searchString, setSearchString] = useState('');
+const AirportLookup = ({ closeModal }) => {
+  const [searchString, setSearchString] = useState('');
   const [results, setResults] = useState([]);
 
   const handleChange = (e) => {
-    setResults(['Test1', 'Test2']);
+    setSearchString(e.target.value);
   };
+
+  const handleKeyDown = (e) => {
+    switch (e.keyCode) {
+      case Cst.ESCAPE:
+        closeModal();
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchString) {
+        fetch(`${Cst.autoCompleteAPI}${searchString}`)
+          .then((res) => res.json())
+          .then((data) => setResults(data));
+      } else {
+        setResults([]);
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchString]);
 
   return (
     <>
@@ -21,11 +46,16 @@ const AirportLookup = () => {
           autoComplete="off"
           className="ap-lookup__search__input"
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
       </div>
       <div className="ap-lookup__results">
         {results.map((result) => (
-          <ResultEntry title={result} />
+          <ResultEntry
+            key={result.ident}
+            ident={result.ident}
+            name={result.name}
+          />
         ))}
       </div>
     </>
@@ -33,3 +63,5 @@ const AirportLookup = () => {
 };
 
 export default AirportLookup;
+
+AirportLookup.propTypes = { closeModal: PropTypes.func.isRequired };

@@ -7,6 +7,7 @@ import * as actionType from './actions';
 const initialState = {
   lightTheme: true,
   regionalFocus: false,
+  showLabels: false,
   categories: [],
   routes: [],
 };
@@ -50,6 +51,13 @@ export const GlobalProvider = ({ children }) => {
     dispatch({
       type: actionType.TOGGLE_VIEW,
       payload: regionalFocus,
+    });
+  };
+
+  const toggleLabels = (showLabels) => {
+    dispatch({
+      type: actionType.TOGGLE_LABELS,
+      payload: showLabels,
     });
   };
 
@@ -104,10 +112,12 @@ export const GlobalProvider = ({ children }) => {
       value={{
         routes: state.routes,
         lightTheme: state.lightTheme,
+        showLabels: state.showLabels,
         regionalFocus: state.regionalFocus,
         categories: state.categories,
         toggleTheme,
         toggleView,
+        toggleLabels,
         toggleCatDisplay,
         changeCatColor,
         loadRoutes,

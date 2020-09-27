@@ -8,7 +8,15 @@ This app plots great circles between airports on a world map. A running version 
 
 ## Instructions
 
-You can enter airport pairs on the **Data Edit** page by using the respective four letter [ICAO airport codes](https://en.wikipedia.org/wiki/ICAO_airport_code) and assign a category to it. To just view a basic example simply _Load sample data_. The **Map Display** page then shows all the entered routings and allows the user to view the whole network of flights that e.g. he has taken.
+You can enter airport pairs on the **Data Edit** page by using the respective four letter [ICAO airport codes](https://en.wikipedia.org/wiki/ICAO_airport_code) and assign a category to it. If you don't know the respective airport code you can simply use _Lookup Airport_ to search for either the airport name or the ICAO-, or IATA-code.
+
+To just view a basic example simply _Load sample data_. The **Map Display** page then shows all the entered routings and allows the user to view the whole network of flights that e.g. he has taken.
+
+## Resources
+
+- The topologies for the world map are provided by [TopoJSON](https://github.com/topojson/world-atlas)
+
+- The airport database is provided by [Open Flights](https://github.com/jpatokal/openflights)
 
 ## Installation and Setup Instructions
 
@@ -32,6 +40,8 @@ To visit the client-side in your browser go to:
 _Note: The server is running on port `8080`_
 
 Please note that this App is deployed using [Heroku](https://heroku.com/) and therefore the `npm run start` script is used only to startup the server in production mode. To be able to use this locally on your machine, you will have to run `npm run build` first, as the `build`-version of the client has to be generated first to be served by the server. You can then visit the App in your browser by going to `localhost:8080`
+
+### Tests:
 
 The tests of this repository are written using [cypress](https://cypress.io) and can be found in the `cypress/integration`-folder. To run the test suite use
 

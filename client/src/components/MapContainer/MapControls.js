@@ -11,6 +11,8 @@ const MapControls = () => {
     toggleView,
     toggleTheme,
     toggleCatDisplay,
+    showLabels,
+    toggleLabels,
   } = useContext(GlobalContext);
 
   const onChange = (name) => (checked) => {
@@ -29,14 +31,18 @@ const MapControls = () => {
               name="regionalFocus"
               checked={regionalFocus}
               onChange={toggleView}
-              projection
             />
             <Checkbox
-              label="Light Theme"
+              label="Show labels"
+              name="showLabels"
+              checked={showLabels}
+              onChange={toggleLabels}
+            />
+            <Checkbox
+              label="Light theme"
               name="themeLight"
               checked={lightTheme}
               onChange={toggleTheme}
-              theme
             />
           </ul>
         </div>

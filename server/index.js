@@ -11,7 +11,7 @@ const data = [];
 // Data  ////////////////////////////////////////////////////////////
 //
 
-fs.createReadStream('server/database/db.csv')
+fs.createReadStream('server/database/airports.csv')
   .pipe(
     csv({
       separator: ';',
@@ -38,6 +38,24 @@ const serveAirportData = (req, res) => {
   }
 };
 
+const serveAutocompleteData = (req, res) => {
+  const inputValue = req.params.id.toUpperCase();
+  let requestedData = data
+    .filter(
+      (el) =>
+        el.ident.length === 4 && // only display major airports
+        (el.ident.toUpperCase().includes(inputValue) ||
+          el.name.toUpperCase().includes(inputValue) ||
+          el.iata.toUpperCase().includes(inputValue))
+    )
+    .map(({ ident, name }) => ({ ident, name }));
+
+  if (requestedData.length > 10) {
+    requestedData = requestedData.slice(0, 10);
+  }
+  return res.status(200).json(requestedData);
+};
+
 const serveClient = (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
 };
@@ -47,7 +65,8 @@ const serveClient = (req, res) => {
 //
 
 app.use(express.static(publicPath));
-app.get('/api/:id', serveAirportData);
+app.get('/api/airport/:id', serveAirportData);
+app.get('/api/ac/:id', serveAutocompleteData);
 app.get('*', serveClient);
 
 //

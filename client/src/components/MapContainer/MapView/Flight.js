@@ -1,47 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Line, Marker } from 'react-simple-maps';
+import { Line } from 'react-simple-maps';
 import * as Cst from '../../../constants';
 
-const Flight = ({ route, color, dimensions, lightTheme }) => {
-  const coordinates = [
-    [route.fromCoordLong, route.fromCoordLat],
-    [route.toCoordLong, route.toCoordLat],
-  ];
-
-  return (
-    <>
-      <Line
-        key={route.id}
-        from={coordinates[0]}
-        to={coordinates[1]}
-        stroke={color}
-        strokeWidth={
-          dimensions.width > Cst.screenXlWidth
-            ? Cst.strokeWidthXl
-            : dimensions.width > Cst.screenLgWidth
-            ? Cst.strokeWidthLg
-            : Cst.strokeWidthSm
-        }
-      />
-      {coordinates.map((coord, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <Marker coordinates={coord} key={`${route.id}${index}`}>
-          <circle
-            r={
-              dimensions.width > Cst.screenXlWidth
-                ? Cst.strokeWidthXl
-                : dimensions.width > Cst.screenLgWidth
-                ? Cst.strokeWidthLg
-                : Cst.strokeWidthSm
-            }
-            fill={lightTheme ? Cst.markerColorLight : Cst.markerColorDark}
-          />
-        </Marker>
-      ))}
-    </>
-  );
-};
+const Flight = ({ route, color, dimensions }) => (
+  <Line
+    key={route.id}
+    from={[route.fromCoordLong, route.fromCoordLat]}
+    to={[route.toCoordLong, route.toCoordLat]}
+    stroke={color}
+    strokeWidth={
+      dimensions.width > Cst.screenXlWidth
+        ? Cst.strokeWidthXl
+        : dimensions.width > Cst.screenLgWidth
+        ? Cst.strokeWidthLg
+        : Cst.strokeWidthSm
+    }
+  />
+);
 
 export default React.memo(Flight);
 
@@ -62,5 +38,4 @@ Flight.propTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number,
   }).isRequired,
-  lightTheme: PropTypes.bool.isRequired,
 };

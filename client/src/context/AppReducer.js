@@ -21,7 +21,7 @@ export default (state, action) => {
       return {
         ...state,
         routes: state.routes.map((route) =>
-          route.id === action.payload.id ? action.payload : route,
+          route.id === action.payload.id ? action.payload : route
         ),
       };
     case actionType.CLEAR_ROUTES:
@@ -34,6 +34,11 @@ export default (state, action) => {
       return {
         ...state,
         lightTheme: action.payload,
+      };
+    case actionType.TOGGLE_LABELS:
+      return {
+        ...state,
+        showLabels: action.payload,
       };
     case actionType.TOGGLE_VIEW:
       return {
@@ -51,7 +56,7 @@ export default (state, action) => {
         categories: state.categories.map((category) =>
           category.name === action.payload.name
             ? { ...category, active: action.payload.checked }
-            : category,
+            : category
         ),
       };
     case actionType.CHANGE_CAT_COLOR:
@@ -60,7 +65,7 @@ export default (state, action) => {
         categories: state.categories.map((category) =>
           category.name === action.payload.name
             ? { ...category, color: action.payload.color }
-            : category,
+            : category
         ),
       };
     default:
