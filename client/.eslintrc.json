@@ -3,7 +3,8 @@
     "react-app",
     "airbnb",
     "plugin:jsx-a11y/recommended",
-    "plugin:testing-library/react"
+    "plugin:testing-library/react",
+    "prettier"
   ],
   "env": {
     "es6": true,
@@ -13,14 +14,13 @@
   "plugins": ["jsx-a11y"],
   "rules": {
     "no-alert": 0,
-    "implicit-arrow-linebreak": 0,
+    "no-nested-ternary": 0,
+    "jsx-a11y/no-static-element-interactions": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-autofocus": 0,
     "react/jsx-wrap-multilines": 0,
-    "operator-linebreak": 0,
-    "function-paren-newline": ["error", "consistent"],
-    "object-curly-newline": ["error", { "multiline": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "jsx-a11y/label-has-associated-control": 0,
-    "linebreak-style": 0,
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-curly-newline": 0
   }
 }

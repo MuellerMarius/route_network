@@ -91,6 +91,13 @@ export const csvHeader = [
   { id: 'cat' },
 ];
 
+export const parseOptions = {
+  header: true,
+  dynamicTyping: true,
+  skipEmptyLines: true,
+  delimiter: ',',
+};
+
 // Sample routes
 export const sampleRoutes = [
   {

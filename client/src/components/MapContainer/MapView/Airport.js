@@ -41,8 +41,10 @@ export default React.memo(Airport);
 
 Airport.propTypes = {
   airport: PropTypes.shape({
-    id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    from: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.PropTypes.string.isRequired,
+    coord: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    ),
   }).isRequired,
   dimensions: PropTypes.shape({
     width: PropTypes.number.isRequired,

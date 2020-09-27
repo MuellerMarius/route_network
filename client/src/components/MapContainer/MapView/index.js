@@ -12,7 +12,7 @@ import './style.scss';
 const MapView = ({ dimensions }) => {
   const { lightTheme, regionalFocus } = useContext(GlobalContext);
   const [tooltip, setTooltip] = useState('');
-  const mapCenter = regionalFocus ? [20, 50] : [10, 30]; // Values to center Europe
+  const mapCenter = regionalFocus ? [20, 50] : [10, 30]; // Center Europe
 
   return (
     <div className={`map-area ${lightTheme ? '' : 'map-area--dark-bg'}`}>

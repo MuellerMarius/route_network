@@ -7,13 +7,6 @@ import AirportLookup from './AirportLookup';
 import ModalScreen from '../ModalScreen';
 import * as Cst from '../../constants';
 
-const parseOptions = {
-  header: true,
-  dynamicTyping: true,
-  skipEmptyLines: true,
-  delimiter: ',',
-};
-
 const DataControls = ({ addActionRef }) => {
   const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
   const [showAirportLookup, setShowAirportLookup] = useState(false);
@@ -65,7 +58,7 @@ const DataControls = ({ addActionRef }) => {
             Import data (*.csv)
           </>
         }
-        parserOptions={parseOptions}
+        parserOptions={Cst.parseOptions}
         onFileLoaded={(data) => loadRoutes(data)}
       />
 

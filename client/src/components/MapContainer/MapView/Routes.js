@@ -4,8 +4,9 @@ import { GlobalContext } from '../../../context/GlobalState';
 import Flight from './Flight';
 import Airport from './Airport';
 
-const airportsFromRoutes = (routes) => {
+const getAirportsFromRoutes = (routes) => {
   let airports = [];
+
   routes.forEach((elem) => {
     airports.push({
       id: elem.to,
@@ -17,7 +18,7 @@ const airportsFromRoutes = (routes) => {
     });
   });
 
-  // only keep unique elements
+  // remove duplicate fields
   airports = airports.filter(
     (elem, i, self) => self.findIndex((elem2) => elem2.id === elem.id) === i
   );
@@ -25,17 +26,20 @@ const airportsFromRoutes = (routes) => {
   return airports;
 };
 
+const filterActiveRoutes = (routes, categories) => {
+  const activeCategories = categories
+    .filter((cat) => cat.active === true)
+    .map((cat) => cat.name);
+
+  return routes.filter((route) => activeCategories.includes(route.cat));
+};
+
 const Routes = ({ dimensions, setTooltip }) => {
   const { routes, lightTheme, categories, showLabels } = useContext(
     GlobalContext
   );
-  const activeCatNames = categories
-    .filter((cat) => cat.active === true)
-    .map((cat) => cat.name);
-  const activeRoutes = routes.filter((route) =>
-    activeCatNames.includes(route.cat)
-  );
-  const airports = airportsFromRoutes(activeRoutes);
+  const activeRoutes = filterActiveRoutes(routes, categories);
+  const airports = getAirportsFromRoutes(activeRoutes);
 
   return (
     <>

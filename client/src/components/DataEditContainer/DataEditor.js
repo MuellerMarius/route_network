@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable, { MTableAction } from 'material-table';
@@ -141,6 +143,7 @@ const DataEditor = ({ dimensions, addActionRef }) => {
         onRowDelete: (oldData) => deleteRow(oldData),
       }}
       components={{
+        // Add ref to add-action to be able to display button in left menu
         Action: (props) => {
           if (
             typeof props.action === typeof Function ||

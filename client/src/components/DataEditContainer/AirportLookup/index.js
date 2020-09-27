@@ -13,16 +13,13 @@ const AirportLookup = ({ closeModal }) => {
   };
 
   const handleKeyDown = (e) => {
-    switch (e.keyCode) {
-      case Cst.ESCAPE:
-        closeModal();
-        break;
-      default:
-        break;
+    if (e.keyCode === Cst.ESCAPE) {
+      closeModal();
     }
   };
 
   useEffect(() => {
+    // Debounce API requests
     const timer = setTimeout(() => {
       if (searchString) {
         fetch(`${Cst.autoCompleteAPI}${searchString}`)
