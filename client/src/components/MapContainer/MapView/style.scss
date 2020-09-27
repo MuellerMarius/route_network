@@ -27,7 +27,16 @@
   font-size: 0.8rem;
   fill: #666;
 
+  @media screen and (max-width: $md-width) {
+    font-size: 1rem;
+  }
+
   &--dark {
+    font-size: 0.8rem;
     fill: #aaa;
+
+    @media screen and (max-width: $md-width) {
+      font-size: 1rem;
+    }
   }
 }

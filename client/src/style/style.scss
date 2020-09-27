@@ -19,12 +19,13 @@ body {
   margin-top: 0;
   margin-bottom: 40px;
 
-  @media screen and (min-width: $lg-width) {
-    margin-top: 40px;
-  }
-
   @media screen and (min-width: $sm-width) {
     width: 90%;
     margin-top: 20px;
+  }
+
+  @media screen and (min-width: $lg-width) {
+    width: 80%;
+    margin-top: 30px;
   }
 }
