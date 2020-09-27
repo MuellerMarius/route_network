@@ -3,27 +3,21 @@ import PropTypes from 'prop-types';
 import { Marker } from 'react-simple-maps';
 import * as Cst from '../../../constants';
 
-const Airport = ({
+const AirportMarker = ({
   airport,
-  dimensions,
+  strokeWidth,
   lightTheme,
   showLabels,
   setTooltip,
 }) => (
   <Marker
     coordinates={airport.coord}
-    onMouseEnter={() => setTooltip(`${airport.id}`)}
+    onMouseEnter={() => setTooltip(airport.id)}
     onMouseLeave={() => setTooltip('')}
   >
     <circle r={5} fillOpacity={0} />
     <circle
-      r={
-        dimensions.width > Cst.screenXlWidth
-          ? Cst.strokeWidthXl
-          : dimensions.width > Cst.screenLgWidth
-          ? Cst.strokeWidthLg
-          : Cst.strokeWidthSm
-      }
+      r={strokeWidth}
       fill={lightTheme ? Cst.markerColorLight : Cst.markerColorDark}
     />
     {showLabels && (
@@ -37,19 +31,16 @@ const Airport = ({
   </Marker>
 );
 
-export default React.memo(Airport);
+export default React.memo(AirportMarker);
 
-Airport.propTypes = {
+AirportMarker.propTypes = {
   airport: PropTypes.shape({
     id: PropTypes.PropTypes.string.isRequired,
     coord: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     ),
   }).isRequired,
-  dimensions: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number,
-  }).isRequired,
+  strokeWidth: PropTypes.number.isRequired,
   lightTheme: PropTypes.bool.isRequired,
   showLabels: PropTypes.bool.isRequired,
   setTooltip: PropTypes.func.isRequired,

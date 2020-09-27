@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
+import { Line } from 'react-simple-maps';
 import { GlobalContext } from '../../../context/GlobalState';
-import Flight from './Flight';
-import Airport from './Airport';
+import AirportMarker from './AirportMarker';
+import * as Cst from '../../../constants';
 
 const getAirportsFromRoutes = (routes) => {
   let airports = [];
@@ -20,7 +21,7 @@ const getAirportsFromRoutes = (routes) => {
 
   // remove duplicate fields
   airports = airports.filter(
-    (elem, i, self) => self.findIndex((elem2) => elem2.id === elem.id) === i
+    (elem, i, self) => self.findIndex((elem2) => elem2.id === elem.id) === i,
   );
 
   return airports;
@@ -36,28 +37,35 @@ const filterActiveRoutes = (routes, categories) => {
 
 const Routes = ({ dimensions, setTooltip }) => {
   const { routes, lightTheme, categories, showLabels } = useContext(
-    GlobalContext
+    GlobalContext,
   );
   const activeRoutes = filterActiveRoutes(routes, categories);
   const airports = getAirportsFromRoutes(activeRoutes);
+  const strokeWidth =
+    dimensions.width > Cst.screenXlWidth
+      ? Cst.strokeWidthXl
+      : dimensions.width > Cst.screenLgWidth
+      ? Cst.strokeWidthLg
+      : Cst.strokeWidthSm;
 
   return (
     <>
       {activeRoutes.map((route) => (
-        <Flight
+        <Line
           key={route.id}
-          route={route}
-          color={categories.find((cat) => cat.name === route.cat).color}
-          dimensions={dimensions}
+          from={[route.fromCoordLong, route.fromCoordLat]}
+          to={[route.toCoordLong, route.toCoordLat]}
+          stroke={categories.find((cat) => cat.name === route.cat).color}
+          strokeWidth={strokeWidth}
         />
       ))}
       {airports.map((airport) => (
-        <Airport
+        <AirportMarker
           key={airport.id}
           airport={airport}
           lightTheme={lightTheme}
           setTooltip={setTooltip}
-          dimensions={dimensions}
+          strokeWidth={strokeWidth}
           showLabels={showLabels}
         />
       ))}
