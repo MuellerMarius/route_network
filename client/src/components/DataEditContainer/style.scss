@@ -19,14 +19,16 @@
   font-weight: 500;
   text-align: left;
   background-color: $container-bg-color;
-  padding: 9px 0px 9px 10px;
+  padding: 11px 0px 11px 15px;
   outline: none;
   border: 0;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
 
-  &:hover {
-    background-color: $dark-grey;
+  @media screen and (min-width: $md-width) and (hover: hover) {
+    &:hover {
+      background-color: $dark-grey;
+    }
   }
 
   &.--red {
@@ -34,8 +36,10 @@
     border: 0;
     color: #fff;
 
-    &:hover {
-      background-color: #cf5444;
+    @media screen and (min-width: $md-width) and (hover: hover) {
+      &:hover {
+        background-color: #cf5444;
+      }
     }
   }
 }
@@ -60,7 +64,12 @@
   }
 }
 
+.MuiIcon-root {
+  font-size: 1.1rem !important;
+}
+
 .MuiIconButton-root {
+  padding: 6px !important;
   @media screen and (max-width: $md-width) {
     padding: 3px !important;
   }
@@ -72,6 +81,7 @@
   }
 }
 
-.MuiToolbar-regular {
+div[class*='MTableToolbar-root'] {
+  // Disable toolbar of table
   display: none !important;
 }

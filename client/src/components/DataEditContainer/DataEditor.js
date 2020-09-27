@@ -147,9 +147,8 @@ const DataEditor = ({ dimensions, addActionRef }) => {
             props.action.tooltip !== 'Add'
           ) {
             return <MTableAction {...props} />;
-          } else {
-            return <div ref={addActionRef} onClick={props.action.onClick} />;
           }
+          return <div ref={addActionRef} onClick={props.action.onClick} />;
         },
       }}
     />
@@ -163,4 +162,8 @@ DataEditor.propTypes = {
     width: PropTypes.number.isRequired,
     height: PropTypes.number,
   }).isRequired,
+  addActionRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]).isRequired,
 };

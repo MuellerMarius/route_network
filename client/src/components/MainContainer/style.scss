@@ -21,12 +21,13 @@ main {
 .settings {
   $self: &;
   padding: 15px;
+  height: 100%;
 
   @media screen and (max-width: $md-width) {
     padding: 7px;
     grid-column: 1 / span 2;
     background-color: $container-bg-color;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
   }
 
   &__wrapper {

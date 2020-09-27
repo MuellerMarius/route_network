@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import CSVReader from 'react-csv-reader';
 import CsvDownloader from 'react-csv-downloader'; // eslint-disable-line import/no-unresolved
 import { GlobalContext } from '../../context/GlobalState';
@@ -36,8 +37,8 @@ const DataControls = ({ addActionRef }) => {
       </button>
 
       <button type="button" onClick={() => setShowAirportLookup(true)}>
-        <span className="material-icons sidemenu__icon">search</span> Lookup
-        airport
+        <span className="material-icons sidemenu__icon">search</span>
+        Lookup airport
       </button>
 
       <ModalScreen
@@ -53,14 +54,14 @@ const DataControls = ({ addActionRef }) => {
         type="button"
         onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}
       >
-        <span className="material-icons sidemenu__icon">flight_takeoff</span>{' '}
+        <span className="material-icons sidemenu__icon">flight_takeoff</span>
         Load sample data
       </button>
 
       <CSVReader
         label={
           <>
-            <span className="material-icons sidemenu__icon">arrow_upward</span>{' '}
+            <span className="material-icons sidemenu__icon">arrow_upward</span>
             Import data (*.csv)
           </>
         }
@@ -76,7 +77,7 @@ const DataControls = ({ addActionRef }) => {
         datas={routes}
       >
         <button type="button">
-          <span className="material-icons sidemenu__icon">arrow_downward</span>{' '}
+          <span className="material-icons sidemenu__icon">arrow_downward</span>
           Export data (*.csv)
         </button>
       </CsvDownloader>
@@ -86,10 +87,18 @@ const DataControls = ({ addActionRef }) => {
         className="button --red"
         onClick={() => confirmClear(clearRoutes)}
       >
-        <span className="material-icons sidemenu__icon">clear</span> Clear data
+        <span className="material-icons sidemenu__icon">clear</span>
+        Clear data
       </button>
     </div>
   );
 };
 
 export default DataControls;
+
+DataControls.propTypes = {
+  addActionRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]).isRequired,
+};

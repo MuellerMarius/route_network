@@ -15,14 +15,10 @@ nav {
 .nav-item {
   color: #000;
   text-align: center;
-  min-width: 160px;
+  min-width: 150px;
   float: left;
   padding: 15px 0 14px 0;
   text-decoration: none;
-
-  @media screen and (max-width: $sm-width) {
-    min-width: 100px;
-  }
 
   &:first-child {
     @media screen and (min-width: $sm-width) {
@@ -30,10 +26,12 @@ nav {
     }
   }
 
-  &:hover {
-    cursor: pointer;
-    color: #fff;
-    background-color: #1d89ff;
+  @media screen and (min-width: $md-width) and (hover: hover) {
+    &:hover {
+      cursor: pointer;
+      color: #fff;
+      background-color: #1d89ff;
+    }
   }
 
   &--active {
