@@ -1,5 +1,4 @@
 .netlify
-.vscode
 debug.log
 node_modules
 api/node_modules

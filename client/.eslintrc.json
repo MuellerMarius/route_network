@@ -14,6 +14,7 @@
   "rules": {
     "no-alert": 0,
     "implicit-arrow-linebreak": 0,
+    "react/jsx-wrap-multilines": 0,
     "operator-linebreak": 0,
     "function-paren-newline": ["error", "consistent"],
     "object-curly-newline": ["error", { "multiline": true }],
