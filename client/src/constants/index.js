@@ -70,7 +70,6 @@ export const tableOptions = {
   draggable: false,
   search: false,
   addRowPosition: 'first',
-  toolbar: false,
   headerStyle: {
     backgroundColor: '#f9f9f9',
     fontWeight: 600,

@@ -2,7 +2,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import MaterialTable, { MTableAction } from 'material-table';
+import MaterialTable, { MTableAction, MTableToolbar } from 'material-table';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
 import * as Cst from '../../constants';
@@ -10,7 +10,7 @@ import './style.scss';
 
 const DataEditor = ({ dimensions, addActionRef }) => {
   const { routes, addRoute, editRoute, deleteRoute } = useContext(
-    GlobalContext
+    GlobalContext,
   );
 
   const handleHttpErrors = (response) => {
@@ -38,8 +38,8 @@ const DataEditor = ({ dimensions, addActionRef }) => {
             (url) =>
               fetch(url)
                 .then(handleHttpErrors)
-                .then((res) => res.json())
-          )
+                .then((res) => res.json()),
+          ),
         )
           .then((data) => {
             newEntry.fromCoordLat = data[0].latitude_deg;
@@ -52,12 +52,12 @@ const DataEditor = ({ dimensions, addActionRef }) => {
           .catch(() => {
             reject();
             alert(
-              'Unable to insert new data because destination or departure airport is unknown.'
+              'Unable to insert new data because destination or departure airport is unknown.',
             );
           });
       } else {
         alert(
-          'Unable to insert new data because destination or departure airport is missing.'
+          'Unable to insert new data because destination or departure airport is missing.',
         );
         reject();
       }
@@ -90,8 +90,8 @@ const DataEditor = ({ dimensions, addActionRef }) => {
           requests.map((url) =>
             fetch(url)
               .then(handleHttpErrors)
-              .then((res) => res.json())
-          )
+              .then((res) => res.json()),
+          ),
         )
           .then((data) => {
             if (indexFrom >= 0) {
@@ -110,7 +110,7 @@ const DataEditor = ({ dimensions, addActionRef }) => {
           .catch(() => {
             reject();
             alert(
-              'Unable to insert new data because changed airport is unknown.'
+              'Unable to insert new data because changed airport is unknown.',
             );
           });
       } else {
@@ -143,6 +143,11 @@ const DataEditor = ({ dimensions, addActionRef }) => {
         onRowDelete: (oldData) => deleteRow(oldData),
       }}
       components={{
+        Toolbar: (props) => (
+          <div style={{ display: 'none' }}>
+            <MTableToolbar {...props} />
+          </div>
+        ),
         // Add ref to add-action to be able to display button in left menu
         Action: (props) => {
           if (
