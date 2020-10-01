@@ -12,11 +12,14 @@ const initialState = {
   routes: [],
 };
 
+const init = (initState) => {
+  return JSON.parse(localStorage.getItem('appState')) || initState;
+};
+
 export const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
-  const localState = JSON.parse(localStorage.getItem('appState'));
-  const [state, dispatch] = useReducer(AppReducer, localState || initialState);
+  const [state, dispatch] = useReducer(AppReducer, initialState, init);
 
   useEffect(() => {
     localStorage.setItem('appState', JSON.stringify(state));
