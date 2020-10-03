@@ -26,7 +26,8 @@ const DataEditor = ({ addActionRef }) => {
     new Promise((resolve, reject) => {
       if (!newData.to || !newData.from) {
         alert('Destination or departure airport is missing');
-        return reject();
+        reject();
+        return;
       }
 
       const newEntry = newData;
@@ -53,11 +54,11 @@ const DataEditor = ({ addActionRef }) => {
           newEntry.toCoordLong = data[1].longitude_deg;
 
           dispatch({ type: actionType.ADD_ROUTE, data: newEntry });
-          return resolve();
+          resolve();
         })
         .catch(() => {
           alert('Destination or departure airport is unknown.');
-          return reject();
+          reject();
         });
     });
 
@@ -85,7 +86,8 @@ const DataEditor = ({ addActionRef }) => {
 
       if (requests.length === 0) {
         dispatch({ type: actionType.EDIT_ROUTE, data: newEntry });
-        return resolve();
+        resolve();
+        return;
       }
 
       Promise.all(
@@ -107,11 +109,11 @@ const DataEditor = ({ addActionRef }) => {
           }
 
           dispatch({ type: actionType.EDIT_ROUTE, data: newEntry });
-          return resolve();
+          resolve();
         })
         .catch(() => {
           alert('Changed airport is unknown.');
-          return reject();
+          reject();
         });
     });
 
