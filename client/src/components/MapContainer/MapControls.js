@@ -2,21 +2,23 @@ import React, { useContext } from 'react';
 import { GlobalContext } from '../../context/GlobalState';
 import ColorPicker from './ColorPicker';
 import Checkbox from './Checkbox';
+import * as actionType from '../../context/actions';
 
 const MapControls = () => {
   const {
     lightTheme,
     regionalFocus,
     categories,
-    toggleView,
-    toggleTheme,
-    toggleCatDisplay,
     showLabels,
-    toggleLabels,
+    dispatch,
   } = useContext(GlobalContext);
 
-  const onChange = (name) => (checked) => {
-    toggleCatDisplay(name, checked);
+  const toggleViewSetting = (type, name) => (checked) => {
+    dispatch({
+      type,
+      data:
+        type === actionType.TOGGLE_CAT_DISPLAY ? { name, checked } : checked,
+    });
   };
 
   return (
@@ -30,19 +32,19 @@ const MapControls = () => {
               label="Regional focus"
               name="regionalFocus"
               checked={regionalFocus}
-              onChange={toggleView}
+              onChange={toggleViewSetting(actionType.TOGGLE_VIEW)}
             />
             <Checkbox
               label="Show labels"
               name="showLabels"
               checked={showLabels}
-              onChange={toggleLabels}
+              onChange={toggleViewSetting(actionType.TOGGLE_LABELS)}
             />
             <Checkbox
               label="Light theme"
               name="themeLight"
               checked={lightTheme}
-              onChange={toggleTheme}
+              onChange={toggleViewSetting(actionType.TOGGLE_THEME)}
             />
           </ul>
         </div>
@@ -57,7 +59,10 @@ const MapControls = () => {
                 label={category.name}
                 name={category.name}
                 checked={category.active}
-                onChange={onChange(category.name)}
+                onChange={toggleViewSetting(
+                  actionType.TOGGLE_CAT_DISPLAY,
+                  category.name,
+                )}
               >
                 <ColorPicker category={category} />
               </Checkbox>

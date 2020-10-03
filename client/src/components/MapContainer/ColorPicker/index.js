@@ -2,17 +2,19 @@ import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { ChromePicker } from 'react-color';
 import { GlobalContext } from '../../../context/GlobalState';
+import * as actionType from '../../../context/actions';
 import './style.scss';
 
 const ColorPicker = ({ category }) => {
-  const { changeCatColor, lightTheme } = useContext(GlobalContext);
+  const { dispatch, lightTheme } = useContext(GlobalContext);
   const [showModal, setModalVisibility] = useState(false);
 
   const onColorChange = (color) => {
-    changeCatColor(
-      category.name,
-      `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`,
-    );
+    const colorString = `rgba(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b}, ${color.rgb.a})`;
+    dispatch({
+      type: actionType.CHANGE_CAT_COLOR,
+      data: { name: category.name, color: colorString },
+    });
   };
 
   return (

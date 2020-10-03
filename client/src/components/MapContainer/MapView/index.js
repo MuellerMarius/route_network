@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import PropTypes from 'prop-types';
 import { ComposableMap, ZoomableGroup } from 'react-simple-maps';
 import ReactTooltip from 'react-tooltip';
 import { GlobalContext } from '../../../context/GlobalState';
@@ -9,7 +8,7 @@ import * as Cst from '../../../constants';
 
 import './style.scss';
 
-const MapView = ({ dimensions }) => {
+const MapView = () => {
   const { lightTheme, regionalFocus } = useContext(GlobalContext);
   const [tooltip, setTooltip] = useState('');
   const mapCenter = regionalFocus ? [20, 50] : [10, 30]; // Center Europe
@@ -24,8 +23,8 @@ const MapView = ({ dimensions }) => {
         projectionConfig={regionalFocus ? Cst.projRegional : Cst.projWorld}
       >
         <ZoomableGroup center={mapCenter} maxZoom={1.7}>
-          <Topography dimensions={dimensions} />
-          <Routes dimensions={dimensions} setTooltip={setTooltip} />
+          <Topography />
+          <Routes setTooltip={setTooltip} />
         </ZoomableGroup>
       </ComposableMap>
       <ReactTooltip>{tooltip}</ReactTooltip>
@@ -34,10 +33,3 @@ const MapView = ({ dimensions }) => {
 };
 
 export default MapView;
-
-MapView.propTypes = {
-  dimensions: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number,
-  }).isRequired,
-};

@@ -5,13 +5,15 @@ import PropTypes from 'prop-types';
 import MaterialTable, { MTableAction, MTableToolbar } from 'material-table';
 import uuid from 'react-uuid';
 import { GlobalContext } from '../../context/GlobalState';
+import useMedia from '../../util/useMedia';
 import * as Cst from '../../constants';
+import * as actionType from '../../context/actions';
+
 import './style.scss';
 
-const DataEditor = ({ dimensions, addActionRef }) => {
-  const { routes, addRoute, editRoute, deleteRoute } = useContext(
-    GlobalContext,
-  );
+const DataEditor = ({ addActionRef }) => {
+  const isMdScreen = useMedia(`(min-width: ${Cst.screenMdWidth}px)`);
+  const { routes, dispatch } = useContext(GlobalContext);
 
   const handleHttpErrors = (response) => {
     if (!response.ok) {
@@ -22,45 +24,41 @@ const DataEditor = ({ dimensions, addActionRef }) => {
 
   const insertData = (newData) =>
     new Promise((resolve, reject) => {
+      if (!newData.to || !newData.from) {
+        alert('Destination or departure airport is missing');
+        return reject();
+      }
+
       const newEntry = newData;
       newEntry.from = newEntry.from.toUpperCase();
       newEntry.to = newEntry.to.toUpperCase();
+      newEntry.id = uuid();
 
-      if (newEntry.to && newEntry.from) {
-        newEntry.id = uuid();
-
-        if (!newEntry.cat) {
-          newEntry.cat = 'Other';
-        }
-
-        Promise.all(
-          [Cst.airportAPI + newEntry.from, Cst.airportAPI + newEntry.to].map(
-            (url) =>
-              fetch(url)
-                .then(handleHttpErrors)
-                .then((res) => res.json()),
-          ),
-        )
-          .then((data) => {
-            newEntry.fromCoordLat = data[0].latitude_deg;
-            newEntry.fromCoordLong = data[0].longitude_deg;
-            newEntry.toCoordLat = data[1].latitude_deg;
-            newEntry.toCoordLong = data[1].longitude_deg;
-            addRoute(newEntry);
-            resolve();
-          })
-          .catch(() => {
-            reject();
-            alert(
-              'Unable to insert new data because destination or departure airport is unknown.',
-            );
-          });
-      } else {
-        alert(
-          'Unable to insert new data because destination or departure airport is missing.',
-        );
-        reject();
+      if (!newEntry.cat) {
+        newEntry.cat = 'Other';
       }
+
+      Promise.all(
+        [Cst.airportAPI + newEntry.from, Cst.airportAPI + newEntry.to].map(
+          (url) =>
+            fetch(url)
+              .then(handleHttpErrors)
+              .then((res) => res.json()),
+        ),
+      )
+        .then((data) => {
+          newEntry.fromCoordLat = data[0].latitude_deg;
+          newEntry.fromCoordLong = data[0].longitude_deg;
+          newEntry.toCoordLat = data[1].latitude_deg;
+          newEntry.toCoordLong = data[1].longitude_deg;
+
+          dispatch({ type: actionType.ADD_ROUTE, data: newEntry });
+          return resolve();
+        })
+        .catch(() => {
+          alert('Destination or departure airport is unknown.');
+          return reject();
+        });
     });
 
   const updateData = (newData, oldData) =>
@@ -85,54 +83,48 @@ const DataEditor = ({ dimensions, addActionRef }) => {
         indexTo = indexFrom + 1;
       }
 
-      if (requests.length > 0) {
-        Promise.all(
-          requests.map((url) =>
-            fetch(url)
-              .then(handleHttpErrors)
-              .then((res) => res.json()),
-          ),
-        )
-          .then((data) => {
-            if (indexFrom >= 0) {
-              newEntry.fromCoordLat = data[indexFrom].latitude_deg;
-              newEntry.fromCoordLong = data[indexFrom].longitude_deg;
-            }
-
-            if (indexTo >= 0) {
-              newEntry.toCoordLat = data[indexTo].latitude_deg;
-              newEntry.toCoordLong = data[indexTo].longitude_deg;
-            }
-
-            editRoute(newEntry);
-            resolve();
-          })
-          .catch(() => {
-            reject();
-            alert(
-              'Unable to insert new data because changed airport is unknown.',
-            );
-          });
-      } else {
-        editRoute(newEntry);
-        resolve();
+      if (requests.length === 0) {
+        dispatch({ type: actionType.EDIT_ROUTE, data: newEntry });
+        return resolve();
       }
+
+      Promise.all(
+        requests.map((url) =>
+          fetch(url)
+            .then(handleHttpErrors)
+            .then((res) => res.json()),
+        ),
+      )
+        .then((data) => {
+          if (indexFrom >= 0) {
+            newEntry.fromCoordLat = data[indexFrom].latitude_deg;
+            newEntry.fromCoordLong = data[indexFrom].longitude_deg;
+          }
+
+          if (indexTo >= 0) {
+            newEntry.toCoordLat = data[indexTo].latitude_deg;
+            newEntry.toCoordLong = data[indexTo].longitude_deg;
+          }
+
+          dispatch({ type: actionType.EDIT_ROUTE, data: newEntry });
+          return resolve();
+        })
+        .catch(() => {
+          alert('Changed airport is unknown.');
+          return reject();
+        });
     });
 
   const deleteRow = (oldData) =>
     new Promise((resolve) => {
-      deleteRoute(oldData.id);
-      resolve();
+      dispatch({ type: actionType.DEL_ROUTE, data: oldData.id });
+      return resolve();
     });
 
   return (
     <MaterialTable
       title=""
-      columns={
-        dimensions.width > Cst.screenMdWidth
-          ? Cst.tableColumnsLong
-          : Cst.tableColumnsShort
-      }
+      columns={isMdScreen ? Cst.tableColumnsLong : Cst.tableColumnsShort}
       data={routes}
       options={Cst.tableOptions}
       editable={{
@@ -166,10 +158,6 @@ const DataEditor = ({ dimensions, addActionRef }) => {
 export default DataEditor;
 
 DataEditor.propTypes = {
-  dimensions: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number,
-  }).isRequired,
   addActionRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),

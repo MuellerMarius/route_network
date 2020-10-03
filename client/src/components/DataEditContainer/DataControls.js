@@ -6,9 +6,10 @@ import { GlobalContext } from '../../context/GlobalState';
 import AirportLookup from './AirportLookup';
 import ModalScreen from '../ModalScreen';
 import * as Cst from '../../constants';
+import * as actionType from '../../context/actions';
 
 const DataControls = ({ addActionRef }) => {
-  const { routes, loadRoutes, clearRoutes } = useContext(GlobalContext);
+  const { routes, dispatch } = useContext(GlobalContext);
   const [showAirportLookup, setShowAirportLookup] = useState(false);
 
   const confirmClear = (func) => {
@@ -45,7 +46,14 @@ const DataControls = ({ addActionRef }) => {
 
       <button
         type="button"
-        onClick={() => confirmClear(() => loadRoutes(Cst.sampleRoutes))}
+        onClick={() =>
+          confirmClear(() =>
+            dispatch({
+              type: actionType.LOAD_ROUTES,
+              data: Cst.sampleRoutes,
+            }),
+          )
+        }
       >
         <span className="material-icons sidemenu__icon">flight_takeoff</span>
         Load sample data
@@ -59,7 +67,14 @@ const DataControls = ({ addActionRef }) => {
           </>
         }
         parserOptions={Cst.parseOptions}
-        onFileLoaded={(data) => loadRoutes(data)}
+        onFileLoaded={(data) =>
+          confirmClear(() => {
+            dispatch({
+              type: actionType.LOAD_ROUTES,
+              data,
+            });
+          })
+        }
       />
 
       <CsvDownloader
@@ -78,7 +93,13 @@ const DataControls = ({ addActionRef }) => {
       <button
         type="button"
         className="button --red"
-        onClick={() => confirmClear(clearRoutes)}
+        onClick={() =>
+          confirmClear(() => {
+            dispatch({
+              type: actionType.CLEAR_ROUTES,
+            });
+          })
+        }
       >
         <span className="material-icons sidemenu__icon">clear</span>
         Clear data

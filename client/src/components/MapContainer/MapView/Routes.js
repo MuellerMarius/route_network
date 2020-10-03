@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Line } from 'react-simple-maps';
 import { GlobalContext } from '../../../context/GlobalState';
 import AirportMarker from './AirportMarker';
+import useMedia from '../../../util/useMedia';
 import * as Cst from '../../../constants';
 
 const getAirportsFromRoutes = (routes) => {
@@ -35,18 +36,19 @@ const filterActiveRoutes = (routes, categories) => {
   return routes.filter((route) => activeCategories.includes(route.cat));
 };
 
-const Routes = ({ dimensions, setTooltip }) => {
+const Routes = ({ setTooltip }) => {
+  const isXlScreen = useMedia(`(min-width: ${Cst.screenXlWidth}px)`);
+  const isLgScreen = useMedia(`(min-width: ${Cst.screenLgWidth}px)`);
   const { routes, lightTheme, categories, showLabels } = useContext(
     GlobalContext,
   );
   const activeRoutes = filterActiveRoutes(routes, categories);
   const airports = getAirportsFromRoutes(activeRoutes);
-  const strokeWidth =
-    dimensions.width > Cst.screenXlWidth
-      ? Cst.strokeWidthXl
-      : dimensions.width > Cst.screenLgWidth
-      ? Cst.strokeWidthLg
-      : Cst.strokeWidthSm;
+  const strokeWidth = isXlScreen
+    ? Cst.strokeWidthXl
+    : isLgScreen > Cst.screenLgWidth
+    ? Cst.strokeWidthLg
+    : Cst.strokeWidthSm;
 
   return (
     <>
@@ -76,9 +78,5 @@ const Routes = ({ dimensions, setTooltip }) => {
 export default React.memo(Routes);
 
 Routes.propTypes = {
-  dimensions: PropTypes.shape({
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number,
-  }).isRequired,
   setTooltip: PropTypes.func.isRequired,
 };
