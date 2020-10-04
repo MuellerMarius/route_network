@@ -19,7 +19,7 @@ const Menu = () => {
 
       <NavLink
         to="/map"
-        activeClassName={`nav-item--active${!lightTheme ? '-dark' : ''}`}
+        activeClassName={`nav-item--active${lightTheme ? '' : '-dark'}`}
         className="nav-item"
         data-cy="mapDisplayRoute"
       >

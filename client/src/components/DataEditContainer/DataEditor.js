@@ -8,19 +8,18 @@ import { GlobalContext } from '../../context/GlobalState';
 import useMedia from '../../util/useMedia';
 import * as Cst from '../../constants';
 import * as actionType from '../../context/actions';
-
 import './style.scss';
+
+const handleHttpErrors = (response) => {
+  if (!response.ok) {
+    throw Error(response.status);
+  }
+  return response;
+};
 
 const DataEditor = ({ addActionRef }) => {
   const isMdScreen = useMedia(`(min-width: ${Cst.screenMdWidth}px)`);
   const { routes, dispatch } = useContext(GlobalContext);
-
-  const handleHttpErrors = (response) => {
-    if (!response.ok) {
-      throw Error(response.status);
-    }
-    return response;
-  };
 
   const insertData = (newData) =>
     new Promise((resolve, reject) => {
@@ -68,8 +67,6 @@ const DataEditor = ({ addActionRef }) => {
       const newEntry = newData;
       newEntry.from = newEntry.from.toUpperCase();
       newEntry.to = newEntry.to.toUpperCase();
-      let indexFrom = -1;
-      let indexTo = -1;
 
       if (!newEntry.cat) {
         newEntry.cat = 'Other';
@@ -77,11 +74,9 @@ const DataEditor = ({ addActionRef }) => {
 
       if (oldData.from !== newEntry.from) {
         requests.push(Cst.airportAPI + newEntry.from);
-        indexFrom = 0;
       }
       if (oldData.to !== newEntry.to) {
         requests.push(Cst.airportAPI + newEntry.to);
-        indexTo = indexFrom + 1;
       }
 
       if (requests.length === 0) {
@@ -98,15 +93,16 @@ const DataEditor = ({ addActionRef }) => {
         ),
       )
         .then((data) => {
-          if (indexFrom >= 0) {
-            newEntry.fromCoordLat = data[indexFrom].latitude_deg;
-            newEntry.fromCoordLong = data[indexFrom].longitude_deg;
-          }
-
-          if (indexTo >= 0) {
-            newEntry.toCoordLat = data[indexTo].latitude_deg;
-            newEntry.toCoordLong = data[indexTo].longitude_deg;
-          }
+          data.forEach((airport) => {
+            if (airport.ident === newEntry.from) {
+              newEntry.fromCoordLat = airport.latitude_deg;
+              newEntry.fromCoordLong = airport.longitude_deg;
+            }
+            if (airport.ident === newEntry.to) {
+              newEntry.toCoordLat = airport.latitude_deg;
+              newEntry.toCoordLong = airport.longitude_deg;
+            }
+          });
 
           dispatch({ type: actionType.EDIT_ROUTE, data: newEntry });
           resolve();
@@ -120,7 +116,7 @@ const DataEditor = ({ addActionRef }) => {
   const deleteRow = (oldData) =>
     new Promise((resolve) => {
       dispatch({ type: actionType.DEL_ROUTE, data: oldData.id });
-      return resolve();
+      resolve();
     });
 
   return (

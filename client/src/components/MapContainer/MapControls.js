@@ -13,7 +13,7 @@ const MapControls = () => {
     dispatch,
   } = useContext(GlobalContext);
 
-  const toggleViewSetting = (type, name) => (checked) => {
+  const handleChange = (type, name) => (checked) => {
     dispatch({
       type,
       data:
@@ -32,19 +32,19 @@ const MapControls = () => {
               label="Regional focus"
               name="regionalFocus"
               checked={regionalFocus}
-              onChange={toggleViewSetting(actionType.TOGGLE_VIEW)}
+              onChange={handleChange(actionType.TOGGLE_VIEW)}
             />
             <Checkbox
               label="Show labels"
               name="showLabels"
               checked={showLabels}
-              onChange={toggleViewSetting(actionType.TOGGLE_LABELS)}
+              onChange={handleChange(actionType.TOGGLE_LABELS)}
             />
             <Checkbox
               label="Light theme"
               name="themeLight"
               checked={lightTheme}
-              onChange={toggleViewSetting(actionType.TOGGLE_THEME)}
+              onChange={handleChange(actionType.TOGGLE_THEME)}
             />
           </ul>
         </div>
@@ -59,7 +59,7 @@ const MapControls = () => {
                 label={category.name}
                 name={category.name}
                 checked={category.active}
-                onChange={toggleViewSetting(
+                onChange={handleChange(
                   actionType.TOGGLE_CAT_DISPLAY,
                   category.name,
                 )}
