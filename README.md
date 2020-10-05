@@ -2,10 +2,9 @@
 
 [![Heroku status](https://heroku-badges.herokuapp.com/?app=route-network)](https://route-network.herokuapp.com/)
 
-This app plots great circles between airports on a world map. A running version can be found [here](https://route-network.herokuapp.com/).
+This app plots great circles between airports on a world map. A running version can be found [here](https://route-network.herokuapp.com/) and a sample screencast showing a sample workflow can be found at the bottom of this readme.
 
 ![Screenshot](/client/public/screenshot.png)
-![Screencast](/client/public/screencast.gif)
 
 ## Instructions
 
@@ -50,3 +49,7 @@ The tests of this repository are written using [cypress](https://cypress.io) and
 
 This will start the application server and open the Cypress Test Runner.
 _Note: Before you run the tests make sure that you have build the applicaton using `npm run build`_
+
+## Screencast
+
+![Screencast](/client/public/screencast.gif)
