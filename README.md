@@ -4,7 +4,7 @@
 
 This app plots great circles between airports on a world map. A running version can be found [here](https://route-network.herokuapp.com/).
 
-![Screenshot](/client/public/screen.png)
+![Screenshot](/client/public/screenshot.png)
 ![Screencast](/client/public/screencast.gif)
 
 ## Instructions
