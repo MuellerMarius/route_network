@@ -2,7 +2,7 @@
 
 [![Heroku status](https://heroku-badges.herokuapp.com/?app=route-network)](https://route-network.herokuapp.com/)
 
-This app plots great circles between airports on a world map. A running version can be found [here](https://route-network.herokuapp.com/) and a sample screencast showing a sample workflow can be found at the bottom of this readme.
+This app plots great circles between airports on a world map. A running version can be found [here](https://route-network.herokuapp.com/) and a screencast showing a sample walkthrough can be found at the bottom of this readme.
 
 ![Screenshot](/client/public/screenshot.png)
 
