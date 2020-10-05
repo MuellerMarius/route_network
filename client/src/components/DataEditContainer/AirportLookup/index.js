@@ -22,7 +22,7 @@ const AirportLookup = ({ closeModal }) => {
     // Debounce API requests
     const timer = setTimeout(() => {
       if (searchString) {
-        fetch(`${Cst.autoCompleteAPI}${searchString}`)
+        fetch(Cst.autoCompleteAPI + searchString)
           .then((res) => res.json())
           .then((data) => setResults(data));
       } else {
