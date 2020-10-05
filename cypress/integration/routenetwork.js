@@ -11,7 +11,7 @@ describe('Route Network', () => {
     );
 
     // Add new flight
-    cy.get('button[title="Add"]').click();
+    cy.get('button:contains("Add new route")').click();
     cy.get('input[placeholder="Departure Airport"]').type('EDDF');
     cy.get('input[placeholder="Destination Airport"]').type('EDDM');
     cy.get('input[placeholder="Category"]').type('Test');
