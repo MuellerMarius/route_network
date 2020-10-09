@@ -1,10 +1,12 @@
+// Disabling linting rules neccessary because of props
+// in <MaterialTable> attributes
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import MaterialTable, { MTableAction, MTableToolbar } from 'material-table';
 import uuid from 'react-uuid';
-import { GlobalContext } from '../../context/GlobalState';
+import useGlobalContext from '../../context/GlobalState';
 import useMedia from '../../util/useMedia';
 import * as Cst from '../../constants';
 import * as actionType from '../../context/actions';
@@ -19,7 +21,7 @@ const handleHttpErrors = (response) => {
 
 const DataEditor = ({ addActionRef }) => {
   const isMdScreen = useMedia(`(min-width: ${Cst.screenMdWidth}px)`);
-  const { routes, dispatch } = useContext(GlobalContext);
+  const { routes, dispatch } = useGlobalContext();
 
   const insertData = (newData) =>
     new Promise((resolve, reject) => {

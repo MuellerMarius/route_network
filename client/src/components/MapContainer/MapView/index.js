@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { ComposableMap, ZoomableGroup } from 'react-simple-maps';
 import ReactTooltip from 'react-tooltip';
-import { GlobalContext } from '../../../context/GlobalState';
+import useGlobalContext from '../../../context/GlobalState';
 import Topography from './Topography';
 import Routes from './Routes';
 import * as Cst from '../../../constants';
@@ -9,7 +9,7 @@ import * as Cst from '../../../constants';
 import './style.scss';
 
 const MapView = () => {
-  const { lightTheme, regionalFocus } = useContext(GlobalContext);
+  const { lightTheme, regionalFocus } = useGlobalContext();
   const [tooltip, setTooltip] = useState('');
   const mapCenter = regionalFocus ? [20, 50] : [10, 30]; // Center Europe
 

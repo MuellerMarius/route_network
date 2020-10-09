@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { GlobalContext } from '../../context/GlobalState';
+import React from 'react';
+import useGlobalContext from '../../context/GlobalState';
 import ColorPicker from './ColorPicker';
 import Checkbox from './Checkbox';
 import * as actionType from '../../context/actions';
@@ -11,7 +11,7 @@ const MapControls = () => {
     categories,
     showLabels,
     dispatch,
-  } = useContext(GlobalContext);
+  } = useGlobalContext();
 
   const handleChange = (type, name) => (checked) => {
     dispatch({

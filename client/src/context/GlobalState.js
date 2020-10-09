@@ -1,4 +1,4 @@
-import React, { createContext, useReducer, useEffect } from 'react';
+import React, { createContext, useReducer, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import AppReducer from './AppReducer';
 import * as Cst from '../constants';
@@ -16,7 +16,7 @@ const init = (initState) => {
   return JSON.parse(localStorage.getItem('appState')) || initState;
 };
 
-export const GlobalContext = createContext(initialState);
+const GlobalContext = createContext(initialState);
 
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState, init);
@@ -60,3 +60,15 @@ export const GlobalProvider = ({ children }) => {
 };
 
 GlobalProvider.propTypes = { children: PropTypes.element.isRequired };
+
+const useGlobalContext = () => {
+  const context = useContext(GlobalContext);
+  if (!context) {
+    throw new Error(
+      'Element tries to access GlobalContext but is not within GlobalContext.Provider',
+    );
+  }
+  return context;
+};
+
+export default useGlobalContext;

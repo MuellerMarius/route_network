@@ -1,12 +1,12 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ChromePicker } from 'react-color';
-import { GlobalContext } from '../../../context/GlobalState';
+import useGlobalContext from '../../../context/GlobalState';
 import * as actionType from '../../../context/actions';
 import './style.scss';
 
 const ColorPicker = ({ category }) => {
-  const { dispatch, lightTheme } = useContext(GlobalContext);
+  const { dispatch, lightTheme } = useGlobalContext();
   const [showModal, setModalVisibility] = useState(false);
 
   const onColorChange = (color) => {

@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { GlobalContext } from '../../context/GlobalState';
+import useGlobalContext from '../../context/GlobalState';
 import './style.scss';
 
 const Menu = () => {
-  const { lightTheme } = useContext(GlobalContext);
+  const { lightTheme } = useGlobalContext();
   return (
     <nav>
       <NavLink

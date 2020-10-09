@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import CSVReader from 'react-csv-reader';
 import CsvDownloader from 'react-csv-downloader'; // eslint-disable-line import/no-unresolved
-import { GlobalContext } from '../../context/GlobalState';
+import useGlobalContext from '../../context/GlobalState';
 import AirportLookup from './AirportLookup';
 import ModalScreen from '../ModalScreen';
 import * as Cst from '../../constants';
 import * as actionType from '../../context/actions';
 
 const DataControls = ({ addActionRef }) => {
-  const { routes, dispatch } = useContext(GlobalContext);
+  const { routes, dispatch } = useGlobalContext();
   const [showAirportLookup, setShowAirportLookup] = useState(false);
 
   const confirmClear = (func) => {

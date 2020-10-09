@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Line } from 'react-simple-maps';
-import { GlobalContext } from '../../../context/GlobalState';
+import useGlobalContext from '../../../context/GlobalState';
 import AirportMarker from './AirportMarker';
 import useMedia from '../../../util/useMedia';
 import * as Cst from '../../../constants';
@@ -39,9 +39,7 @@ const filterActiveRoutes = (routes, categories) => {
 const Routes = ({ setTooltip }) => {
   const isXlScreen = useMedia(`(min-width: ${Cst.screenXlWidth}px)`);
   const isLgScreen = useMedia(`(min-width: ${Cst.screenLgWidth}px)`);
-  const { routes, lightTheme, categories, showLabels } = useContext(
-    GlobalContext,
-  );
+  const { routes, lightTheme, categories, showLabels } = useGlobalContext();
   const activeRoutes = filterActiveRoutes(routes, categories);
   const airports = getAirportsFromRoutes(activeRoutes);
   const strokeWidth = isXlScreen
