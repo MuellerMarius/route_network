@@ -1,13 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, Suspense } from 'react';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-
-import MapView from '../MapContainer/MapView';
-import MapControls from '../MapContainer/MapControls';
-import DataControls from '../DataEditContainer/DataControls';
+import LoadingSpinner from '../LoadingSpinner';
 import Menu from '../Menu';
-import DataEditor from '../DataEditContainer/DataEditor';
 import * as Cst from '../../constants';
 import './style.scss';
+
+const MapView = React.lazy(() => import('../MapContainer/MapView'));
+const MapControls = React.lazy(() => import('../MapContainer/MapControls'));
+const DataControls = React.lazy(() =>
+  import('../DataEditContainer/DataControls')
+);
+const DataEditor = React.lazy(() => import('../DataEditContainer/DataEditor'));
 
 const MainContainer = () => {
   const addActionRef = useRef();
@@ -18,12 +21,19 @@ const MainContainer = () => {
         <Menu />
         <Switch>
           <Route path="/map">
-            <MapControls />
-            <MapView />
+            <Suspense fallback={<LoadingSpinner />}>
+              <MapControls />
+              <MapView />
+            </Suspense>
+          </Route>
+          <Route path="/load">
+            <LoadingSpinner />
           </Route>
           <Route path="/">
-            <DataControls addActionRef={addActionRef} />
-            <DataEditor addActionRef={addActionRef} />
+            <Suspense fallback={<LoadingSpinner />}>
+              <DataControls addActionRef={addActionRef} />
+              <DataEditor addActionRef={addActionRef} />
+            </Suspense>
           </Route>
         </Switch>
       </Router>
