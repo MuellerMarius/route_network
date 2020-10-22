@@ -5,12 +5,18 @@ import Menu from '../Menu';
 import * as Cst from '../../constants';
 import './style.scss';
 
-const MapView = React.lazy(() => import('../MapContainer/MapView'));
-const MapControls = React.lazy(() => import('../MapContainer/MapControls'));
-const DataControls = React.lazy(() =>
-  import('../DataEditContainer/DataControls')
+const MapView = React.lazy(() =>
+  import(/* webpackPrefetch: true */ '../MapContainer/MapView')
 );
-const DataEditor = React.lazy(() => import('../DataEditContainer/DataEditor'));
+const MapControls = React.lazy(() =>
+  import(/* webpackPrefetch: true */ '../MapContainer/MapControls')
+);
+const DataControls = React.lazy(() =>
+  import(/* webpackPrefetch: true */ '../DataEditContainer/DataControls')
+);
+const DataEditor = React.lazy(() =>
+  import(/* webpackPrefetch: true */ '../DataEditContainer/DataEditor')
+);
 
 const MainContainer = () => {
   const addActionRef = useRef();
